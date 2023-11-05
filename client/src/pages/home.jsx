@@ -1,3 +1,4 @@
+import ContactForm from '../components/form'
 import './home.css'
 
 const Home = () => {
@@ -5,6 +6,7 @@ const Home = () => {
     <>
       <main>
         <h1>Nucleo Farma</h1>
+        <ContactForm />
       </main>
     </>
   )

@@ -3,6 +3,6 @@ dotenv.config()
 
 const PORT = process.env.PORT || 3000
 
-// posteriormente clave api
+const APIKEY = process.env.APIKEY
 
-export default PORT
+export default { PORT, APIKEY }

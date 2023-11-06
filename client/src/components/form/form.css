@@ -1,11 +1,15 @@
 .form-contact {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 15px;
     padding: 1rem;
+    margin-top: 10px;
     border: 1px solid black;
     border-radius: 15px;
 }
+
 .form-contact input {
     border: none;
     padding: 10px 15px 10px 15px;

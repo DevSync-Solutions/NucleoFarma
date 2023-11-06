@@ -31,7 +31,7 @@ function ContactForm() {
 
   return (
     <>
-      <h2>Contacto</h2>
+      <h2>Complete el formulario de contacto</h2>
       <form className="form-contact" onSubmit={handleSubmit(values => {
         handleCreate(values)
       })}>

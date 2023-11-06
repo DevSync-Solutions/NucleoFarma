@@ -15,6 +15,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -24,7 +28,7 @@
   position: relative;
 }
 
-html {
+html, a {
   scroll-behavior: smooth;
 }
 
@@ -35,8 +39,22 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 8rem 0 8rem;
+  margin-bottom: 20rem;
+}
+
+.section-main {
+  margin: 5rem 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8rem;
+  gap: 20px;
 }
 
 a {

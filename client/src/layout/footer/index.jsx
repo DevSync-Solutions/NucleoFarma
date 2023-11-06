@@ -4,7 +4,7 @@ import "./footer.css"
 function Footer() {
   return (
     <footer>
-      <p>Sitio web desarrollado por <Link to="https://devsyncsolutions.vercel.app/" target="_blank">DEVSYNC</Link></p>
+      <p>Sitio web desarrollado por <Link to="https://devsyncsolutions.vercel.app/" target="_blank">DevSync Solutions</Link></p>
     </footer>
   )
 }

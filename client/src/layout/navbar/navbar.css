@@ -4,7 +4,15 @@ nav {
   left: 0;
   right: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 10px 0 10px 0;
+  z-index: 10;
+}
+
+.nav-color {
+  transition: 0.25s ease-in-out;
+  background-color: var(--color-white);
+  box-shadow: 2px 1px 4px 0 rgba(0, 0, 0, 0.267);
 }

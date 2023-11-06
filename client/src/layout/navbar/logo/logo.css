@@ -1,8 +1,15 @@
 .logo {
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 10px;
+    padding-left: 30px;
+    cursor: pointer;
 }
 .logo img {
     height: 50px;
+}
+
+.div-logo {
+    display: flex;
+    flex-direction: column;
 }

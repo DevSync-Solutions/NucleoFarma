@@ -1,0 +1,14 @@
+ul {
+    display: flex;
+    list-style-type: none;
+    gap: 15px;
+    padding-right: 30px;
+}
+li {
+    color: var(--color);
+    transition: 0.15s ease-in-out;
+    cursor: pointer;
+}
+li:hover {
+    color: var(--color-link);
+}

@@ -30,14 +30,17 @@ function ContactForm() {
   }
 
   return (
-    <form className="form-contact" onSubmit={handleSubmit(values => {
-      handleCreate(values)
-    })}>
-      <input className="input-form" type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Nombre..."></input>
-      <input className="input-form" type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Correo..."></input>
-      <input className="input-form" type="text" {...register('message', { required: true, maxLength: 250 })} placeholder="Mensaje..."></input>
-      <Button type="submit" className="btn" children="Enviar" />
-    </form>
+    <>
+      <h2>Contacto</h2>
+      <form className="form-contact" onSubmit={handleSubmit(values => {
+        handleCreate(values)
+      })}>
+        <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Nombre..."></input>
+        <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Correo..."></input>
+        <input type="text" {...register('message', { required: true, maxLength: 250 })} placeholder="Mensaje..."></input>
+        <Button type="submit" className="btn" children="Enviar" />
+      </form>
+    </>
   )
 }
 

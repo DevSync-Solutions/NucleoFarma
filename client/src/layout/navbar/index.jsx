@@ -1,11 +1,12 @@
 import "./navbar.css"
+import Logo from "./logo"
 
 const Navbar = () => {
   return (
     <>
       <nav>
-        {/* <Logo />
-        <Categorias />
+        <Logo />
+        {/* <Categorias />
         <Redes /> */}
       </nav>
     </>

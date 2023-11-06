@@ -4,10 +4,12 @@ import './home.css'
 const Home = () => {
   return (
     <>
-      <main>
+      <main className='container'>
         <h1>Nucleo Farma</h1>
-        <ContactForm />
       </main>
+      <section className='container'>
+        <ContactForm />
+      </section>
     </>
   )
 }

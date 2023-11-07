@@ -3,7 +3,7 @@ import Logo from "./logo"
 import Categorias from "./categorias"
 import { useEffect, useState } from "react"
 
-const Navbar = () => {
+const Navbar = ({ onFormTitleChange }) => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Navbar = () => {
     <>
       <nav className={isScrolled ? 'nav-color' : ''}>
         <Logo />
-        <Categorias />
+        <Categorias onFormTitleChange={onFormTitleChange} />
       </nav>
     </>
   )

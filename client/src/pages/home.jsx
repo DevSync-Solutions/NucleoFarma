@@ -1,20 +1,12 @@
-import { Button } from '../components/button'
 import ContactForm from '../components/form'
 import Section from '../layout/section'
-import { Link as ScrollLink } from "react-scroll"
+import Main from '../layout/main'
 import './home.css'
 
-const Home = () => {
+const Home = ({ formTitle, onFormTitleChange }) => {
   return (
     <>
-      <main className='container'>
-        <h1>Nucleo Farma Droguería</h1>
-        <h3>Al servicio de la salud</h3>
-        <ScrollLink smooth={true} duration={500} to="contacto"><Button>Contactanos</Button></ScrollLink>
-        <Section className='section-main'>
-          <h1>SCROLL HORIZONTAL</h1>
-        </Section>
-      </main>
+    <Main onFormTitleChange={onFormTitleChange} />
       <Section id='quienes-somos' className='container'>
         <br/>
         <h1>QUIENES SOMOS</h1>
@@ -31,7 +23,7 @@ const Home = () => {
         <br/>
       </Section>
       <Section id='contacto' className='container'>
-        <ContactForm />
+        <ContactForm formTitle={formTitle} />
       </Section>
     </>
   )

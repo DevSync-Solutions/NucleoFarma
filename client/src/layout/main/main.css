@@ -7,6 +7,7 @@
 
 .div-main {
   display: flex;
+  flex-wrap: wrap;
   gap: 100px;
   margin-top: 2rem;
 }

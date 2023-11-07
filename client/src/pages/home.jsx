@@ -26,7 +26,7 @@ const Home = ({ formTitle, onFormTitleChange }) => {
       <Section id='contacto' className='container'>
         <ContactForm formTitle={formTitle} />
       </Section>
-      <Section className="container">
+      <Section>
         <Maps />
       </Section>
     </>

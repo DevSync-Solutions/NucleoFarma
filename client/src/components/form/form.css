@@ -10,6 +10,7 @@
 }
 .form-contact .div-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 25px;
 }
 .form-contact .form-group {
@@ -33,9 +34,10 @@
 }
 
 @media (max-width: 768px) {
-  .form-contact .div-form {
+  .form-contact {
     flex-direction: column;
-    gap: 15px;
+    justify-content: center;
+    align-items: start;
   }
 
   .form-contact .form-group {
@@ -43,10 +45,24 @@
   }
 
   .form-contact input {
-    width: 100%;
+    width: 80%;
   }
+}
 
-  .btn-form {
-    width: 100%;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .form-contact input {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .form-contact input {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1441px) {
+  .form-contact input {
+    width: 24rem;
   }
 }

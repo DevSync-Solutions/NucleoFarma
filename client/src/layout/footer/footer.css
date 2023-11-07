@@ -5,5 +5,29 @@ footer {
   right: 0;
   display: flex;
   justify-content: center;
-  padding: 15px 0 15px 0;
+  padding: 8rem 0 2.2rem 0;
+}
+
+.footer-div {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.footer-div #logo {
+  height: 50px;
+}
+
+.footer-div #linkedin {
+  cursor: pointer;
+}
+
+.footer-div .footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 5px;
 }

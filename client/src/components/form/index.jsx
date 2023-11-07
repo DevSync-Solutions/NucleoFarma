@@ -22,6 +22,9 @@ function ContactForm({ formTitle }) {
       if (response.ok) {
         notifySuccess()
         reset()
+        setTimeout(() => {
+          window.location.href = '/'
+        }, 2500)
       } else {
         notifyError()
       }
@@ -31,20 +34,21 @@ function ContactForm({ formTitle }) {
 
   return (
     <>
-      <h2 id='title-form'>{formTitle}</h2>
+      <h2 id='title-form'>{formTitle} con nosotros?</h2>
       <p>Completá el formulario para que uno de nuestros representantes se ponga en contacto.</p>
       <form className="form-contact" onSubmit={handleSubmit(values => { handleCreate(values) })}>
         <div className='div-form'>
+          <input type="hidden" {...register('contactType')} value={formTitle}></input>
           <div className='form-group'>
-            <label>Nombre</label>
+            <label>Nombre *</label>
             <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..."></input>
           </div>
           <div className='form-group'>
-            <label>Tu Correo</label>
+            <label>Tu Correo *</label>
             <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
           </div>
           <div className='form-group'>
-            <label>Mensaje</label>
+            <label>Mensaje *</label>
             <input type="text" {...register('message', { required: true, maxLength: 250 })} placeholder="Ingresa tu mensaje..."></input>
           </div>
         </div>

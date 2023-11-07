@@ -24,10 +24,12 @@ const Navbar = ({ onFormTitleChange }) => {
 
   return (
     <>
-      <nav className={isScrolled ? 'nav-color' : ''}>
-        <Logo />
-        <Categorias onFormTitleChange={onFormTitleChange} />
-      </nav>
+      <header>
+        <nav className={isScrolled ? 'nav-color' : ''}>
+          <Logo />
+          <Categorias onFormTitleChange={onFormTitleChange} />
+        </nav>
+      </header>
     </>
   )
 }

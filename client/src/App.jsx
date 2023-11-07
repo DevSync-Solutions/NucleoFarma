@@ -6,7 +6,7 @@ import Footer from './layout/footer'
 import { ToastContainer } from 'react-toastify'
 
 function App() {
-  const [formTitle, setFormTitle] = React.useState("¿Necesitas comunicarte con nosotros?")
+  const [formTitle, setFormTitle] = React.useState("¿Necesitas comunicarte")
 
   const handleFormTitleChange = (newTitle) => {
     setFormTitle(newTitle)

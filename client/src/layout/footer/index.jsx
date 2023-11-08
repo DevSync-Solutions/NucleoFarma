@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
 import "./footer.css"
+import TopPage from "../../components/topPage"
 
 function Footer() {
   return (
-    <footer className="container">
+    <footer className="footer">
       <div className="footer-div">
         <div className="footer-contact">
           <p>© 2023 <strong>Nucleo Farma S.A.</strong> Todos los derechos reservados.</p>
@@ -15,9 +16,13 @@ function Footer() {
           <p><strong>Tel:</strong> +54 11 4573-3636</p>
           <p><strong>Correo:</strong> correo@info.com.ar</p>
         </div>
-        <Link to="https://www.linkedin.com/company/nucleofarma-sa" target="_blank"><img id="linkedin" src="./src/assets/linkedin.png" alt="Logo Linkedin"/></Link>
+        <div className="social">
+          <Link to="https://www.linkedin.com/company/nucleofarma-sa" target="_blank"><img id="linkedin" src="./src/assets/linkedin.png" alt="Logo Linkedin"/></Link>
+          <Link to="https://api.whatsapp.com/send?phone=541145733636&text=¡Hola! Me contacto con Nucleo Farma para recibir más informacion sobre..." target="_blank"><img id="whatsapp" src='./src/assets/whatsapp.png' alt='Logo Whatsapp' /></Link>
+        </div>
         <p id="devsync">Sitio web desarrollado por <Link to="https://devsyncsolutions.vercel.app/" target="_blank">DevSync Solutions</Link></p>
       </div>
+      <TopPage />
     </footer>
   )
 }

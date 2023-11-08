@@ -1,26 +1,26 @@
-#whatsapp {
-    position: fixed;
-    height:55px;
-    margin: 25px;
-    bottom: 0;
-    right: 0;
-    z-index: 10;
+#whatsapp-float {
+  position: fixed;
+  height:55px;
+  margin: 25px;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
 }
 
-#whatsapp img {
-    height: 60px;
+#whatsapp-float img {
+  height: 60px;
 }
 
-#whatsapp:hover {
-    opacity: 90%;
+#whatsapp-float:hover {
+  opacity: 90%;
 }
 
 @media (max-width: 1024px) {
-    #whatsapp {
-        height: 45px;
-    }
+  #whatsapp-float {
+    height: 45px;
+  }
 
-    #whatsapp img {
-        height: 50px;
-    }
+  #whatsapp-float img {
+    height: 50px;
+  }
 }

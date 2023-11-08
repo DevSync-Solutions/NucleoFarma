@@ -6,6 +6,15 @@ footer {
   display: flex;
   justify-content: center;
   padding: 8rem 0 2.20rem 0;
+  font-size: 14px;
+  z-index: 15;
+  background-color: var(--color-back);
+}
+
+.footer {
+  max-width: 100%;
+  padding: 2.65rem 8.5rem 2.65rem 8.5rem;
+  box-shadow: -1px -2px 2px 0 rgba(221, 221, 221, 0.747);
 }
 
 .footer-div {
@@ -18,11 +27,24 @@ footer {
   gap: 20px;
 }
 
-.footer-div #linkedin {
+.footer-div .social {
+  display: flex;
+  gap: 25px;
+}
+
+.social a {
   cursor: pointer;
 }
 
-.footer-div #linkedin:hover {
+.footer-div #whatsapp {
+  height: 34px;
+}
+
+.footer-div #linkedin {
+  height: 34px;
+}
+
+.footer-div img:hover {
   opacity: 90%;
 }
 
@@ -35,8 +57,20 @@ footer {
 }
 
 #devsync {
-  font-size: 15px;
+  font-size: 13px;
   color: var(--color-link);
+}
+
+@media (max-width: 1024px) {
+  #devsync {
+    font-size: 12px;
+  }
+  footer {
+    font-size: 13px;
+  }
+  .footer {
+    padding: 2.65rem 4rem 2.65rem 4rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -46,14 +80,24 @@ footer {
     gap: 10px;
     margin-bottom: 0;
   }
+
+  .footer-div #whatsapp {
+    height: 25px;
+  }
+  
+  .footer-div #linkedin {
+    height: 25px;
+  }
+
+  footer {
+    font-size: 12px;
+  }
   
   #devsync {
     font-size: 11px;
   }
-}
 
-@media (max-width: 1024px) {
-  #devsync {
-    font-size: 13px;
+  .footer {
+    padding: 2.65rem 2rem 2.65rem 2rem;
   }
 }

@@ -50,7 +50,7 @@ main {
   margin-bottom: 2rem;
 }  
 
-h1, h2, h3, p, ul {
+h1, h2, h3, p, ul, a {
   margin: 0;
 }
 

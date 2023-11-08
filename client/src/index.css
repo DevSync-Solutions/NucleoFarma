@@ -1,11 +1,12 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Public Sans', sans-serif;
 
   color-scheme: light dark;
   --color: rgb(32, 32, 32);
   --color-link: rgba(88, 88, 88, 0.863);
   --color-back: #fafafa;
   --color-black:rgb(0, 0, 0);
+  --color-grey:rgb(230, 230, 230);
   --color-white:rgb(255, 255, 255);
 
   font-synthesis: none;
@@ -46,7 +47,7 @@ main {
 .container {
   max-width: 100%;
   padding: 0 8.5rem 0 8.5rem;
-  margin-bottom: 20rem;
+  margin-bottom: 2rem;
 }  
 
 h1, h2, h3, p, ul {

@@ -3,6 +3,7 @@ import Section from '../layout/section'
 import Main from '../layout/main'
 import Maps from '../components/maps'
 import './home.css'
+import Whatsapp from '../components/whatsapp'
 
 const Home = ({ formTitle, onFormTitleChange }) => {
   return (
@@ -29,6 +30,7 @@ const Home = ({ formTitle, onFormTitleChange }) => {
       <Section>
         <Maps />
       </Section>
+      <Whatsapp />
     </>
   )
 }

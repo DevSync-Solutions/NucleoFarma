@@ -1,6 +1,6 @@
 import "./navbar.css"
 import Logo from "./logo"
-import Categorias from "./categorias"
+import Categories from "./categories"
 import { useEffect, useState } from "react"
 
 const Navbar = ({ onFormTitleChange }) => {
@@ -27,7 +27,7 @@ const Navbar = ({ onFormTitleChange }) => {
       <header>
         <nav className={isScrolled ? 'nav-color' : ''}>
           <Logo />
-          <Categorias onFormTitleChange={onFormTitleChange} />
+          <Categories onFormTitleChange={onFormTitleChange} />
         </nav>
       </header>
     </>

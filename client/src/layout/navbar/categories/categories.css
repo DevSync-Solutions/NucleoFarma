@@ -2,7 +2,6 @@ ul {
     display: flex;
     list-style-type: none;
     gap: 20px;
-    padding-right: 30px;
 }
 li {
     color: var(--color);

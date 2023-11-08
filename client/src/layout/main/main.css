@@ -11,3 +11,8 @@
   gap: 100px;
   margin-top: 2rem;
 }
+
+#title {
+  font-size: 40px;
+  font-weight: 800;
+}

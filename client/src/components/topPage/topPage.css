@@ -14,13 +14,12 @@
 
 @media (max-width: 768px) {
   #scroll-Top {
-    height: 180px;
+    height: 200px;
   }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 395px) {
   #scroll-Top {
-    height: 200px;
-    margin: 20px;
+    height: 205px;
   }
 }

@@ -5,9 +5,21 @@ iframe {
     border: none;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 942px) and (max-width: 1010px) {
     iframe {
-        margin-bottom: 15rem;
+        margin-bottom: 11rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 941px) {
+    iframe {
+        margin-bottom: 12rem;
+    }
+}
+
+@media (min-width: 396px) and (max-width: 767px) {
+    iframe {
+        margin-bottom: 17.5rem;
     }
 }
 

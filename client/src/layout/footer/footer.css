@@ -13,7 +13,7 @@ footer {
 
 .footer {
   max-width: 100%;
-  padding: 2.65rem 8.5rem 2.65rem 8.5rem;
+  padding: 2.3rem 8.5rem 1.7rem 8.5rem;
   box-shadow: -1px -2px 2px 0 rgba(221, 221, 221, 0.747);
 }
 
@@ -69,7 +69,12 @@ footer {
     font-size: 13px;
   }
   .footer {
-    padding: 2.65rem 4rem 2.65rem 4rem;
+    padding: 1.99rem 8.5rem 1.99rem 8.5rem;
+  }
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+  .social {
+    flex-direction: column;
   }
 }
 

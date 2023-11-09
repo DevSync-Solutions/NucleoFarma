@@ -1,9 +1,9 @@
-import ContactForm from '../components/form'
-import Section from '../layout/section'
-import Main from '../layout/main'
-import Maps from '../components/maps'
+import ContactForm from '../../components/form'
+import Section from '../../layout/section'
+import Main from '../../layout/main'
+import Maps from '../../components/maps'
 import './home.css'
-import Whatsapp from '../components/whatsapp'
+import Whatsapp from '../../components/whatsapp'
 
 const Home = ({ formTitle, onFormTitleChange }) => {
   return (

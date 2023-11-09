@@ -9,7 +9,7 @@ const Main = ({ onFormTitleChange }) => {
       <main className='container'>
         <h1>Droguería <span id="title">Nucleo Farma</span></h1>
         <h3>Al servicio de la salud</h3>
-        <ScrollLink smooth={true} duration={500} to="contacto"><Button onClick={() => onFormTitleChange("¿Necesitas comunicarte")}>Contactanos</Button></ScrollLink>
+        <ScrollLink smooth={true} duration={500} to="contacto"><Button onClick={() => onFormTitleChange("¿Necesitás comunicarte")}>Contactanos</Button></ScrollLink>
         <Section className='section-main'>
           <h2>SCROLL HORIZONTAL</h2>
           <div className='div-main'>

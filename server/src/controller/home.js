@@ -8,17 +8,6 @@ const router = Router()
 const APIKEY = process.env.APIKEY
 const resend = new Resend(APIKEY)
 
-router.get('/', async (req, res) => {
-  try {
-      const home = "home"
-              
-      res.json(home)
-
-  } catch (error) {
-      res.status(500).json({ error: 'Error al obtener home' })
-  }
-})
-
 router.post('/', async (req, res) => {
   try {
     const { name, email, message, contactType } = req.body

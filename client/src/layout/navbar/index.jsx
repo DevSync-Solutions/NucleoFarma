@@ -2,9 +2,15 @@ import "./navbar.css"
 import Logo from "./logo"
 import Categories from "./categories"
 import { useEffect, useState } from "react"
+import ToggleMenu from "./toggleMenu"
 
 const Navbar = ({ onFormTitleChange }) => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const handleToggleMenu = (isOpen) => {
+    setIsMenuOpen(isOpen)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,8 +31,9 @@ const Navbar = ({ onFormTitleChange }) => {
   return (
     <>
       <header>
-        <nav className={isScrolled ? 'nav-color' : ''}>
+        <nav id="nav" className={`${isScrolled ? 'nav-color' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
           <Logo />
+          <ToggleMenu onFormTitleChange={onFormTitleChange} onToggleMenu={handleToggleMenu} />
           <Categories onFormTitleChange={onFormTitleChange} />
         </nav>
       </header>

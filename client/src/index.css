@@ -58,6 +58,7 @@ h1, h2, h3, p, ul, a {
 a {
   color: var(--color);
   text-decoration: inherit;
+  transition: 0.15s ease-in-out;
 }
 a:hover {
   color: var(--color-link);
@@ -79,6 +80,10 @@ img {
 }
 
 @media (max-width: 768px) {
+  h1 {
+    font-size: 22px;
+  }
+
   body {
     font-size: 12px;
   }

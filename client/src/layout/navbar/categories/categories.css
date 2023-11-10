@@ -1,13 +1,25 @@
 ul {
-    display: flex;
-    list-style-type: none;
-    gap: 20px;
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
 }
 li {
-    color: var(--color);
-    transition: 0.15s ease-in-out;
-    cursor: pointer;
+  color: var(--color);
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
 }
 li:hover {
-    color: var(--color-link);
+  color: var(--color-link);
+}
+
+@media (min-width: 1001px) {
+  .toggle-categories {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .categories {
+    display: none;
+  }
 }

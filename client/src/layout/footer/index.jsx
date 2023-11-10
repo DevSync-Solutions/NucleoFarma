@@ -9,13 +9,15 @@ function Footer() {
         <div className="footer-contact">
           <p>Droguería <strong>Nucleo Farma S.A.</strong></p>
           <p>C.U.I.T: 30-67582905-7</p>
-          <Link to="/condiciones"><p>Terminos y condiciones.</p></Link>
+          <Link to="/condiciones"><p>Términos y condiciones.</p></Link>
           <Link to="/privacidad"><p>Política de privacidad.</p></Link>
+          <Link to="/documentacion"><p>Documentación</p></Link>
         </div>
         <div className="footer-contact">
           <p><strong>Dirección:</strong> Habana 3336, Villa Devoto, Buenos Aires</p>
+          <p><strong>Horario de atención:</strong> Lunes a viernes de 8:00 a 16:00 hs.</p>
           <p><strong>Tel:</strong> +54 11 4573-3636</p>
-          <p><strong>Email:</strong> correo@info.com.ar</p>
+          <p><strong>Email:</strong> info@nucleofarmaweb.com.ar</p>
         </div>
         <div className="social">
           <Link to="https://www.linkedin.com/company/nucleofarma-sa" target="_blank"><img id="linkedin" src="./src/assets/linkedin.png" alt="Logo Linkedin"/></Link>

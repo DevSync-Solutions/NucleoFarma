@@ -6,8 +6,8 @@ import './main.css'
 const Main = ({ onFormTitleChange }) => {
   return (
     <>
-      <main className='container'>
-        <h1>Droguería <span id="title">Nucleo Farma</span></h1>
+      <main className='container main'>
+        <h1 className="title-main">Droguería <span id="title">Nucleo Farma</span></h1>
         <h3>Al servicio de la salud</h3>
         <ScrollLink smooth={true} duration={500} to="contacto"><Button onClick={() => onFormTitleChange("¿Necesitás comunicarte")}>Contactanos</Button></ScrollLink>
         <Section className='section-main'>

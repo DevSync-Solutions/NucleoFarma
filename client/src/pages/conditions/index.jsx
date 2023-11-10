@@ -5,7 +5,7 @@ const Conditions = () => {
     <>
       <Section className='container'>
         <br/>
-        <h1>TERMINOS Y CONDICIONES</h1>
+        <h1>TÉRMINOS Y CONDICIONES</h1>
         <br/>
       </Section>
     </>

@@ -16,3 +16,15 @@
   font-size: 40px;
   font-weight: 900;
 }
+
+@media (max-width: 768px) {
+  .title-main { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #title {
+    text-align: center;
+  }
+}

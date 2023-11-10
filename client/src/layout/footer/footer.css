@@ -24,14 +24,13 @@ footer {
   justify-content: space-between;
   width: 100%;
   margin-bottom: 1rem;
-  gap: 20px;
+  gap: 25px;
 }
 
 .footer-div .social {
   display: flex;
   gap: 25px;
 }
-
 .social a {
   cursor: pointer;
 }
@@ -44,7 +43,11 @@ footer {
   height: 34px;
 }
 
-.footer-div img:hover {
+.social a {
+  transition: 0.15s ease-in-out;
+}
+
+.social a:hover {
   opacity: 90%;
 }
 
@@ -75,6 +78,9 @@ footer {
 @media (min-width: 769px) and (max-width: 1200px) {
   .social {
     flex-direction: column;
+  }
+  .footer {
+    padding: 2.65rem 4rem 2.65rem 4rem;
   }
 }
 

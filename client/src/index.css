@@ -66,7 +66,9 @@ a:hover {
 
 img {
   max-width: 100%;
+  min-width: 25px;
   pointer-events: none;
+  height: auto;
 }
 
 @media (max-width: 1024px) {
@@ -76,6 +78,9 @@ img {
   .container {
     max-width: 960px;
     padding: 0 4rem 0 4rem;
+  }
+  img {
+    min-width: 35px;
   }
 }
 
@@ -90,5 +95,8 @@ img {
   .container {
     max-width: 100%;
     padding: 0 2rem 0 2rem;
+  }
+  img {
+    min-width: 25px;
   }
 }

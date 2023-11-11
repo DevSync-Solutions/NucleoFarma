@@ -1,6 +1,7 @@
 ul {
   display: flex;
   list-style-type: none;
+  align-items: center;
   gap: 20px;
 }
 li {
@@ -12,14 +13,17 @@ li:hover {
   color: var(--color-link);
 }
 
-@media (min-width: 1001px) {
+@media (min-width: 1231px) {
   .toggle-categories {
     display: none;
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1230px) {
   .categories {
     display: none;
+  }
+  ul {
+    align-items: start;
   }
 }

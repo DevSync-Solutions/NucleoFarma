@@ -1,0 +1,72 @@
+.form-contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 1rem 0;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 15px;
+}
+.form-contact .div-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.form-contact .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-contact input {
+  border: 1px solid rgb(212, 212, 212);
+  padding: 10px 15px 10px 15px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: black;
+}
+
+.btn-form {
+  padding: 0.8em 6.5em;
+}
+
+#title-form {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .form-contact {
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-bottom: 1rem;
+    
+  }
+
+  .form-contact .form-group {
+    width: 100%;
+  }
+
+  .form-contact input {
+    width: 80%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .form-contact input {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .form-contact input {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1441px) {
+  .form-contact input {
+    width: 24rem;
+  }
+}

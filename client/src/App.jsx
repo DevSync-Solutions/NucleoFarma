@@ -8,18 +8,18 @@ import Condiciones from './pages/conditions'
 import Privacidad from './pages/privacity'
 import Docs from './pages/docs'
 import { useRef } from 'react'
+import Register from './pages/register'
 
 function App() {
   const [formTitle, setFormTitle] = useState("¿Necesitás comunicarte")
+  const formRef = useRef(null)
 
   const handleFormTitleChange = (newTitle) => {
     setFormTitle(newTitle)
   }
 
-  const formRef = useRef(null)
-
   const handleFormRef = () => {
-    formRef.current && formRef.current.focus()
+    formRef.current && formRef.current.querySelector('input[name="name"]').focus()
   }
 
   return (
@@ -42,6 +42,8 @@ function App() {
         <Route path='/condiciones' element={<Condiciones />} />
         <Route path='/privacidad' element={<Privacidad />} />
         <Route path='/documentacion' element={<Docs />} />
+        <Route path='/register' element={<Register />} />
+        {/* <Route path='/login' element={<Login />} /> */}
       </Routes>
       <Footer />
     </BrowserRouter>

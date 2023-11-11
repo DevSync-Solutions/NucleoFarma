@@ -37,7 +37,7 @@
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1230px) {
   .btn-toggle-menu {
     display: block;
   }

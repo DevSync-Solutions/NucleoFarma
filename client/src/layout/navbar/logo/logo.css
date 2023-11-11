@@ -7,3 +7,13 @@
 .logo img {
     height: 70px;
 }
+
+#logo-nucleo {
+    min-width: 155px;
+}
+
+@media (max-width: 768px) {
+    #logo-nucleo {
+        width: 100px;
+    } 
+}

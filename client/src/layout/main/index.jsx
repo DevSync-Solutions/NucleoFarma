@@ -6,7 +6,7 @@ import './main.css'
 const Main = ({ onFormTitleChange, formRef }) => {
 
   const handleContactClick = () => {
-    onFormTitleChange('¿Necesitás comunicarte');
+    onFormTitleChange('¿Necesitás comunicarte')
     formRef()
   }
 

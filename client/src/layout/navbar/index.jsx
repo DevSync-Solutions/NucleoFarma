@@ -27,7 +27,7 @@ const Navbar = ({ onFormTitleChange, handleFormRef }) => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-
+  
   return (
     <>
       <header>

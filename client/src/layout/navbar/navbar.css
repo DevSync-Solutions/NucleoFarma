@@ -19,14 +19,24 @@ nav {
   box-shadow: 2px 1px 4px 0 rgba(0, 0, 0, 0.267);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1230px) {
+  .menu-open {
+    padding-bottom: 21rem;
+    /* box-shadow: 2px 1px 4px 0 rgba(0, 0, 0, 0.267); */
+    transition: 0.15s ease-in-out;
+  }
+}
+
+@media (max-width: 1024px) {
   nav {
     align-items: center;
     gap: 100px;
+    padding: 10px 4rem 10px 4rem;
   }
-  .menu-open {
-    padding-bottom: 17rem;
-    /* box-shadow: 2px 1px 4px 0 rgba(0, 0, 0, 0.267); */
-    transition: 0.15s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 10px 2rem 10px 2rem;
   }
 }

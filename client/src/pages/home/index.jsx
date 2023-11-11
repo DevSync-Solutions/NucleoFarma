@@ -1,4 +1,4 @@
-import ContactForm from '../../components/form'
+import ContactForm from '../../components/contactForm'
 import Section from '../../layout/section'
 import Main from '../../layout/main'
 import Maps from '../../components/maps'

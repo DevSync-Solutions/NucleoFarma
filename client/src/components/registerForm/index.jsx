@@ -4,20 +4,27 @@ import { Button } from '../button'
 import { useEffect, useRef } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
 import "./registerForm.css"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function RegisterForm() {
   const notifySuccess = () => toast.success('Usuario registrado')
-  const notifyError = () => toast.error('Error al registrar')
+  const notifyError = (errorMessage) => toast.error(errorMessage)
   const { register, handleSubmit, reset } = useForm()
   const firstInputRef = useRef(null)
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     firstInputRef.current && firstInputRef.current.querySelector('input[name="name"]').focus()
   }, [])
 
   const handleCreate = (data) => {
-    fetch('http://localhost:3000/register', {
+    if (data.password !== data.password1) {
+      notifyError('Las contraseñas no coinciden')
+      return
+    }
+
+    fetch('http://localhost:3000/session/register', {
     // fetch('dominio host backend', {
       method: 'POST',
       headers: {
@@ -30,10 +37,10 @@ function RegisterForm() {
         notifySuccess()
         reset()
         setTimeout(() => {
-          window.location.href = '/login'
-        }, 2500)
+          navigate('/login')
+        }, 2000)
       } else {
-        notifyError()
+        notifyError(error.message)
       }
     })
     .catch(error => console.error('Error al registrar el usuario', error))
@@ -67,8 +74,8 @@ function RegisterForm() {
           </div>
         </div>
         <div className="div-btn">
-          <Button type="submit" className="btn-form" children="Enviar" />
-          <Link to="/login">¿Ya tenés cuenta?</Link>
+          <Button type="submit" className="btn-form" children="Crear" />
+          <Link to="/login">¿Ya tenés cuenta? Ingresá</Link>
         </div>
       </form>
     </>

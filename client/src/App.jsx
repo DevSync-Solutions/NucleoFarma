@@ -9,6 +9,7 @@ import Privacidad from './pages/privacity'
 import Docs from './pages/docs'
 import { useRef } from 'react'
 import Register from './pages/register'
+import Login from './pages/login'
 
 function App() {
   const [formTitle, setFormTitle] = useState("¿Necesitás comunicarte")
@@ -43,7 +44,7 @@ function App() {
         <Route path='/privacidad' element={<Privacidad />} />
         <Route path='/documentacion' element={<Docs />} />
         <Route path='/register' element={<Register />} />
-        {/* <Route path='/login' element={<Login />} /> */}
+        <Route path='/login' element={<Login />} />
       </Routes>
       <Footer />
     </BrowserRouter>

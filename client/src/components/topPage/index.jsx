@@ -9,7 +9,7 @@ const TopPage = () => {
 
   return (
     <>
-      <ScrollLink onClick={scrollToTop} smooth={true} duration={500} id="scroll-Top"><Button className="scroll-top">↑</Button></ScrollLink>
+      <ScrollLink onClick={scrollToTop} smooth={true} duration={500} to="/" id="scroll-Top"><Button className="scroll-top">↑</Button></ScrollLink>
     </>
   )
 }

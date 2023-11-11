@@ -3,7 +3,7 @@ import "./categories.css"
 import { Link } from "react-router-dom";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll"
 
-const Categories = ({ className, onFormTitleChange, closeMenu }) => {
+const Categories = ({ className, onFormTitleChange, closeMenu, isMenuOpen, handleFormRef }) => {
   const [shouldScroll, setShouldScroll] = useState(false)
 
   const scrollToTop = () => {
@@ -20,17 +20,25 @@ const Categories = ({ className, onFormTitleChange, closeMenu }) => {
 
   const handleLinkClick = (sectionId) => {
     setShouldScroll(sectionId)
-    closeMenu()
+    if (isMenuOpen) {
+      closeMenu()
+    }
   }
 
   const handleTitleWork = () => {
     onFormTitleChange("¿Querés trabajar")
-    closeMenu()
+    handleFormRef()
+    if (isMenuOpen) {
+      closeMenu()
+    }
   }
 
   const handleTitleContact = () => {
     onFormTitleChange("¿Necesitás comunicarte")
-    closeMenu()
+    handleFormRef()
+    if (isMenuOpen) {
+      closeMenu()
+    }
   }
 
   const isHomePage = window.location.pathname === '/'

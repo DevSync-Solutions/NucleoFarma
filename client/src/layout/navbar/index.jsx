@@ -4,7 +4,7 @@ import Categories from "./categories"
 import { useEffect, useState } from "react"
 import ToggleMenu from "./toggleMenu"
 
-const Navbar = ({ onFormTitleChange }) => {
+const Navbar = ({ onFormTitleChange, handleFormRef }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -34,7 +34,7 @@ const Navbar = ({ onFormTitleChange }) => {
         <nav id="nav" className={`${isScrolled ? 'nav-color' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
           <Logo />
           <ToggleMenu onFormTitleChange={onFormTitleChange} onToggleMenu={handleToggleMenu} />
-          <Categories onFormTitleChange={onFormTitleChange} />
+          <Categories onFormTitleChange={onFormTitleChange} handleFormRef={handleFormRef} />
         </nav>
       </header>
     </>

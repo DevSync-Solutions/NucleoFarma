@@ -2,13 +2,13 @@ import ContactForm from '../../components/form'
 import Section from '../../layout/section'
 import Main from '../../layout/main'
 import Maps from '../../components/maps'
-import './home.css'
 import Whatsapp from '../../components/whatsapp'
+import './home.css'
 
-const Home = ({ formTitle, onFormTitleChange }) => {
+const Home = ({ formTitle, onFormTitleChange, formRef, handleFormRef }) => {
   return (
     <>
-    <Main onFormTitleChange={onFormTitleChange} />
+    <Main onFormTitleChange={onFormTitleChange} formRef={handleFormRef} />
       <Section id='quienes-somos' className='container'>
         <br/>
         <h2>QUIENES SOMOS</h2>
@@ -25,7 +25,7 @@ const Home = ({ formTitle, onFormTitleChange }) => {
         <br/>
       </Section>
       <Section id='contacto' className='container'>
-        <ContactForm formTitle={formTitle} />
+        <ContactForm formTitle={formTitle} formRef={formRef} />
       </Section>
       <Section>
         <Maps />

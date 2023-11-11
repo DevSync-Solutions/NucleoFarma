@@ -4,7 +4,7 @@ import { Button } from '../button'
 import 'react-toastify/dist/ReactToastify.css'
 import "./form.css"
 
-function ContactForm({ formTitle }) {
+function ContactForm({ formTitle, formRef }) {
   const notifySuccess = () => toast.success('Enviado con éxito')
   const notifyError = () => toast.error('Error al enviar')
   const { register, handleSubmit, reset } = useForm()
@@ -41,7 +41,7 @@ function ContactForm({ formTitle }) {
           <input type="hidden" {...register('contactType')} value={formTitle}></input>
           <div className='form-group'>
             <label>Nombre *</label>
-            <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..."></input>
+            <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..." ref={formRef}></input>
           </div>
           <div className='form-group'>
             <label>Tu Correo *</label>

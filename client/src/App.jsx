@@ -7,12 +7,19 @@ import { ToastContainer } from 'react-toastify'
 import Condiciones from './pages/conditions'
 import Privacidad from './pages/privacity'
 import Docs from './pages/docs'
+import { useRef } from 'react'
 
 function App() {
   const [formTitle, setFormTitle] = useState("¿Necesitás comunicarte")
 
   const handleFormTitleChange = (newTitle) => {
     setFormTitle(newTitle)
+  }
+
+  const formRef = useRef(null)
+
+  const handleFormRef = () => {
+    formRef.current && formRef.current.focus()
   }
 
   return (
@@ -29,9 +36,9 @@ function App() {
       pauseOnHover
       theme="light"
       />
-      <Navbar onFormTitleChange={handleFormTitleChange} />
+      <Navbar onFormTitleChange={handleFormTitleChange} handleFormRef={handleFormRef} />
       <Routes>
-        <Route path='/' element={<Home formTitle={formTitle} onFormTitleChange={handleFormTitleChange} />} />
+        <Route path='/' element={<Home formTitle={formTitle} onFormTitleChange={handleFormTitleChange} formRef={formRef} handleFormRef={handleFormRef} />} />
         <Route path='/condiciones' element={<Condiciones />} />
         <Route path='/privacidad' element={<Privacidad />} />
         <Route path='/documentacion' element={<Docs />} />

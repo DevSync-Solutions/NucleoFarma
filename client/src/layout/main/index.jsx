@@ -3,13 +3,19 @@ import Section from "../section"
 import { Button } from "../../components/button"
 import './main.css'
 
-const Main = ({ onFormTitleChange }) => {
+const Main = ({ onFormTitleChange, formRef }) => {
+
+  const handleContactClick = () => {
+    onFormTitleChange('¿Necesitás comunicarte');
+    formRef()
+  }
+
   return (
     <>
       <main className='container main'>
         <h1 className="title-main">Droguería <span id="title">Nucleo Farma</span></h1>
         <h3>Al servicio de la salud</h3>
-        <ScrollLink smooth={true} duration={500} to="contacto"><Button onClick={() => onFormTitleChange("¿Necesitás comunicarte")}>Contactanos</Button></ScrollLink>
+        <ScrollLink smooth={true} duration={500} offset={-110} to="contacto"><Button onClick={handleContactClick}>Contactanos</Button></ScrollLink>
         <Section className='section-main'>
           <h2>SCROLL HORIZONTAL</h2>
           <div className='div-main'>

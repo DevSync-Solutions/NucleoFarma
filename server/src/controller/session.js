@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import bcrypt from 'bcrypt'
 // import jwt from 'jsonwebtoken'
+import UserSchema from '../models/users.model.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -13,20 +14,16 @@ router.post('/register', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    const data = {
+    const newUser = {
       name,
       email,
       company,
       password: hashedPassword
     }
-    
-    // const [result] = await pool.execute(
-    //   'INSERT INTO users (name, email, company, password) VALUES (?, ?, ?, ?)',
-    //   [name, email, company, hashedPassword]
-    // )
 
-    // res.status(200).json({ message: 'Usuario registrado exitosamente' })
-    res.status(200).json({ data })         
+    await UserSchema.create(newUser)
+
+    res.status(200).json({ message: 'Usuario creado con éxito' })         
 
   } catch (error) {
     res.status(500).json({ error: 'Error al registrar al usuario' })

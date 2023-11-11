@@ -7,5 +7,6 @@ const app = express()
 app.use(cors({ origin: 'http://localhost:4000' }))
 app.use(morgan('dev'))
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 export default app

@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize'
 import { db } from '../config/index.config.js'
 
-const sequelize = new Sequelize(db.name, db.user, '', {
+const sequelize = new Sequelize(db.name, db.user, db.pass, {
     host: db.host,
     dialect: db.dialect
 })

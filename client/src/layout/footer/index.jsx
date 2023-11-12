@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom"
 import "./footer.css"
 import TopPage from "../../components/topPage"
+import { useMenuContext } from "../../context/menu"
 
 function Footer() {
+  const { isMenuOpen, closeMenu } = useMenuContext()
+
   return (
     <footer className="footer">
       <div className="footer-div">
         <div className="footer-contact">
           <p>Droguería <strong>Nucleo Farma S.A.</strong></p>
           <p>C.U.I.T: 30-67582905-7</p>
-          <Link to="/condiciones"><p>Términos y condiciones.</p></Link>
-          <Link to="/privacidad"><p>Política de privacidad.</p></Link>
-          <Link to="/documentacion"><p>Documentación</p></Link>
+          <Link to="/condiciones" onClick={isMenuOpen && closeMenu}><p>Términos y condiciones.</p></Link>
+          <Link to="/privacidad" onClick={isMenuOpen && closeMenu}><p>Política de privacidad.</p></Link>
+          <Link to="/documentacion" onClick={isMenuOpen && closeMenu}><p>Documentación</p></Link>
         </div>
         <div className="footer-contact">
           <p><strong>Dirección:</strong> Habana 3336, Villa Devoto, Buenos Aires</p>

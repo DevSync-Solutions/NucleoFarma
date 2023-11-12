@@ -21,7 +21,6 @@ const UserSchema = sequelize.define('user', {
   }, {
     createdAt: true,
     updatedAt: true,
-    deletedAt: true,
     tableName: 'users'
 })
 

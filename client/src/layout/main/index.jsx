@@ -3,11 +3,11 @@ import Section from "../section"
 import { Button } from "../../components/button"
 import './main.css'
 
-const Main = ({ onFormTitleChange, formRef }) => {
+const Main = ({ onFormTitleChange, handleFormRef }) => {
 
   const handleContactClick = () => {
     onFormTitleChange('¿Necesitás comunicarte')
-    formRef()
+    handleFormRef()
   }
 
   return (

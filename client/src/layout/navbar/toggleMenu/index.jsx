@@ -1,22 +1,10 @@
-import { useState } from 'react'
 import Categories from '../categories'
 import { Button } from '../../../components/button'
+import { useMenuContext } from '../../../context/menu'
 import './toggleMenu.css'
 
-const ToggleMenu = ({ onFormTitleChange, onToggleMenu }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-    onToggleMenu(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setTimeout(() => {
-      setIsMenuOpen(false)
-      onToggleMenu(false)      
-    }, 1000)
-  }
+const ToggleMenu = ({ onFormTitleChange }) => {
+  const { isMenuOpen, toggleMenu, closeMenu } = useMenuContext()
 
   return (
     <div className="menu-container">
@@ -29,8 +17,7 @@ const ToggleMenu = ({ onFormTitleChange, onToggleMenu }) => {
         <Categories
           className="toggle-categories"
           onFormTitleChange={onFormTitleChange}
-          isMenuOpen={isMenuOpen}
-          toggleMenu={toggleMenu}
+          isMenuOpen={isMenuOpen} 
           closeMenu={closeMenu}
         />
       )}

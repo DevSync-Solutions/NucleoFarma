@@ -3,14 +3,11 @@ import Logo from "./logo"
 import Categories from "./categories"
 import { useEffect, useState } from "react"
 import ToggleMenu from "./toggleMenu"
+import { useMenuContext } from "../../context/menu"
 
-const Navbar = ({ onFormTitleChange, handleFormRef }) => {
+const Navbar = ({ onFormTitleChange }) => {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const handleToggleMenu = (isOpen) => {
-    setIsMenuOpen(isOpen)
-  }
+  const { isMenuOpen, closeMenu } = useMenuContext()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,8 +30,8 @@ const Navbar = ({ onFormTitleChange, handleFormRef }) => {
       <header>
         <nav id="nav" className={`${isScrolled ? 'nav-color' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
           <Logo />
-          <ToggleMenu onFormTitleChange={onFormTitleChange} onToggleMenu={handleToggleMenu} />
-          <Categories onFormTitleChange={onFormTitleChange} handleFormRef={handleFormRef} />
+          <ToggleMenu onFormTitleChange={onFormTitleChange} />
+          <Categories onFormTitleChange={onFormTitleChange} isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
         </nav>
       </header>
     </>

@@ -1,22 +1,18 @@
 import { toast } from 'react-toastify'
-import { useForm } from 'react-hook-form'
+import { useForm as useFormHook } from 'react-hook-form'
 import { Button } from '../button'
-import { useEffect, useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useForm } from '../../context/form'
 import 'react-toastify/dist/ReactToastify.css'
 import "./registerForm.css"
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 function RegisterForm() {
   const notifySuccess = () => toast.success('Usuario registrado')
   const notifyError = (errorMessage) => toast.error(errorMessage)
-  const { register, handleSubmit, reset } = useForm()
-  const firstInputRef = useRef(null)
+  const { formRef, handleFormRef } = useForm()
+  const { register, handleSubmit, reset } = useFormHook()
   const navigate = useNavigate()
-
-
-  useEffect(() => {
-    firstInputRef.current && firstInputRef.current.querySelector('input[name="name"]').focus()
-  }, [])
 
   const handleCreate = (data) => {
     if (data.password !== data.password1) {
@@ -24,7 +20,7 @@ function RegisterForm() {
       return
     }
 
-    fetch('http://localhost:3000/session/register', {
+    fetch('http://localhost:3000/sesion/registro', {
     // fetch('dominio host backend', {
       method: 'POST',
       headers: {
@@ -37,7 +33,7 @@ function RegisterForm() {
         notifySuccess()
         reset()
         setTimeout(() => {
-          navigate('/login')
+          navigate('/ingreso')
         }, 2000)
       } else {
         notifyError(error.message)
@@ -46,11 +42,15 @@ function RegisterForm() {
     .catch(error => console.error('Error al registrar el usuario', error))
   }
 
+  useEffect(() => {
+    handleFormRef()
+  }, [])
+
   return (
     <>
       <h1 id='title-form'>Registro</h1>
       <p>Completá el formulario para registrarte.</p>
-      <form className="form-reg-log" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={firstInputRef}>
+      <form className="form-reg-log" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
         <div className='div-form'>
           <div className='form-group'>
             <label>Nombre *</label>
@@ -75,7 +75,7 @@ function RegisterForm() {
         </div>
         <div className="div-btn">
           <Button type="submit" className="btn-form" children="Crear" />
-          <Link to="/login">¿Ya tenés cuenta? Ingresá</Link>
+          <Link to="/ingreso">¿Ya tenés cuenta? Ingresá</Link>
         </div>
       </form>
     </>

@@ -3,12 +3,15 @@ import Section from '../../layout/section'
 import Main from '../../layout/main'
 import Maps from '../../components/maps'
 import Whatsapp from '../../components/whatsapp'
+import { useForm } from '../../context/form'
 import './home.css'
 
-const Home = ({ formTitle, onFormTitleChange, formRef, handleFormRef }) => {
+const Home = ({ formTitle, onFormTitleChange }) => {
+  const { formRef, handleFormRef } = useForm()
+  
   return (
     <>
-    <Main onFormTitleChange={onFormTitleChange} formRef={handleFormRef} />
+    <Main onFormTitleChange={onFormTitleChange} handleFormRef={handleFormRef} />
       <Section id='quienes-somos' className='container'>
         <br/>
         <h2>QUIENES SOMOS</h2>

@@ -10,7 +10,7 @@ function ContactForm({ formTitle, formRef }) {
   const { register, handleSubmit, reset } = useForm()
 
   const handleCreate = (data) => {
-    fetch('http://localhost:3000/contact', {
+    fetch('http://localhost:3000/contacto', {
     // fetch('dominio host backend', {
       method: 'POST',
       headers: {

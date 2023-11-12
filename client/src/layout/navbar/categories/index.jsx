@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import "./categories.css"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll"
-import { Button } from "../../../components/button";
+import { Button } from "../../../components/button"
+import { useForm } from '../../../context/form'
 
-const Categories = ({ className, onFormTitleChange, closeMenu, isMenuOpen, handleFormRef }) => {
+const Categories = ({ className, onFormTitleChange, isMenuOpen, closeMenu }) => {
   const [shouldScroll, setShouldScroll] = useState(false)
+  const { formRef, handleFormRef } = useForm()
+  const location = useLocation()
 
   const scrollToTop = () => {
     scroll.scrollToTop({ smooth: true, duration: 500 })
@@ -30,8 +33,10 @@ const Categories = ({ className, onFormTitleChange, closeMenu, isMenuOpen, handl
 
   const handleTitleWork = () => {
     onFormTitleChange("¿Querés trabajar")
-    if (handleFormRef) {
-      handleFormRef()
+    if (isHomePage) {
+      if (formRef) {
+        handleFormRef()
+      }
     }
     if (isMenuOpen) {
       closeMenu()
@@ -40,15 +45,17 @@ const Categories = ({ className, onFormTitleChange, closeMenu, isMenuOpen, handl
 
   const handleTitleContact = () => {
     onFormTitleChange("¿Necesitás comunicarte")
-    if (handleFormRef) {
-      handleFormRef()
+    if (isHomePage) {
+      if (formRef) {
+        handleFormRef()
+      }
     }
     if (isMenuOpen) {
       closeMenu()
     }
   }
 
-  const isHomePage = window.location.pathname === '/'
+  const isHomePage = location.pathname === '/'
 
   return (
     <>
@@ -59,7 +66,7 @@ const Categories = ({ className, onFormTitleChange, closeMenu, isMenuOpen, handl
         <li>{isHomePage ? <ScrollLink onClick={closeMenu} smooth={true} duration={500} to="distribucion" offset={-85}>Distribución</ScrollLink> : <Link to="/" onClick={() => handleLinkClick("distribucion")}>Distribución</Link>}</li>
         <li>{isHomePage ? <ScrollLink smooth={true} duration={500} to="contacto" offset={-110} onClick={handleTitleWork}>Trabajá en Nucleo</ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Querés trabajar") }}>Trabajá en Nucleo</Link>}</li>
         <li>{isHomePage ? <ScrollLink smooth={true} duration={500} to="contacto" offset={-110} onClick={handleTitleContact}>Contacto</ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Necesitás comunicarte") }}>Contacto</Link>}</li>
-        <li><Link to="/register"><Button>Ingresar</Button></Link></li>
+        <li><Link to="/registro" onClick={isMenuOpen && closeMenu}><Button>Ingresar</Button></Link></li>
       </ul>
     </>
   )

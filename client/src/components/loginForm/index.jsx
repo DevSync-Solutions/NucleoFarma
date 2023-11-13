@@ -15,6 +15,8 @@ function LoginForm() {
   const navigate = useNavigate()
   const [token, setToken] = useState('')
 
+  const cameFromDocs = sessionStorage.getItem('docs') || null
+
   const handleCreate = async (data) => {
     try {
       const response = await fetch('http://localhost:3000/sesion/ingreso', {
@@ -32,13 +34,13 @@ function LoginForm() {
           // console.log('Token recibido:', token)
   
           setToken(token)
-          localStorage.setItem('token', token)
+          sessionStorage.setItem('token', token)
   
           notifySuccess()
           reset()
   
           setTimeout(() => {
-            window.location.href = '/'
+            handleRedirect()
           }, 2500)
         } else {
           notifyError('Error, por favor intenta de nuevo')
@@ -52,6 +54,16 @@ function LoginForm() {
         }
       }
     } catch (error) { console.error('Error al iniciar sesión', error)}
+  }
+  
+  const handleRedirect = () => {
+    if (cameFromDocs) {
+      window.location.href = '/documentacion'
+    } else {
+      window.location.href = '/'
+    }
+
+    sessionStorage.removeItem('docs')
   }
 
   useEffect(() => {

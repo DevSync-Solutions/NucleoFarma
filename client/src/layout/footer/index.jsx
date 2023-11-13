@@ -19,12 +19,12 @@ function Footer() {
         <div className="footer-contact">
           <p><strong>Dirección:</strong> Habana 3336, Villa Devoto, Buenos Aires</p>
           <p><strong>Horario de atención:</strong> Lunes a viernes de 8:00 a 16:00 hs.</p>
-          <p><strong>Tel:</strong> +54 11 4573-3636</p>
+          <p><strong>Tel:</strong> +54 11 3696-6253</p>
           <p><strong>Email:</strong> info@nucleofarmaweb.com.ar</p>
         </div>
         <div className="social">
           <Link to="https://www.linkedin.com/company/nucleofarma-sa" target="_blank"><img id="linkedin" src="./src/assets/linkedin.png" alt="Logo Linkedin"/></Link>
-          <Link to="https://api.whatsapp.com/send?phone=541145733636&text=¡Hola! Me contacto con Nucleo Farma para recibir más informacion sobre..." target="_blank"><img id="whatsapp" src='./src/assets/whatsapp.png' alt='Logo Whatsapp' /></Link>
+          <Link to="https://api.whatsapp.com/send?phone=541136966253&text=¡Hola! Me contacto con Nucleo Farma porque..." target="_blank"><img id="whatsapp" src='./src/assets/whatsapp.png' alt='Logo Whatsapp' /></Link>
         </div>
         <p id="devsync">© 2023 Desarrollado por <Link to="https://devsyncsolutions.vercel.app/" target="_blank">DevSync Solutions</Link></p>
       </div>

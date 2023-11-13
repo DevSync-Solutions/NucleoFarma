@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Home } from './pages/home'
 import Navbar from './layout/navbar'
 import Footer from './layout/footer'
@@ -19,8 +19,7 @@ function App() {
     setFormTitle(newTitle)
   }
 
-  const token = localStorage.getItem('token') || null
-  const RedirectToLogin = () => <Navigate to="/ingreso" />
+  const token = sessionStorage.getItem('token') || null
 
   return (
     <MenuProvider>
@@ -43,7 +42,7 @@ function App() {
             <Route path='/' element={<Home formTitle={formTitle} onFormTitleChange={handleFormTitleChange} />} />
             <Route path='/condiciones' element={<Condiciones />} />
             <Route path='/privacidad' element={<Privacidad />} />
-            <Route path='/documentacion' element={token ? <Docs /> : <RedirectToLogin />} />
+            <Route path='/documentacion' element={<Docs token={token} />} />
             <Route path='/registro' element={<Register />} />
             <Route path='/ingreso' element={<Login />} />
           </Routes>

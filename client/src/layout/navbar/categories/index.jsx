@@ -57,10 +57,10 @@ const Categories = ({ className, onFormTitleChange, isMenuOpen, closeMenu }) => 
 
   const isHomePage = location.pathname === '/'
 
-  const token = localStorage.getItem('token') || null
+  const token = sessionStorage.getItem('token') || null
 
   const closeSession = () => {
-    localStorage.removeItem('token')
+    sessionStorage.removeItem('token')
     if (isMenuOpen) {
       closeMenu()
     }

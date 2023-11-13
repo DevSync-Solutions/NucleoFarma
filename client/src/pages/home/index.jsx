@@ -12,14 +12,19 @@ const Home = ({ formTitle, onFormTitleChange }) => {
   return (
     <>
     <Main onFormTitleChange={onFormTitleChange} handleFormRef={handleFormRef} />
+      <Section id='servicios' className='container section-servicios'>
+        <br/>
+        <h2>SERVICIOS</h2>
+        <div className='div-servicios'>
+          <h3>Epoprostenol</h3>
+          <h3>Uso compasivo</h3>
+          <h3>Empresas B</h3>
+        </div>
+        <br/>
+      </Section>
       <Section id='quienes-somos' className='container'>
         <br/>
         <h2>QUIENES SOMOS</h2>
-        <br/>
-      </Section>
-      <Section id='servicios' className='container'>
-        <br/>
-        <h2>SERVICIOS</h2>
         <br/>
       </Section>
       <Section id='distribucion' className='container'>

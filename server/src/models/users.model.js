@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize, sequelize } from '../db/index.js'
+import { DataTypes, sequelize } from '../db/index.js'
 
 const UserSchema = sequelize.define('user', {
     name: {
@@ -13,6 +13,14 @@ const UserSchema = sequelize.define('user', {
     company: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    cuit: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        len: [11, 11],
+      },
     },
     password: {
       type: DataTypes.STRING,

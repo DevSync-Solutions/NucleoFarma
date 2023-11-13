@@ -14,9 +14,15 @@ function RegisterForm() {
   const { register, handleSubmit, reset } = useFormHook()
   const navigate = useNavigate()
 
-  const handleCreate = (data) => {
+  const handleCreate = async (data) => {
     if (data.password !== data.password1) {
       notifyError('Las contraseñas no coinciden')
+      return
+    }
+
+    const isAlreadyRegistered = await checkEmailCuit(data.email, data.cuit)
+    if (isAlreadyRegistered) {
+      notifyError(`El ${isAlreadyRegistered === 'email' ? 'correo' : 'CUIT'} ya se encuentra en uso`)
       return
     }
 
@@ -36,10 +42,39 @@ function RegisterForm() {
           navigate('/ingreso')
         }, 2000)
       } else {
-        notifyError(error.message)
+        notifyError('Error, por favor intente nuevamente')
       }
     })
     .catch(error => console.error('Error al registrar el usuario', error))
+  }
+
+  const checkEmailCuit = async (email, cuit) => {
+    try {
+      const response = await fetch('http://localhost:3000/sesion/verificar-email-cuit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, cuit }),
+      })
+  
+      if (response.ok) {
+        const data = await response.json()
+        if (data.emailAlreadyRegistered) {
+          return 'email'
+        } else if (data.cuitAlreadyRegistered) {
+          return 'cuit'
+        } else {
+          return null
+        }
+      } else {
+        console.error('Error al verificar el correo y el CUIT:', response.status)
+        return { emailAlreadyRegistered: false, cuitAlreadyRegistered: false }
+      }
+    } catch (error) {
+      console.error('Error al verificar el correo y el CUIT', error)
+      return { emailAlreadyRegistered: false, cuitAlreadyRegistered: false }
+    }
   }
 
   useEffect(() => {
@@ -63,6 +98,15 @@ function RegisterForm() {
           <div className='form-group'>
             <label>Empresa *</label>
             <input type="text" {...register('company', { required: true, maxLength: 50 })} placeholder="Ingresa tu empresa..."></input>
+          </div>
+          <div className='form-group'>
+            <label>CUIT de la empresa *</label>
+            <input type="text" {...register('cuit', {
+              required: true,
+              pattern: /^\d{11}$/,
+            })}
+            maxLength={11} 
+            placeholder="Ingresa el CUIT..."></input>
           </div>
           <div className='form-group'>
             <label>Contraseña *</label>

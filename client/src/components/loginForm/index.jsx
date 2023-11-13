@@ -17,41 +17,41 @@ function LoginForm() {
 
   const handleCreate = async (data) => {
     try {
-    const response = await fetch('http://localhost:3000/sesion/ingreso', {
-    // fetch('dominio host backend', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    if (response.ok) {
-      const token = response.headers.get('Authorization')
-      console.log('Token:', token)
-      setToken(token)
-      localStorage.setItem('token', token)
-      notifySuccess()
-      reset()
-      setTimeout(() => {
-        navigate('/')
-      }, 2000)
-    } else {
-      const errorData = await response.json()
-      if (errorData.error === 'Contraseña incorrecta') {
-        notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
+      const response = await fetch('http://localhost:3000/sesion/ingreso', {
+      // fetch('dominio host backend', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      if (response.ok) {
+        const authHeader = response.headers.get('Authorization')
+        const token = authHeader ? authHeader.split(' ')[1] : null
+        if (token) {
+          // console.log('Token recibido:', token)
+  
+          setToken(token)
+          localStorage.setItem('token', token)
+  
+          notifySuccess()
+          reset()
+  
+          setTimeout(() => {
+            window.location.href = '/'
+          }, 2500)
+        } else {
+          notifyError('Error, por favor intenta de nuevo')
+        }
       } else {
-        notifyError(errorData.error)
+        const errorData = await response.json()
+        if (errorData.error === 'Contraseña incorrecta') {
+          notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
+        } else {
+          notifyError(errorData.error)
+        }
       }
-    }
-  } catch (error) { console.error('Error al iniciar sesión', error)}}
-
-  const docProtected = async () => {
-    const response = await fetch('http://localhost:3000/sesion/documentacion', {
-      headers: { 'Authorization': `Bearer ${token}` },
-    })
-
-    const data = await response.json()
-    console.log(data)
+    } catch (error) { console.error('Error al iniciar sesión', error)}
   }
 
   useEffect(() => {
@@ -65,8 +65,13 @@ function LoginForm() {
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
         <div className='div-form'>
           <div className='form-group'>
-            <label>Correo *</label>
-            <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
+            <label>CUIT *</label>
+            <input type="text" {...register('cuit', {
+              required: true,
+              pattern: /^\d{11}$/,
+            })}
+            maxLength={11} 
+            placeholder="Ingresa el CUIT..."></input>
           </div>
           <div className='form-group'>
             <label>Contraseña *</label>

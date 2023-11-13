@@ -1,6 +1,7 @@
 import Section from '../../layout/section'
 
 const Docs = () => {
+  
   return (
     <>
       <Section className='container'>

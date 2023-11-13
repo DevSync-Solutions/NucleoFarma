@@ -6,11 +6,11 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const router = Router()
-const secretKey = process.env.secretKey
+const secretKey = process.env.secretKey || '123'
 
 router.post('/registro', async (req, res) => {
   try {
-    const { name, email, company, password } = req.body
+    const { name, email, company, cuit, password } = req.body
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -18,6 +18,7 @@ router.post('/registro', async (req, res) => {
       name,
       email,
       company,
+      cuit,
       password: hashedPassword
     }
 
@@ -30,11 +31,30 @@ router.post('/registro', async (req, res) => {
   }
 })
 
+router.post('/verificar-email-cuit', async (req, res) => {
+  try {
+    const { email, cuit } = req.body
+
+    const userEmail = await UserSchema.findOne({ where: { email } })
+    const userCuit = await UserSchema.findOne({ where: { cuit } })
+
+    const responseData = {
+      emailAlreadyRegistered: userEmail !== null,
+      cuitAlreadyRegistered: userCuit !== null
+    }
+
+    res.json(responseData)
+
+  } catch (error) {
+    res.status(500).json({ error: 'Error al verificar los datos' })
+  }
+})
+
 router.post('/ingreso', async (req, res) => {
   try {
-    const { email, password } = req.body
+    const { cuit, password } = req.body
 
-    const user = await UserSchema.findOne({ where: { email } })
+    const user = await UserSchema.findOne({ where: { cuit } })
 
     if (!user) {
       return res.status(401).json({ error: 'Usuario no encontrado' });
@@ -46,35 +66,15 @@ router.post('/ingreso', async (req, res) => {
       return res.status(401).json({ error: 'Contraseña incorrecta' });
     }
 
-    const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '10m' })
+    const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '15m' })
+    // console.log('Token generado:', jwt.decode(token))
 
-    res.status(200).json({ token })         
+    res.setHeader('Authorization', `Bearer ${token}`)
+    res.status(200).end()        
 
   } catch (error) {
     res.status(500).json({ error: 'Error al iniciar sesión' })
   }
 })
-
-router.get('/documentacion', verificarToken, (req, res) => {
-
-  res.json({ mensaje: 'Acceso permitido' })
-})
-
-function verificarToken(req, res, next) {
-  const token = req.headers['authorization']
-
-  if (!token) {
-    return res.status(403).json({ mensaje: 'Token no proporcionado' })
-  }
-
-  jwt.verify(token, secretKey, (err, decoded) => {
-    if (err) {
-      return res.status(401).json({ mensaje: 'Token inválido' })
-    }
-    
-    req.usuario = decoded
-    next()
-  })
-}
 
 export default router

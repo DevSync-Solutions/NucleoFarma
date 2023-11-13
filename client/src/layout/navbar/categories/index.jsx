@@ -57,6 +57,15 @@ const Categories = ({ className, onFormTitleChange, isMenuOpen, closeMenu }) => 
 
   const isHomePage = location.pathname === '/'
 
+  const token = localStorage.getItem('token') || null
+
+  const closeSession = () => {
+    localStorage.removeItem('token')
+    if (isMenuOpen) {
+      closeMenu()
+    }
+  }
+
   return (
     <>
       <ul className={className ? `${className}` : "categories"}>
@@ -66,7 +75,7 @@ const Categories = ({ className, onFormTitleChange, isMenuOpen, closeMenu }) => 
         <li>{isHomePage ? <ScrollLink onClick={closeMenu} smooth={true} duration={500} to="distribucion" offset={-85}>Distribución</ScrollLink> : <Link to="/" onClick={() => handleLinkClick("distribucion")}>Distribución</Link>}</li>
         <li>{isHomePage ? <ScrollLink smooth={true} duration={500} to="contacto" offset={-110} onClick={handleTitleWork}>Trabajá en Nucleo</ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Querés trabajar") }}>Trabajá en Nucleo</Link>}</li>
         <li>{isHomePage ? <ScrollLink smooth={true} duration={500} to="contacto" offset={-110} onClick={handleTitleContact}>Contacto</ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Necesitás comunicarte") }}>Contacto</Link>}</li>
-        <li><Link to="/registro" onClick={isMenuOpen && closeMenu}><Button>Ingresar</Button></Link></li>
+        <li>{token ? <a href="/" onClick={closeSession}><Button>Cerrar sesión</Button></a> : <Link to="/registro" onClick={isMenuOpen && closeMenu}><Button>Proveedores</Button></Link>}</li>
       </ul>
     </>
   )

@@ -16,6 +16,8 @@ const Home = ({ formTitle, onFormTitleChange }) => {
         <br/>
         <h2>SERVICIOS</h2>
         <div className='div-servicios'>
+          <h3>Gestión</h3>
+          <h3>Logística</h3>
           <h3>Epoprostenol</h3>
           <h3>Uso compasivo</h3>
           <h3>Empresas B</h3>

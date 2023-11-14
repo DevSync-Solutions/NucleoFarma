@@ -11,6 +11,8 @@ import Register from './pages/register'
 import Login from './pages/login'
 import { MenuProvider } from './context/menu'
 import { FormProvider } from './context/form'
+import PageResetPassContact from './pages/ResetPassContact'
+import PageResetPassForm from './pages/resetPassForm'
 
 function App() {
   const [formTitle, setFormTitle] = useState("¿Necesitás comunicarte")
@@ -45,6 +47,8 @@ function App() {
             <Route path='/documentacion' element={<Docs token={token} />} />
             <Route path='/registro' element={<Register />} />
             <Route path='/ingreso' element={<Login />} />
+            <Route path='/solicitar-recuperacion' element={<PageResetPassContact />} />
+            <Route path='/restablecer-contraseña' element={<PageResetPassForm />} />
           </Routes>
           <Footer />
         </BrowserRouter>

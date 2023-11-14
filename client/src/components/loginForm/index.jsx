@@ -2,7 +2,7 @@ import { toast } from 'react-toastify'
 import { useForm as useFormHook } from 'react-hook-form'
 import { Button } from '../button'
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useForm } from '../../context/form'
 import 'react-toastify/dist/ReactToastify.css'
 import "./loginForm.css"
@@ -12,7 +12,6 @@ function LoginForm() {
   const notifyError = (errorMessage) => toast.error(errorMessage)
   const { formRef, handleFormRef } = useForm()
   const { register, handleSubmit, reset } = useFormHook()
-  const navigate = useNavigate()
   const [token, setToken] = useState('')
 
   const cameFromDocs = sessionStorage.getItem('docs') || null
@@ -90,6 +89,7 @@ function LoginForm() {
             <input type="password" {...register('password', { required: true, maxLength: 50 })} placeholder="Ingresa tu contraseña..."></input>
           </div>
         </div>
+        <Link to="/solicitar-recuperacion" >¿Olvidaste tu contraseña?</Link>
         <div className="div-btn">
           <Button type="submit" className="btn-form" children="Ingresar"/>
           <Link to="/registro">¿No tenés cuenta? Registrate</Link>

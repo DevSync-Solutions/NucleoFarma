@@ -26,6 +26,14 @@ const UserSchema = sequelize.define('user', {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    resetPasswordToken: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    resetPasswordExpires: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   }, {
     createdAt: true,
     updatedAt: true,

@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 3000
 const APIKEY = process.env.APIKEY
 
 const secretKey = process.env.secretKey
+const JWT_SECRET = process.env.JWT_SECRET
+const BD_PASS_URL = process.env.BD_PASS_URL
 
 const db = {
     user: process.env.DB_USER,
@@ -15,4 +17,4 @@ const db = {
     dialect: process.env.DB_DIALECT
 }
 
-export { PORT, APIKEY, secretKey, db }
+export { PORT, APIKEY, secretKey, db, JWT_SECRET, BD_PASS_URL }

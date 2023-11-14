@@ -80,28 +80,79 @@ router.post('/ingreso', async (req, res) => {
 
 const APIKEY = process.env.APIKEY
 const resend = new Resend(APIKEY)
+const BD_PASS_URL = process.env.BD_PASS_URL
+const JWT_SECRET = process.env.JWT_SECRET
 
-router.post('/', async (req, res) => {
+router.post('/solicitar-recuperacion', async (req, res) => {
   try {
-    const { name, email, message, contactType } = req.body
-    const nameM = name.charAt(0).toUpperCase() + name.slice(1)
+    const { email } = req.body
 
-    let contact = ''
-    const contactTitle = contactType.split(' ')
-    if (contactTitle[contactTitle.length -1] === "trabajar") {
-      contact = 'trabajar en'
-    } else {
-      contact = 'comunicarse con'
+    const user = await UserSchema.findOne({ email })
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado.' })
     }
+
+    const resetPasswordToken = jwt.sign(
+      { userId: user._id },
+      JWT_SECRET,
+      { expiresIn: '1h' }
+    )
+
+    user.resetPasswordToken = resetPasswordToken
+    user.resetPasswordExpires = new Date(Date.now() + 3600000)
+    await user.save()
 
     const data = await resend.emails.send({
       from: "Web NucleoFarma <onboarding@resend.dev>",
-      to: ["correo@info.com.ar"],
-      subject: `${nameM} contacta para ${contact} NucleoFarma vía Web.`,
-      html: `Contacto realizado por <strong>${email}</strong> con el fin de ${contact} Nucleo Farma.<br><p>Mensaje: ${message}`,
+      to: [email],
+      subject: `Restablecer contraseña NucleoFarma.`,
+      html: `Restablecer contraseña NucleoFarma.<br><p>Si solicitaste un cambio de contraseña, por favor haga click en el siguiente enlace: <a href="${BD_PASS_URL}/restablecer-contraseña/${resetPasswordToken}">${BD_PASS_URL}/restablecer-contraseña/${resetPasswordToken}</a>`,
     })
+
     res.status(200).json({ data })         
 
+  } catch (error) {
+    res.status(500).json({ error })
+  }
+})
+
+router.post('/verificar-email', async (req, res) => {
+  try {
+    const { email } = req.body
+
+    const existingUser = await UserSchema.findOne({ email })
+
+    const responseData = {
+      isEmailRegistered: existingUser !== null
+    }
+
+    res.json(responseData)
+
+  } catch (error) {
+    res.status(500).json({ error: 'Error al verificar el correo' })
+  }
+})
+
+router.post('/restablecer-contraseña', async (req, res) => {
+  try {
+    const { resetToken, newPassword } = req.body
+
+    const user = await UserSchema.findOne({
+      resetPasswordToken: resetToken,
+      resetPasswordExpires: { $gt: new Date() },
+    })
+
+    if (!user) {
+      return res.status(400).json({ message: 'Token inválido o expirado.' })
+    }
+
+    user.password = await bcrypt.hash(newPassword, 10)
+    user.resetPasswordToken = undefined
+    user.resetPasswordExpires = undefined
+    await user.save()
+
+    res.status(200).json({ message: 'Contraseña restablecida con éxito.' })
   } catch (error) {
     res.status(500).json({ error })
   }

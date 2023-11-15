@@ -31,13 +31,11 @@ function ResetPassContact() {
     })
     .then(async response => {
       if (response.ok) {
-        const responseData = await response.json()
-        const { tokenPass } = responseData.data
-        sessionStorage.setItem('tokenPass', tokenPass)
+        await response.json()
         notifySuccess()
         reset()
         setTimeout(() => {
-          navigate('/restablecer-contraseña')
+          navigate('/')
         }, 2000)
       } else {
         notifyError('Error, por favor intente nuevamente')
@@ -65,11 +63,11 @@ function ResetPassContact() {
         }
       } else {
         console.error('Error al verificar el correo:', response.status)
-        return { isEmailRegistered: false }
+        return null
       }
     } catch (error) {
-      console.error('Error al verificar el correo:', response.status)
-      return { isEmailRegistered: false }
+      console.error('Error al verificar el correo:', error)
+      return null
     }
   }
 

@@ -6,6 +6,7 @@ import { useForm } from '../../context/form'
 import 'react-toastify/dist/ReactToastify.css'
 import "./resetPassForm.css"
 import { useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 
 function ResetPassForm() {
   const notifySuccess = () => toast.success('Contraseña actualizada')
@@ -14,18 +15,23 @@ function ResetPassForm() {
   const { register, handleSubmit, reset } = useFormHook()
   const navigate = useNavigate()
 
-  const tokenPass = sessionStorage.getItem('tokenPass')
+  const { tokenPass } = useParams()
 
   const handleUpdate = async (data) => {
-    fetch('http://localhost:3000/sesion/restablecer-contraseña', {
+    if (data.newPassword !== data.password1) {
+      notifyError('Las contraseñas no coinciden')
+      return
+    }
+
+    fetch(`http://localhost:3000/sesion/restablecer/${tokenPass}`, {
     // fetch('dominio host backend', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        resetToken: data.resetToken,
-        newPassword: data.password,
+        // tokenPass: tokenPass,
+        newPassword: data.newPassword,
       }),
     })
     .then(response => {
@@ -52,17 +58,18 @@ function ResetPassForm() {
       <p>Ingresa tu nueva contraseña.</p>
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleUpdate(values) })} ref={formRef}>
         <div className='div-form'>
-        <div className='form-group'>
-            <label>Nueva contraseña *</label>
-            <input type="password" {...register('password', { required: true, maxLength: 50 })} placeholder="Ingresa tu nueva contraseña..."></input>
-          </div>
           <div className='form-group'>
-            <label>Repite tu nueva contraseña *</label>
-            <input type="password" {...register('password1', { required: true, maxLength: 50 })} placeholder="Ingresa tu nueva contraseña..."></input>
+              <label>Nueva contraseña *</label>
+              <input type="password" {...register('newPassword', { required: true, maxLength: 50 })} placeholder="Ingresa tu nueva contraseña..."></input>
+            </div>
+            <div className='form-group'>
+              <label>Repite tu nueva contraseña *</label>
+              <input type="password" {...register('password1', { required: true, maxLength: 50 })} placeholder="Ingresa tu nueva contraseña..."></input>
+            </div>
           </div>
-        </div>
-        <div className="div-btn">
-          <Button type="submit" className="btn-form" children="Enviar" />
+          <div className="div-btn">
+          {/* <input type="hidden" {...register('tokenPass', { value: tokenPass })}></input> */}
+          <Button type="submit" className="btn-form" children="Confirmar" />
         </div>
       </form>
     </>

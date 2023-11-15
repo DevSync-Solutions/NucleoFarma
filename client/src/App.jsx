@@ -23,6 +23,8 @@ function App() {
 
   const token = sessionStorage.getItem('token') || null
 
+  // const tokenPass = sessionStorage.getItem('tokenPass') || null
+
   return (
     <MenuProvider>
       <FormProvider>    
@@ -48,7 +50,7 @@ function App() {
             <Route path='/registro' element={<Register />} />
             <Route path='/ingreso' element={<Login />} />
             <Route path='/solicitar-recuperacion' element={<PageResetPassContact />} />
-            <Route path='/restablecer-contraseña' element={<PageResetPassForm />} />
+            <Route path='/restablecer/:tokenPass' element={<PageResetPassForm />} />
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import UserSchema from '../models/users.model.js'
 import { Resend } from "resend"
 import dotenv from 'dotenv'
+import { Op } from 'sequelize'
 dotenv.config()
 
 const router = Router()
@@ -13,11 +14,12 @@ router.post('/registro', async (req, res) => {
   try {
     const { name, email, company, cuit, password } = req.body
 
+    const lowerCaseEmail = email.toLowerCase()
     const hashedPassword = await bcrypt.hash(password, 10)
 
     const newUser = {
       name,
-      email,
+      email: lowerCaseEmail,
       company,
       cuit,
       password: hashedPassword
@@ -36,7 +38,9 @@ router.post('/verificar-email-cuit', async (req, res) => {
   try {
     const { email, cuit } = req.body
 
-    const userEmail = await UserSchema.findOne({ where: { email } })
+    const lowerCaseEmail = email.toLowerCase()
+
+    const userEmail = await UserSchema.findOne({ where: { email: lowerCaseEmail } })
     const userCuit = await UserSchema.findOne({ where: { cuit } })
 
     const responseData = {
@@ -81,36 +85,50 @@ router.post('/ingreso', async (req, res) => {
 const APIKEY = process.env.APIKEY
 const resend = new Resend(APIKEY)
 const BD_PASS_URL = process.env.BD_PASS_URL
-const JWT_SECRET = process.env.JWT_SECRET
+
+function generateRandomToken(length) {
+  const alphanumericCharacters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  let token = ''
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * alphanumericCharacters.length)
+    token += alphanumericCharacters.charAt(randomIndex)
+  }
+
+  return token
+}
 
 router.post('/solicitar-recuperacion', async (req, res) => {
   try {
     const { email } = req.body
 
-    const user = await UserSchema.findOne({ email })
+    const lowerCaseEmail = email.toLowerCase()
+
+    const user = await UserSchema.findOne({ where: { email: lowerCaseEmail }})
 
     if (!user) {
       return res.status(404).json({ message: 'Usuario no encontrado.' })
     }
 
-    const resetPasswordToken = jwt.sign(
-      { userId: user._id },
-      JWT_SECRET,
-      { expiresIn: '1h' }
-    )
+    const resetPasswordToken = generateRandomToken(15)
+    const expirationTime = 3600000
 
     user.resetPasswordToken = resetPasswordToken
-    user.resetPasswordExpires = new Date(Date.now() + 3600000)
+    user.resetPasswordExpires = new Date(Date.now() + expirationTime).toISOString()
     await user.save()
 
-    const data = await resend.emails.send({
+    const data = {
+      tokenPass: resetPasswordToken,
+    }
+
+    const emailResponse = await resend.emails.send({
       from: "Web NucleoFarma <onboarding@resend.dev>",
-      to: [email],
+      to: ['ezequiel_bosco@hotmail.com'],
       subject: `Restablecer contraseña NucleoFarma.`,
-      html: `Restablecer contraseña NucleoFarma.<br><p>Si solicitaste un cambio de contraseña, por favor haga click en el siguiente enlace: <a href="${BD_PASS_URL}/restablecer-contraseña/${resetPasswordToken}">${BD_PASS_URL}/restablecer-contraseña/${resetPasswordToken}</a>`,
+      html: `Restablecer contraseña NucleoFarma.<br><p>Si solicitaste un cambio de contraseña, por favor haga click en el siguiente enlace:<br><a href="${BD_PASS_URL}/restablecer/${resetPasswordToken}">${BD_PASS_URL}/restablecer/${resetPasswordToken}</a>`,
     })
 
-    res.status(200).json({ data })         
+    res.status(200).json({ data, emailResponse })         
 
   } catch (error) {
     res.status(500).json({ error })
@@ -121,12 +139,14 @@ router.post('/verificar-email', async (req, res) => {
   try {
     const { email } = req.body
 
-    const existingUser = await UserSchema.findOne({ email })
+    const lowerCaseEmail = email.toLowerCase()
 
+    const existingUser = await UserSchema.findOne({ where: { email: lowerCaseEmail }})
+    
     const responseData = {
       isEmailRegistered: existingUser !== null
     }
-
+    
     res.json(responseData)
 
   } catch (error) {
@@ -134,22 +154,25 @@ router.post('/verificar-email', async (req, res) => {
   }
 })
 
-router.post('/restablecer-contraseña', async (req, res) => {
+router.post('/restablecer/:tokenPass', async (req, res) => {
   try {
-    const { resetToken, newPassword } = req.body
+    const { newPassword } = req.body
+    const { tokenPass } = req.params
 
     const user = await UserSchema.findOne({
-      resetPasswordToken: resetToken,
-      resetPasswordExpires: { $gt: new Date() },
+      where: {
+        resetPasswordToken: tokenPass,
+        resetPasswordExpires: { [Op.gt]: new Date() },
+      }
     })
 
-    if (!user) {
+    if (!user || user.resetPasswordToken !== tokenPass) {
       return res.status(400).json({ message: 'Token inválido o expirado.' })
     }
 
     user.password = await bcrypt.hash(newPassword, 10)
-    user.resetPasswordToken = undefined
-    user.resetPasswordExpires = undefined
+    user.resetPasswordToken = null
+    user.resetPasswordExpires = null
     await user.save()
 
     res.status(200).json({ message: 'Contraseña restablecida con éxito.' })

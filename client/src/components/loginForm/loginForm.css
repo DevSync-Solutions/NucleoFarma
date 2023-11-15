@@ -26,6 +26,9 @@
   background-color: transparent;
   color: black;
 }
+input:hover {
+  border-color: var(--color-grey-1);
+}
 
 .btn-form {
   padding: 0.8em 6.5em;

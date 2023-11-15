@@ -8,9 +8,23 @@ li {
   color: var(--color);
   transition: 0.15s ease-in-out;
   cursor: pointer;
+  text-decoration: none;
 }
 li:hover {
   color: var(--color-link);
+}
+li::after {
+  width: 0;
+  content: '';
+  display: block;
+  left: 0;
+  height: 1px;
+  background-color: var(--color-nucleo);
+  transition: width 0.40s ease-in-out;
+}
+
+li:hover::after {
+  width: 100%;
 }
 
 @media (min-width: 1231px) {

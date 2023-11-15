@@ -8,6 +8,7 @@
   --color-back: #fafafa;
   --color-black:rgb(0, 0, 0);
   --color-grey:rgb(230, 230, 230);
+  --color-grey-1: rgba(109, 109, 109, 0.74);
   --color-white:rgb(255, 255, 255);
 
   font-synthesis: none;
@@ -42,7 +43,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  margin-top: 6rem;
+  padding-top: 6rem;
 }
 
 .container {
@@ -70,7 +71,6 @@ img {
   pointer-events: none;
   height: auto;
 }
-
 
 h2 {
   font-size: 26px;

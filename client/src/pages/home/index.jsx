@@ -13,7 +13,10 @@ const Home = ({ formTitle, onFormTitleChange }) => {
     <>
     <Main onFormTitleChange={onFormTitleChange} handleFormRef={handleFormRef} />
       <Section id='servicios' className='container section-servicios'>
-        <h2>SERVICIOS</h2>
+        <div className='div-texto-servicios'>
+          <h2>Nuestros servicios</h2>
+          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+        </div>
         <div className='div-servicios'>
           <div className='card-servicios'>
             <h3>Gestión</h3>
@@ -42,11 +45,11 @@ const Home = ({ formTitle, onFormTitleChange }) => {
           </div>
         </div>
       </Section>
+      <hr />
       <Section id='quienes-somos' className='container section-quienes-somos'>
-        <h2>QUIENES SOMOS</h2>
         <div className='div-quienes-somos'>
           <div className='div-img-quienes-somos'>
-            <h3 id='title-quienes-somos'>Nucleo Farma</h3>
+            <h2 id='title-quienes-somos'>Nucleo Farma</h2>
             <p>Lorem ipsum dolor sit amet consectetur. </p>
           </div>
           <div className='img-quienes-somos'>img</div>
@@ -56,13 +59,14 @@ const Home = ({ formTitle, onFormTitleChange }) => {
           </div>
         </div>
       </Section>
-      <Section id='distribucion' className='container'>
+      <Section id='distribucion' className='container section-distribucion'>
         <h2>DISTRIBUCION</h2>
         <div className='div-distribucion'>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum molestias voluptas quam, tempore perferendis asperiores aspernatur harum, quae nam vel cupiditate velit optio omnis. Nisi iure doloremque molestias quos. Perspiciatis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae iste non iusto vero maxime soluta nam assumenda cum? Aperiam vitae quia qui dolorum? Fugit iste velit, ipsam modi sunt reiciendis.</p>
         </div>
       </Section>
-      <Section id='contacto' className='container'>
+      <hr />
+      <Section id='contacto' className='container section-contact'>
         <ContactForm formTitle={formTitle} formRef={formRef} />
       </Section>
       <Section>

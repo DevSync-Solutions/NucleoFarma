@@ -8,6 +8,82 @@
 .div-servicios {
   display: flex;
   flex-wrap: wrap;
-  gap: 100px;
-  margin-top: 2rem;
+  justify-content: center;
+  gap: 80px;
+  margin: 5rem 0 4rem 0;
+}
+
+.card-servicios {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid var(--color-grey);
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(238, 238, 238);
+  width: 180px;
+  padding: 25px;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+.section-quienes-somos {
+  margin: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#title-quienes-somos {
+  font-size: 30px;
+}
+
+.div-quienes-somos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 5rem 0 4rem 0;
+}
+
+.div-img-quienes-somos {
+  display: flex;
+  gap: 25px;
+  flex-direction: column;  
+  align-items: space-between;
+}
+
+.img-quienes-somos {
+  width: 64%;
+  height: 450px;
+  background-color: rgb(240, 240, 240);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-quienes-somos p {
+  display: flex;
+}
+
+.text-quienes-somos {
+  white-space: wrap;
+  text-overflow: hidden;
+}
+
+.div-distribucion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: 30px;
+  margin: 4rem 0 6rem 0;
+}
+
+@media (max-width: 1230px) {
+  .img-quienes-somos {
+    width: 100%;
+    height: 250px;
+  }
 }

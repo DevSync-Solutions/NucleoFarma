@@ -71,9 +71,17 @@ img {
   height: auto;
 }
 
+
+h2 {
+  font-size: 26px;
+}
+
 @media (max-width: 1024px) {
   body {
     font-size: 14px;
+  }
+  h2 {
+    font-size: 22px;
   }
   .container {
     max-width: 960px;
@@ -87,6 +95,10 @@ img {
 @media (max-width: 768px) {
   h1 {
     font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
   }
 
   body {

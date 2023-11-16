@@ -3,6 +3,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 150;
 }
 
 nav {
@@ -10,7 +11,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 10px 8.5rem 10px 8.5rem;
-  z-index: 20;
+  z-index: 120;
 }
 
 .nav-color {
@@ -21,7 +22,7 @@ nav {
 
 @media (max-width: 1230px) {
   .menu-open {
-    padding-bottom: 21rem;
+    padding-bottom: 22rem;
     /* box-shadow: 2px 1px 4px 0 rgba(0, 0, 0, 0.267); */
     transition: 0.15s ease-in-out;
   }
@@ -33,9 +34,15 @@ nav {
     gap: 100px;
     padding: 10px 4rem 10px 4rem;
   }
+  .menu-open {
+    padding-bottom: 21rem;
+  }
 }
 
 @media (max-width: 768px) {
+  .menu-open {
+    padding-bottom: 19rem;
+  }
   nav {
     padding: 10px 2rem 10px 2rem;
   }

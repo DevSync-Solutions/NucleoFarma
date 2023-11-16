@@ -34,10 +34,15 @@
   margin: 10px;
   border-radius: 15px;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 5px 5px 2px 1px var(--color-grey);
+}
+.card-servicios:hover {
+  transform: scale(1.03);
 }
 
 .section-quienes-somos {
-  margin: 5rem 0;
+  margin: 2rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,7 +88,8 @@
 
 /* DISTRIBUCION */
 .section-distribucion {
-  margin-bottom: 0;
+  margin-bottom: 2rem;
+  margin-top: 5rem;
 }
 .div-distribucion {
   display: flex;
@@ -98,11 +104,6 @@
  /* CONTACT */
 .section-contact {
   margin: 4rem 0;
-}
-
-hr {
-  border: 1px solid var(--color-grey);
-  width: 85%;
 }
 
 @media (max-width: 1230px) {

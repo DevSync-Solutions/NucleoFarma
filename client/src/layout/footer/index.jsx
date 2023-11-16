@@ -19,7 +19,7 @@ function Footer() {
         <div className="footer-contact">
           <p><strong>Dirección:</strong> Habana 3336, Villa Devoto, Buenos Aires</p>
           <p><strong>Horario de atención:</strong> Lunes a viernes de 8:00 a 16:00 hs.</p>
-          <p><strong>Tel:</strong> +54 11 3696-6253</p>
+          <p><strong>Teléfono:</strong> +54 11 3696-6253</p>
           <p><strong>Email:</strong> info@nucleofarmaweb.com.ar</p>
         </div>
         <div className="social">

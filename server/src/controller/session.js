@@ -110,7 +110,7 @@ router.post('/solicitar-recuperacion', async (req, res) => {
       return res.status(404).json({ message: 'Usuario no encontrado.' })
     }
 
-    const resetPasswordToken = generateRandomToken(15)
+    const resetPasswordToken = generateRandomToken(20)
     const expirationTime = 3600000
 
     user.resetPasswordToken = resetPasswordToken
@@ -123,7 +123,7 @@ router.post('/solicitar-recuperacion', async (req, res) => {
 
     const emailResponse = await resend.emails.send({
       from: "Web NucleoFarma <onboarding@resend.dev>",
-      to: ['ezequiel_bosco@hotmail.com'],
+      to: [lowerCaseEmail],
       subject: `Restablecer contraseña NucleoFarma.`,
       html: `Restablecer contraseña NucleoFarma.<br><p>Si solicitaste un cambio de contraseña, por favor haga click en el siguiente enlace:<br><a href="${BD_PASS_URL}/restablecer/${resetPasswordToken}">${BD_PASS_URL}/restablecer/${resetPasswordToken}</a>`,
     })

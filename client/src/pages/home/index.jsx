@@ -59,6 +59,7 @@ const Home = ({ formTitle, onFormTitleChange }) => {
           </div>
         </div>
       </Section>
+      <hr />
       <Section id='distribucion' className='container section-distribucion'>
         <h2>DISTRIBUCION</h2>
         <div className='div-distribucion'>

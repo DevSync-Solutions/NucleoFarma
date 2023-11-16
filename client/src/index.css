@@ -72,6 +72,11 @@ img {
   height: auto;
 }
 
+hr {
+  border: 1px solid var(--color-grey);
+  margin: 0 8rem 0 8rem;
+}
+
 h2 {
   font-size: 26px;
 }
@@ -89,6 +94,9 @@ h2 {
   }
   img {
     min-width: 35px;
+  }
+  hr {
+    margin: 0 4rem 0 4rem;
   }
 }
 
@@ -110,5 +118,8 @@ h2 {
   }
   img {
     min-width: 25px;
+  }
+  hr {
+    margin: 0 2rem 0 2rem;
   }
 }

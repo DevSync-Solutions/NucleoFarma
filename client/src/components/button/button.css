@@ -7,13 +7,13 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: 0.25s;
   color: var(--color-white);
 }
 button:hover {
-border-color: var(--color-white);
+  border-color: var(--color-white);
+  opacity: 95%;
 }
-button:focus,
-button:focus-visible {
-outline: 4px auto -webkit-focus-ring-color;
+button:focus, button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }

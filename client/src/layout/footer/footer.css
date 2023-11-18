@@ -48,7 +48,7 @@ footer {
 }
 
 .social a:hover {
-  opacity: 90%;
+  opacity: 85%;
 }
 
 .footer-div .footer-contact {
@@ -76,7 +76,7 @@ footer {
   }
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1261px) {
   .social {
     flex-direction: column;
   }

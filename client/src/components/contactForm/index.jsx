@@ -9,27 +9,29 @@ function ContactForm({ formTitle, formRef }) {
   const notifyError = () => toast.error('Error al enviar')
   const { register, handleSubmit, reset } = useForm()
 
-  const handleCreate = (data) => {
-    fetch('http://localhost:3000/contacto', {
-    // fetch('dominio host backend', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    .then(response => {
-      if (response.ok) {
-        notifySuccess()
-        reset()
-        setTimeout(() => {
-          window.location.href = '/'
-        }, 2500)
-      } else {
-        notifyError()
-      }
-    })
-    .catch(error => console.error('Error al enviar el correo', error))
+  const userId = sessionStorage.getItem('userId') || null
+
+  const handleCreate = async (data) => {
+    try {
+      const response = await fetch('http://localhost:3000/contacto', {
+        // fetch('dominio host backend', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+        if (response.ok) {
+          notifySuccess()
+          reset()
+          setTimeout(() => {
+            window.location.href = '/'
+          }, 2500)
+        } else {
+          notifyError()
+        }
+      } catch(error) { console.error('Error al enviar el correo', error)
+    }
   }
 
   return (
@@ -39,6 +41,7 @@ function ContactForm({ formTitle, formRef }) {
       <form className="form-contact" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
         <div className='div-form'>
           <input type="hidden" {...register('contactType')} value={formTitle}></input>
+          {userId && <input type="hidden" {...register('userId')} value={userId}></input>}
           <div className='form-group'>
             <label>Nombre *</label>
             <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..."></input>

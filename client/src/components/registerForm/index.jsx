@@ -15,6 +15,11 @@ function RegisterForm() {
   const navigate = useNavigate()
 
   const handleCreate = async (data) => {
+    if (data.email !== data.email1) {
+      notifyError('Los correos no coinciden')
+      return
+    }
+
     if (data.password !== data.password1) {
       notifyError('Las contraseñas no coinciden')
       return
@@ -94,6 +99,10 @@ function RegisterForm() {
           <div className='form-group'>
             <label>Correo *</label>
             <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
+          </div>
+          <div className='form-group'>
+            <label>Repite tu correo *</label>
+            <input type="email" {...register('email1', { required: true, maxLength: 50 })} placeholder="Repite tu correo..."></input>
           </div>
           <div className='form-group'>
             <label>Empresa *</label>

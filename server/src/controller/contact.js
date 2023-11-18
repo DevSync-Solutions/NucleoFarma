@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { Resend } from "resend"
+import UserSchema from '../models/users.model.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -10,7 +11,16 @@ const resend = new Resend(APIKEY)
 
 router.post('/', async (req, res) => {
   try {
-    const { name, email, message, contactType } = req.body
+    const { userId, name, email, message, contactType } = req.body
+    let company = ''
+
+    if (userId) {
+      const user = await UserSchema.findOne({ where: { id: userId } })
+      if (user) {
+        company = ", Proveedor (" + user.company.charAt(0).toUpperCase() + user.company.slice(1) + ")"
+      }
+    }
+    
     const nameM = name.charAt(0).toUpperCase() + name.slice(1)
 
     let contact = ''
@@ -23,9 +33,9 @@ router.post('/', async (req, res) => {
 
     const data = await resend.emails.send({
       from: "Web NucleoFarma <onboarding@resend.dev>",
-      to: ["correo@info.com.ar"],
-      subject: `${nameM} contacta para ${contact} NucleoFarma vía Web.`,
-      html: `Contacto realizado por <strong>${email}</strong> con el fin de ${contact} Nucleo Farma.<br><p>Mensaje: ${message}`,
+      to: ["ezequiel_bosco@hotmail.com"],
+      subject: `${nameM}${company} contacta para ${contact} NucleoFarma vía Web.`,
+      html: `Contacto realizado por <strong>${email}${company}</strong> con el fin de ${contact} Nucleo Farma.<br><p>Mensaje: ${message}`,
     })
     res.status(200).json({ data })         
 

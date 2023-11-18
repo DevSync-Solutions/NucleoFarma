@@ -27,6 +27,10 @@ function LoginForm() {
         body: JSON.stringify(data),
       })
       if (response.ok) {
+        const responseData = await response.json()
+        const userId = responseData.userId
+        sessionStorage.setItem('userId', userId)
+
         const authHeader = response.headers.get('Authorization')
         const token = authHeader ? authHeader.split(' ')[1] : null
         if (token) {

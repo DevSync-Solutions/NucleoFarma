@@ -1,6 +1,6 @@
 #scroll-Top {
   position: absolute;
-  height: 80px;
+  height: 4.6rem;
   margin: 40px;
   bottom: 0;
   right: 0;
@@ -10,16 +10,4 @@
 
 .scroll-top {
   padding: 8px;
-}
-
-@media (max-width: 768px) {
-  #scroll-Top {
-    height: 200px;
-  }
-}
-
-@media (max-width: 395px) {
-  #scroll-Top {
-    height: 205px;
-  }
 }

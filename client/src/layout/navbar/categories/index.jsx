@@ -61,6 +61,7 @@ const Categories = ({ className, onFormTitleChange, isMenuOpen, closeMenu }) => 
 
   const closeSession = () => {
     sessionStorage.removeItem('token')
+    sessionStorage.removeItem('userId')
     if (isMenuOpen) {
       closeMenu()
     }

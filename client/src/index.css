@@ -4,7 +4,7 @@
   color-scheme: light dark;
   --color: rgb(32, 32, 32);
   --color-nucleo: rgb(8, 126, 237);
-  --color-link: rgba(88, 88, 88, 0.863);
+  --color-link: rgba(88, 88, 88, 0.808);
   --color-back: #fafafa;
   --color-black:rgb(0, 0, 0);
   --color-grey:rgb(230, 230, 230);
@@ -67,7 +67,7 @@ a:hover {
 
 img {
   max-width: 100%;
-  min-width: 25px;
+  min-width: 35px;
   pointer-events: none;
   height: auto;
 }
@@ -81,7 +81,7 @@ h2 {
   font-size: 26px;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   body {
     font-size: 14px;
   }
@@ -93,7 +93,7 @@ h2 {
     padding: 0 4rem 0 4rem;
   }
   img {
-    min-width: 35px;
+    width: 28px;
   }
   hr {
     margin: 0 4rem 0 4rem;

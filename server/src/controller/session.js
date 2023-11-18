@@ -75,7 +75,7 @@ router.post('/ingreso', async (req, res) => {
     // console.log('Token generado:', jwt.decode(token))
 
     res.setHeader('Authorization', `Bearer ${token}`)
-    res.status(200).end()        
+    res.status(200).json({ userId: user.id })     
 
   } catch (error) {
     res.status(500).json({ error: 'Error al iniciar sesión' })

@@ -1,12 +1,10 @@
-import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { Button } from '../button'
-import 'react-toastify/dist/ReactToastify.css'
+import { useNotifyContext } from '../../context/notify'
 import "./contactForm.css"
 
 function ContactForm({ formTitle, formRef }) {
-  const notifySuccess = () => toast.success('Enviado con éxito')
-  const notifyError = () => toast.error('Error al enviar')
+  const { notifySuccess, notifyError } = useNotifyContext()
   const { register, handleSubmit, reset } = useForm()
 
   const userId = sessionStorage.getItem('userId') || null
@@ -22,13 +20,13 @@ function ContactForm({ formTitle, formRef }) {
           body: JSON.stringify(data),
         })
         if (response.ok) {
-          notifySuccess()
+          notifySuccess('Enviado con éxito')
           reset()
           setTimeout(() => {
             window.location.href = '/'
           }, 2500)
         } else {
-          notifyError()
+          notifyError('Error al enviar el mensaje')
         }
       } catch(error) { console.error('Error al enviar el correo', error)
     }

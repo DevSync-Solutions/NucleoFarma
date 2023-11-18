@@ -1,16 +1,14 @@
-import { toast } from 'react-toastify'
 import { useForm as useFormHook } from 'react-hook-form'
 import { Button } from '../button'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../context/form'
-import 'react-toastify/dist/ReactToastify.css'
-import "./resetPassForm.css"
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
+import { useNotifyContext } from '../../context/notify'
+import "./resetPassForm.css"
 
 function ResetPassForm() {
-  const notifySuccess = () => toast.success('Contraseña actualizada')
-  const notifyError = (errorMessage) => toast.error(errorMessage)
+  const { notifySuccess, notifyError } = useNotifyContext()
   const { formRef, handleFormRef } = useForm()
   const { register, handleSubmit, reset } = useFormHook()
   const navigate = useNavigate()
@@ -36,7 +34,7 @@ function ResetPassForm() {
     })
     .then(response => {
       if (response.ok) {
-        notifySuccess()
+        notifySuccess('Contraseña actualizada')
         reset()
         setTimeout(() => {
           navigate('/ingreso')

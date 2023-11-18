@@ -1,15 +1,13 @@
-import { toast } from 'react-toastify'
 import { useForm as useFormHook } from 'react-hook-form'
 import { Button } from '../button'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../context/form'
-import 'react-toastify/dist/ReactToastify.css'
+import { useNotifyContext } from '../../context/notify'
 import "./loginForm.css"
 
 function LoginForm() {
-  const notifySuccess = () => toast.success('Inicio de sesión con éxito')
-  const notifyError = (errorMessage) => toast.error(errorMessage)
+  const { notifySuccess, notifyError } = useNotifyContext()
   const { formRef, handleFormRef } = useForm()
   const { register, handleSubmit, reset } = useFormHook()
   const [token, setToken] = useState('')
@@ -39,7 +37,7 @@ function LoginForm() {
           setToken(token)
           sessionStorage.setItem('token', token)
   
-          notifySuccess()
+          notifySuccess('Inicio de sesión con éxito')
           reset()
   
           setTimeout(() => {

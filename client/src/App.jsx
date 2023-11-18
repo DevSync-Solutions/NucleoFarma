@@ -13,6 +13,7 @@ import { MenuProvider } from './context/menu'
 import { FormProvider } from './context/form'
 import PageResetPassContact from './pages/ResetPassContact'
 import PageResetPassForm from './pages/resetPassForm'
+import { NotifyProvider } from './context/notify'
 
 function App() {
   const [formTitle, setFormTitle] = useState("¿Necesitás comunicarte")
@@ -26,36 +27,38 @@ function App() {
   // const tokenPass = sessionStorage.getItem('tokenPass') || null
 
   return (
-    <MenuProvider>
-      <FormProvider>    
-        <BrowserRouter>
-          <ToastContainer
-          position="bottom-center"
-          autoClose={2000}
-          hideProgressBar={true}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-          />
-          <Navbar onFormTitleChange={handleFormTitleChange} />
-          <Routes>
-            <Route path='/' element={<Home formTitle={formTitle} onFormTitleChange={handleFormTitleChange} />} />
-            <Route path='/condiciones' element={<Condiciones />} />
-            <Route path='/privacidad' element={<Privacidad />} />
-            <Route path='/documentacion' element={<Docs token={token} />} />
-            <Route path='/registro' element={<Register />} />
-            <Route path='/ingreso' element={<Login />} />
-            <Route path='/solicitar-recuperacion' element={<PageResetPassContact />} />
-            <Route path='/restablecer/:tokenPass' element={<PageResetPassForm />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </FormProvider>
-    </MenuProvider>
+    <NotifyProvider>
+      <MenuProvider>
+        <FormProvider>    
+          <BrowserRouter>
+            <ToastContainer
+            position="bottom-center"
+            autoClose={2000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            />
+            <Navbar onFormTitleChange={handleFormTitleChange} />
+            <Routes>
+              <Route path='/' element={<Home formTitle={formTitle} onFormTitleChange={handleFormTitleChange} />} />
+              <Route path='/condiciones' element={<Condiciones />} />
+              <Route path='/privacidad' element={<Privacidad />} />
+              <Route path='/documentacion' element={<Docs token={token} />} />
+              <Route path='/registro' element={<Register />} />
+              <Route path='/ingreso' element={<Login />} />
+              <Route path='/solicitar-recuperacion' element={<PageResetPassContact />} />
+              <Route path='/restablecer/:tokenPass' element={<PageResetPassForm />} />
+            </Routes>
+            <Footer />
+          </BrowserRouter>
+        </FormProvider>
+      </MenuProvider>
+    </NotifyProvider>
   )
 }
 

@@ -1,15 +1,13 @@
-import { toast } from 'react-toastify'
 import { useForm as useFormHook } from 'react-hook-form'
 import { Button } from '../button'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../context/form'
-import 'react-toastify/dist/ReactToastify.css'
-import "./resetPassContact.css"
 import { useEffect } from 'react'
+import { useNotifyContext } from '../../context/notify'
+import "./resetPassContact.css"
 
 function ResetPassContact() {
-  const notifySuccess = () => toast.success('Correo de recuperación enviado')
-  const notifyError = (errorMessage) => toast.error(errorMessage)
+  const { notifySuccess, notifyError } = useNotifyContext()
   const { formRef, handleFormRef } = useForm()
   const { register, handleSubmit, reset } = useFormHook()
   const navigate = useNavigate()
@@ -32,7 +30,7 @@ function ResetPassContact() {
     .then(async response => {
       if (response.ok) {
         await response.json()
-        notifySuccess()
+        notifySuccess('Correo de recuperación enviado')
         reset()
         setTimeout(() => {
           navigate('/')

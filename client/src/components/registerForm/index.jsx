@@ -1,15 +1,13 @@
-import { toast } from 'react-toastify'
 import { useForm as useFormHook } from 'react-hook-form'
 import { Button } from '../button'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from '../../context/form'
-import 'react-toastify/dist/ReactToastify.css'
-import "./registerForm.css"
+import { useNotifyContext } from '../../context/notify'
 import { useEffect } from 'react'
+import "./registerForm.css"
 
 function RegisterForm() {
-  const notifySuccess = () => toast.success('Usuario registrado')
-  const notifyError = (errorMessage) => toast.error(errorMessage)
+  const { notifySuccess, notifyError } = useNotifyContext()
   const { formRef, handleFormRef } = useForm()
   const { register, handleSubmit, reset } = useFormHook()
   const navigate = useNavigate()
@@ -41,7 +39,7 @@ function RegisterForm() {
     })
     .then(response => {
       if (response.ok) {
-        notifySuccess()
+        notifySuccess('Usuario registrado con éxito')
         reset()
         setTimeout(() => {
           navigate('/ingreso')

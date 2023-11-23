@@ -37,21 +37,19 @@ function ContactForm({ formTitle, formRef }) {
       <h2 id='title-form'>{formTitle} con nosotros?</h2>
       <p>Completá el formulario para que uno de nuestros representantes se ponga en contacto.</p>
       <form className="form-contact" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
-        <div className='div-form'>
-          <input type="hidden" {...register('contactType')} value={formTitle}></input>
-          {userId && <input type="hidden" {...register('userId')} value={userId}></input>}
-          <div className='form-group'>
-            <label>Nombre *</label>
-            <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..."></input>
-          </div>
-          <div className='form-group'>
-            <label>Tu Correo *</label>
-            <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
-          </div>
-          <div className='form-group'>
-            <label>Mensaje *</label>
-            <input type="text" {...register('message', { required: true, maxLength: 250 })} placeholder="Ingresa tu mensaje..."></input>
-          </div>
+        <input type="hidden" {...register('contactType')} value={formTitle}></input>
+        {userId && <input type="hidden" {...register('userId')} value={userId}></input>}
+        <div className='form-group'>
+          <label>Nombre *</label>
+          <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..."></input>
+        </div>
+        <div className='form-group'>
+          <label>Correo *</label>
+          <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
+        </div>
+        <div className='form-group'>
+          <label>Mensaje *</label>
+          <input type="text" {...register('message', { required: true, maxLength: 250 })} placeholder="Ingresa tu mensaje..."></input>
         </div>
         <Button type="submit" className="btn-form" children="Enviar"/>
       </form>

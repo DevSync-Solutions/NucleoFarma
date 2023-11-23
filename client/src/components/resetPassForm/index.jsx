@@ -62,7 +62,7 @@ function ResetPassForm() {
             </div>
             <div className='form-group'>
               <label>Repite tu nueva contraseña *</label>
-              <input type="password" {...register('password1', { required: true, maxLength: 50 })} placeholder="Ingresa tu nueva contraseña..."></input>
+              <input type="password" {...register('password1', { required: true, maxLength: 50 })} placeholder="Repite tu nueva contraseña..."></input>
             </div>
           </div>
           <div className="div-btn">

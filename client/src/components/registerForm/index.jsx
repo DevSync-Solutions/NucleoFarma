@@ -120,7 +120,7 @@ function RegisterForm() {
             <input type="password" {...register('password', { required: true, maxLength: 50 })} placeholder="Ingresa una contraseña..."></input>
           </div>
           <div className='form-group'>
-            <label>Repite la contraseña *</label>
+            <label>Repite tu contraseña *</label>
             <input type="password" {...register('password1', { required: true, maxLength: 50 })} placeholder="Repite tu contraseña..."></input>
           </div>
         </div>

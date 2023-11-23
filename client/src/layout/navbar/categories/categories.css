@@ -41,3 +41,9 @@ li:hover::after {
     align-items: start;
   }
 }
+
+@media (min-width: 1232px) and (max-width: 1250px) {
+  ul {
+    padding: 0;
+  }
+}

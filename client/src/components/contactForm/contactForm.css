@@ -1,27 +1,19 @@
 .form-contact {
   display: flex;
-  justify-content: space-between;
-  align-items: end;
+  justify-content: start;
+  align-items: start;
   flex-wrap: wrap;
-  gap: 15px;
-  padding: 1rem 0;
-  margin-top: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 0.5rem;
   border-radius: 15px;
-}
-.form-contact .div-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
 }
 .form-contact .form-group {
   display: flex;
+  flex: 1 0 10rem;
   flex-direction: column;
-  gap: 8px;
 }
-.form-contact input {
+.form-contact .form-group input {
   border: 1px solid rgb(212, 212, 212);
-  padding: 10px 15px 10px 15px;
+  margin: 0 5px 0 0;
   border-radius: 8px;
   background-color: transparent;
   color: black;
@@ -31,8 +23,8 @@
   border-color: var(--color-grey-1);
 }
 
-.btn-form {
-  padding: 0.8em 6.5em;
+.form-contact button {
+  flex: 1 0 5rem;
 }
 
 #title-form {
@@ -45,32 +37,44 @@
     justify-content: center;
     align-items: start;
     margin-bottom: 1rem;
-    
   }
 
   .form-contact .form-group {
-    width: 100%;
+    flex: 1;
   }
 
-  .form-contact input {
-    width: 80%;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .form-contact input {
-    width: 90%;
+  .form-contact .btn-form {
+    flex: 1;
   }
 }
 
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .form-contact input {
-    width: 90%;
+@media (min-width: 769px) and (max-width: 877px) {
+  .form-contact {
+    gap: 1rem;
+  }
+  .form-contact .form-group {
+    flex: 1 0 10rem;
+  }
+}
+
+@media (min-width: 878px) and (max-width: 1054px) {
+  .form-contact .form-group {
+    flex: 1 0 10rem;
+  }
+  .form-contact .form-group input {
+    width: 85%;
+  }
+}
+
+@media (min-width: 1054px) and (max-width: 1440px) {
+  .form-contact .form-group {
+    flex: 3;
+    margin: 0 10px 0 0;
   }
 }
 
 @media (min-width: 1441px) {
-  .form-contact input {
-    width: 24rem;
+  .form-contact .form-group input {
+    width: 85%;
   }
 }

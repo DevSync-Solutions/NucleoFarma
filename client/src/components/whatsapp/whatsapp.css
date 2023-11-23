@@ -15,12 +15,22 @@
   opacity: 90%;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   #whatsapp-float {
     height: 45px;
   }
+  #whatsapp-float img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  #whatsapp-float {
+    height: 42px;
+  }
 
   #whatsapp-float img {
-    height: 50px;
+    height: 45px;
   }
 }

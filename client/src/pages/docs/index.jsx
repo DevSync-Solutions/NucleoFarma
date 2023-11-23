@@ -1,6 +1,8 @@
 import Section from '../../layout/section'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import Loader from '../../components/loader'
+import './docs.css'
 
 const Docs = ({ token }) => {
   const navigate = useNavigate()
@@ -10,7 +12,7 @@ const Docs = ({ token }) => {
       const timeoutId = setTimeout(() => {
         sessionStorage.setItem('docs', true)
         navigate('/ingreso')
-      }, 2500)
+      }, 3000)
 
       return () => clearTimeout(timeoutId)
     }
@@ -18,19 +20,18 @@ const Docs = ({ token }) => {
   
   return (
     <>
-      {token ? (
-        <Section className='container'>
+      <Section className='container section-docs'>
+        {token ? (
           <h1>DOCUMENTACION</h1>
-        </Section>
-        ) : (
-          <>
-            <Section className='container'>
+          ) : (
+            <>
               <h1>Acceso permitido unicamente a proveedores</h1>
               <h3>Redirigiendo a inicio de sesión...</h3>
-            </Section>
-          </>
-        )
-      }
+              <Loader />
+            </>
+          )
+        }
+      </Section>
     </>
   )
 }

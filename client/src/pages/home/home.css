@@ -12,6 +12,9 @@
   align-items: start;
   width: 100%;
 }
+.div-texto-servicios h2 {
+  color: var(--color-nucleo-1);
+}
 
 .div-servicios {
   display: flex;
@@ -60,6 +63,9 @@
   gap: 40px;
   margin: 5rem 0 4rem 0;
 }
+.div-quienes-somos h2 {
+  color: var(--color-nucleo-1)
+}
 
 .div-img-quienes-somos {
   display: flex;
@@ -75,6 +81,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 15px;
 }
 
 .div-quienes-somos p {
@@ -90,6 +97,9 @@
 .section-distribucion {
   margin-bottom: 2rem;
   margin-top: 5rem;
+}
+.section-distribucion h2 {
+  color: var(--color-nucleo-1)
 }
 .div-distribucion {
   display: flex;

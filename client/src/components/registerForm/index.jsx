@@ -9,7 +9,7 @@ import "./registerForm.css"
 function RegisterForm() {
   const { notifySuccess, notifyError } = useNotifyContext()
   const { formRef, handleFormRef } = useForm()
-  const { register, handleSubmit, reset } = useFormHook()
+  const { register, handleSubmit, reset, formState: { errors }, setError } = useFormHook()
   const navigate = useNavigate()
 
   const handleCreate = async (data) => {
@@ -71,6 +71,14 @@ function RegisterForm() {
           return null
         }
       } else {
+        const errorData = await response.json();
+        Object.keys(errorData.errors).forEach((fieldName) => {
+          setError(fieldName, {
+            type: 'manual',
+            message: errorData.errors[fieldName].message,
+          })
+        })
+
         console.error('Error al verificar el correo y el CUIT:', response.status)
         return { emailAlreadyRegistered: false, cuitAlreadyRegistered: false }
       }
@@ -84,29 +92,31 @@ function RegisterForm() {
     handleFormRef()
   }, [])
 
+  const hasErrors = !!errors.name || !!errors.email || !!errors.message
+
   return (
     <>
       <h1 id='title-form'>Registro</h1>
       <p>Completá el formulario para registrarte.</p>
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
         <div className='div-form'>
-          <div className='form-group'>
+          <div className={`form-group ${errors.name ? 'input-error' : ''}`}>
             <label>Nombre *</label>
             <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..."></input>
           </div>
-          <div className='form-group'>
+          <div className={`form-group ${errors.email ? 'input-error' : ''}`}>
             <label>Correo *</label>
             <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
           </div>
-          <div className='form-group'>
-            <label>Repite tu correo *</label>
+          <div className={`form-group ${errors.email1 ? 'input-error' : ''}`}>
+            <label>Confirmar correo *</label>
             <input type="email" {...register('email1', { required: true, maxLength: 50 })} placeholder="Repite tu correo..."></input>
           </div>
-          <div className='form-group'>
+          <div className={`form-group ${errors.company ? 'input-error' : ''}`}>
             <label>Empresa *</label>
             <input type="text" {...register('company', { required: true, maxLength: 50 })} placeholder="Ingresa tu empresa..."></input>
           </div>
-          <div className='form-group'>
+          <div className={`form-group ${errors.cuit ? 'input-error' : ''}`}>
             <label>CUIT de la empresa *</label>
             <input type="text" {...register('cuit', {
               required: true,
@@ -115,14 +125,17 @@ function RegisterForm() {
             maxLength={11} 
             placeholder="Ingresa el CUIT..."></input>
           </div>
-          <div className='form-group'>
+          <div className={`form-group ${errors.password ? 'input-error' : ''}`}>
             <label>Contraseña *</label>
             <input type="password" {...register('password', { required: true, maxLength: 50 })} placeholder="Ingresa una contraseña..."></input>
           </div>
-          <div className='form-group'>
-            <label>Repite tu contraseña *</label>
+          <div className={`form-group ${errors.password1 ? 'input-error' : ''}`}>
+            <label>Confirmar contraseña *</label>
             <input type="password" {...register('password1', { required: true, maxLength: 50 })} placeholder="Repite tu contraseña..."></input>
           </div>
+        </div>
+        <div className='errors'>
+          {hasErrors && <p className="input-error">Por favor, completa todos los campos.</p>}
         </div>
         <div className="div-btn">
           <Button type="submit" className="btn-form" children="Crear" />

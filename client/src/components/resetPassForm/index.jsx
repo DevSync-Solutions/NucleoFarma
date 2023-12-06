@@ -10,7 +10,7 @@ import "./resetPassForm.css"
 function ResetPassForm() {
   const { notifySuccess, notifyError } = useNotifyContext()
   const { formRef, handleFormRef } = useForm()
-  const { register, handleSubmit, reset } = useFormHook()
+  const { register, handleSubmit, reset, formState: { errors }, setError } = useFormHook()
   const navigate = useNavigate()
 
   const { tokenPass } = useParams()
@@ -41,6 +41,14 @@ function ResetPassForm() {
         }, 2000)
       } else {
         notifyError('Error, por favor intente nuevamente')
+
+        const errorData = response.json();
+        Object.keys(errorData.errors).forEach((fieldName) => {
+          setError(fieldName, {
+            type: 'manual',
+            message: errorData.errors[fieldName].message,
+          })
+        })
       }
     })
     .catch(error => console.error('Error al actualizar contraseña', error))
@@ -50,20 +58,25 @@ function ResetPassForm() {
     handleFormRef()
   }, [])
 
+  const hasErrors = !!errors.name || !!errors.email || !!errors.message
+
   return (
     <>
       <h1 id='title-form'>Restablecer contraseña</h1>
       <p>Ingresa tu nueva contraseña.</p>
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleUpdate(values) })} ref={formRef}>
         <div className='div-form'>
-          <div className='form-group'>
+          <div className={`form-group ${errors.newPassword ? 'input-error' : ''}`}>
               <label>Nueva contraseña *</label>
               <input type="password" {...register('newPassword', { required: true, maxLength: 50 })} placeholder="Ingresa tu nueva contraseña..."></input>
             </div>
-            <div className='form-group'>
-              <label>Repite tu nueva contraseña *</label>
+            <div className={`form-group ${errors.password1 ? 'input-error' : ''}`}>
+              <label>Confirmar contraseña *</label>
               <input type="password" {...register('password1', { required: true, maxLength: 50 })} placeholder="Repite tu nueva contraseña..."></input>
             </div>
+          </div>
+          <div className='errors'>
+            {hasErrors && <p className="input-error">Por favor, completa todos los campos.</p>}
           </div>
           <div className="div-btn">
           {/* <input type="hidden" {...register('tokenPass', { value: tokenPass })}></input> */}

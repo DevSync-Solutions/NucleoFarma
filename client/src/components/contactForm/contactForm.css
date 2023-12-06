@@ -31,6 +31,11 @@
   margin-bottom: 10px;
 }
 
+.input-error {
+  color: red;
+  border-color: red;
+}
+
 @media (max-width: 768px) {
   .form-contact {
     flex-direction: column;

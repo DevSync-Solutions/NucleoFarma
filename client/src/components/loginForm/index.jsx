@@ -9,7 +9,7 @@ import "./loginForm.css"
 function LoginForm() {
   const { notifySuccess, notifyError } = useNotifyContext()
   const { formRef, handleFormRef } = useForm()
-  const { register, handleSubmit, reset } = useFormHook()
+  const { register, handleSubmit, reset, formState: { errors }, setError } = useFormHook()
   const [token, setToken] = useState('')
 
   const cameFromDocs = sessionStorage.getItem('docs') || null
@@ -53,6 +53,12 @@ function LoginForm() {
         } else {
           notifyError(errorData.error)
         }
+        Object.keys(errorData.errors).forEach((fieldName) => {
+          setError(fieldName, {
+            type: 'manual',
+            message: errorData.errors[fieldName].message,
+          })
+        })
       }
     } catch (error) { console.error('Error al iniciar sesión', error)}
   }
@@ -71,13 +77,15 @@ function LoginForm() {
     handleFormRef()
   }, [])
 
+  const hasErrors = !!errors.cuit || !!errors.password
+
   return (
     <>
       <h1 id='title-form'>Inicio de sesión</h1>
       <p>Completá el formulario para iniciar sesión.</p>
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
         <div className='div-form'>
-          <div className='form-group'>
+          <div className={`form-group ${errors.cuit ? 'input-error' : ''}`}>
             <label>CUIT</label>
             <input type="text" {...register('cuit', {
               required: true,
@@ -86,11 +94,14 @@ function LoginForm() {
             maxLength={11} 
             placeholder="Ingresa el CUIT..."></input>
           </div>
-          <div className='form-group'>
+          <div className={`form-group ${errors.password ? 'input-error' : ''}`}>
             <label>Contraseña</label>
             <input type="password" {...register('password', { required: true, maxLength: 50 })} placeholder="Ingresa tu contraseña..."></input>
           </div>
         </div>
+      <div className='errors'>
+        {hasErrors && <p className="input-error">Por favor, completa todos los campos.</p>}
+      </div>
         <Link to="/solicitar-recuperacion" >¿Olvidaste tu contraseña?</Link>
         <div className="div-btn">
           <Button type="submit" className="btn-form" children="Ingresar"/>

@@ -14,6 +14,8 @@ router.post('/', async (req, res) => {
     const { userId, name, email, message, contactType } = req.body
     let company = ''
 
+    const lowerCaseEmail = email.toLowerCase()
+
     if (userId) {
       const user = await UserSchema.findOne({ where: { id: userId } })
       if (user) {
@@ -33,7 +35,7 @@ router.post('/', async (req, res) => {
 
     const data = await resend.emails.send({
       from: "Web NucleoFarma <onboarding@resend.dev>",
-      to: ["ezequiel_bosco@hotmail.com"],
+      to: [lowerCaseEmail],
       subject: `${nameM}${company} contacta para ${contact} NucleoFarma vía Web.`,
       html: `Contacto realizado por <strong>${email}${company}</strong> con el fin de ${contact} Nucleo Farma.<br><p>Mensaje: ${message}`,
     })

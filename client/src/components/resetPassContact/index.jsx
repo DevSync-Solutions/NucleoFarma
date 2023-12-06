@@ -9,7 +9,7 @@ import "./resetPassContact.css"
 function ResetPassContact() {
   const { notifySuccess, notifyError } = useNotifyContext()
   const { formRef, handleFormRef } = useForm()
-  const { register, handleSubmit, reset } = useFormHook()
+  const { register, handleSubmit, reset, formState: { errors }, setError } = useFormHook()
   const navigate = useNavigate()
 
   const handleCreate = async (data) => {
@@ -37,6 +37,14 @@ function ResetPassContact() {
         }, 2000)
       } else {
         notifyError('Error, por favor intente nuevamente')
+
+        const errorData = await response.json();
+        Object.keys(errorData.errors).forEach((fieldName) => {
+          setError(fieldName, {
+            type: 'manual',
+            message: errorData.errors[fieldName].message,
+          })
+        })
       }
     })
     .catch(error => console.error('Error al enviar el correo de recuperación', error))
@@ -73,16 +81,21 @@ function ResetPassContact() {
     handleFormRef()
   }, [])
 
+  const hasErrors = !!errors.name || !!errors.email || !!errors.message
+
   return (
     <>
       <h1 id='title-form'>Recuperar contraseña</h1>
       <p>Ingresa tu Email para recuperar la contraseña.</p>
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
         <div className='div-form'>
-          <div className='form-group'>
+          <div className={`form-group ${errors.email ? 'input-error' : ''}`}>
             <label>Correo</label>
             <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
           </div>
+        </div>
+        <div className='errors'>
+          {hasErrors && <p className="input-error">Por favor, completa todos los campos.</p>}
         </div>
         <div className="div-btn">
           <Button type="submit" className="btn-form" children="Enviar" />

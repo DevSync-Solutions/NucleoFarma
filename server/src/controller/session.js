@@ -15,12 +15,14 @@ router.post('/registro', async (req, res) => {
     const { name, email, company, cuit, password } = req.body
 
     const lowerCaseEmail = email.toLowerCase()
+    const lowerCaseName = name.toLowerCase()
+    const lowerCaseCompany = company.toLowerCase()
     const hashedPassword = await bcrypt.hash(password, 10)
 
     const newUser = {
-      name,
+      name: lowerCaseName,
       email: lowerCaseEmail,
-      company,
+      company: lowerCaseCompany,
       cuit,
       password: hashedPassword
     }

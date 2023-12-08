@@ -127,12 +127,43 @@ function RegisterForm() {
           </div>
           <div className={`form-group ${errors.password ? 'input-error' : ''}`}>
             <label>Contraseña *</label>
-            <input type="password" {...register('password', { required: true, maxLength: 50 })} placeholder="Ingresa una contraseña..."></input>
+            <input type="password" 
+              {...register('password', {
+                required: true,
+                minLength: {
+                  value: 6,
+                  message: 'La contraseña debe tener al menos 6 caracteres',
+                },
+                maxLength: {
+                  value: 20,
+                  message: 'La contraseña no debe tener más de 20 caracteres',
+                },
+              })}
+              placeholder="Ingresa una contraseña..."
+            />
           </div>
           <div className={`form-group ${errors.password1 ? 'input-error' : ''}`}>
             <label>Confirmar contraseña *</label>
-            <input type="password" {...register('password1', { required: true, maxLength: 50 })} placeholder="Repite tu contraseña..."></input>
+            <input type="password" 
+              {...register('password1', {
+                required: true,
+                minLength: {
+                  value: 6,
+                  message: 'La contraseña debe tener al menos 6 caracteres',
+                },
+                maxLength: {
+                  value: 20,
+                  message: 'La contraseña no debe tener más de 20 caracteres',
+                },
+              })}
+              placeholder="Repite tu contraseña..."
+            />
           </div>
+          {errors.password || errors.password1 ? (
+            <p className="input-error">
+              {errors.password?.message || errors.password1?.message}
+            </p>
+          ) : null}
         </div>
         <div className='errors'>
           {hasErrors && <p className="input-error">Por favor, completa todos los campos.</p>}

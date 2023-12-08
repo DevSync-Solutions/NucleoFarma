@@ -68,12 +68,43 @@ function ResetPassForm() {
         <div className='div-form'>
           <div className={`form-group ${errors.newPassword ? 'input-error' : ''}`}>
               <label>Nueva contraseña *</label>
-              <input type="password" {...register('newPassword', { required: true, maxLength: 50 })} placeholder="Ingresa tu nueva contraseña..."></input>
+              <input type="password"
+                {...register('newPassword', {
+                  required: true,
+                  minLength: {
+                    value: 6,
+                    message: 'La contraseña debe tener al menos 6 caracteres',
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: 'La contraseña no debe tener más de 20 caracteres',
+                  },
+                })}
+                placeholder="Ingresa tu nueva contraseña..."
+              />
             </div>
             <div className={`form-group ${errors.password1 ? 'input-error' : ''}`}>
               <label>Confirmar contraseña *</label>
-              <input type="password" {...register('password1', { required: true, maxLength: 50 })} placeholder="Repite tu nueva contraseña..."></input>
+              <input type="password"
+                {...register('password1', {
+                  required: true,
+                  minLength: {
+                    value: 6,
+                    message: 'La contraseña debe tener al menos 6 caracteres',
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: 'La contraseña no debe tener más de 20 caracteres',
+                  },
+                })}
+                placeholder="Repite tu nueva contraseña..."
+              />
             </div>
+            {errors.password || errors.password1 ? (
+              <p className="input-error">
+                {errors.password?.message || errors.password1?.message}
+              </p>
+            ) : null}
           </div>
           <div className='errors'>
             {hasErrors && <p className="input-error">Por favor, completa todos los campos.</p>}

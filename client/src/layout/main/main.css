@@ -8,9 +8,17 @@
 }
 
 .main-section {
+  color: white;
   padding-top: 7rem;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   background-color: var(--color-grey);
+  background-image: url("../../assets/nucleofarma_sa_cover.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+.main-section h3 {
+  color: var(--color-grey);
 }
 
 @media (max-width: 768px) {

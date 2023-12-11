@@ -14,7 +14,10 @@ const Home = ({ formTitle, onFormTitleChange }) => {
     <Main onFormTitleChange={onFormTitleChange} handleFormRef={handleFormRef} />
       <Section id='servicios' className='container section-servicios'>
         <div className='div-texto-servicios'>
-          <h2>Nuestros servicios</h2>
+          <div className='title'>
+            <h2>Nuestros servicios</h2>
+            <hr id='hr-title' />
+          </div>
           <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
         </div>
         <div className='div-servicios'>
@@ -45,24 +48,32 @@ const Home = ({ formTitle, onFormTitleChange }) => {
           </div>
         </div>
       </Section>
-      <hr />
+      {/* <hr /> */}
       <Section id='quienes-somos' className='container section-quienes-somos'>
-        <div className='div-quienes-somos'>
-          <div className='div-img-quienes-somos'>
+        <div className='div-title-quienes-somos'>
+          <div className='title'>
             <h2 id='title-quienes-somos'>Nucleo Farma</h2>
-            <p>Lorem ipsum dolor sit amet consectetur. </p>
+            <hr id='hr-title' />
           </div>
-          <div className='img-quienes-somos'>img</div>
+          <p>Lorem ipsum dolor sit amet consectetur. </p>
+        </div>
+        <div className='div-quienes-somos'>
+          <div className='img-quienes-somos'>img
+          </div>
           <div className='text-quienes-somos'>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum molestias voluptas quam, tempore perferendis asperiores aspernatur harum, quae nam vel cupiditate velit optio omnis. Nisi iure doloremque molestias quos. Perspiciatis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae iste non iusto vero maxime soluta nam assumenda cum? Aperiam vitae quia qui dolorum? Fugit iste velit, ipsam modi sunt reiciendis.</p>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum molestias voluptas quam, tempore perferendis asperiores aspernatur harum, quae nam vel cupiditate velit optio omnis. Nisi iure doloremque molestias quos. Perspiciatis.</p>
           </div>
         </div>
+
       </Section>
-      <hr />
+      {/* <hr /> */}
       <Section id='distribucion' className='container section-distribucion'>
-        <h2>DISTRIBUCION</h2>
-        <div className='div-distribucion'>
+        <div className='title div-distribucion'>
+          <h2>DISTRIBUCION</h2>
+          <hr id='hr-title' />
+        </div>
+        <div className='div-text-distribucion'>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum molestias voluptas quam, tempore perferendis asperiores aspernatur harum, quae nam vel cupiditate velit optio omnis. Nisi iure doloremque molestias quos. Perspiciatis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae iste non iusto vero maxime soluta nam assumenda cum? Aperiam vitae quia qui dolorum? Fugit iste velit, ipsam modi sunt reiciendis.</p>
         </div>
       </Section>

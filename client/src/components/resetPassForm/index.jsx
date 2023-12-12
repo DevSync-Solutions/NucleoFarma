@@ -5,7 +5,6 @@ import { useForm } from '../../context/form'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useNotifyContext } from '../../context/notify'
-import "./resetPassForm.css"
 
 function ResetPassForm() {
   const { notifySuccess, notifyError } = useNotifyContext()

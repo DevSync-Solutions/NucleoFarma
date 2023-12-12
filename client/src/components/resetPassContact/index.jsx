@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../context/form'
 import { useEffect } from 'react'
 import { useNotifyContext } from '../../context/notify'
-import "./resetPassContact.css"
 
 function ResetPassContact() {
   const { notifySuccess, notifyError } = useNotifyContext()

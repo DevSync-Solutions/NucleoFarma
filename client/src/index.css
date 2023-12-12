@@ -2,7 +2,7 @@
   font-family: 'Public Sans', sans-serif;
 
   color-scheme: light dark;
-  --color: rgb(32, 32, 32);
+  --color: rgba(41, 41, 41, 0.952);
   --color-nucleo: rgb(8, 126, 237);
   --color-nucleo-1: rgb(0, 168, 221);
   --color-link: rgba(88, 88, 88, 0.808);

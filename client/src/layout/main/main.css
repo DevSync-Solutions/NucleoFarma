@@ -20,6 +20,18 @@
 .main-section h3 {
   color: var(--color-grey);
 }
+.btn-contact {
+  background-color: transparent;
+  border: 1px solid white;
+  transition: 0.35s ease-in-out;
+}
+.btn-contact:hover {
+  background-color: var(--color-white);
+  color: var(--color);
+}
+.btn-contact:focus, .btn-contact:focus-visible {
+  transform: scale(0.97);
+}
 
 @media (max-width: 768px) {
   .title-main { 

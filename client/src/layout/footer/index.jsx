@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom"
-import "./footer.css"
 import TopPage from "../../components/topPage"
 import { useMenuContext } from "../../context/menu"
+import { MdEmail } from "react-icons/md"
+import { IoMdPin } from "react-icons/io";
+import { IoTime } from "react-icons/io5";
+import { FaPhoneAlt } from "react-icons/fa";
+import "./footer.css"
 
 function Footer() {
   const { isMenuOpen, closeMenu } = useMenuContext()
@@ -10,17 +14,18 @@ function Footer() {
     <footer className="footer">
       <div className="footer-div">
         <div className="footer-contact">
-          <p>Droguería <strong>Nucleo Farma S.A.</strong></p>
+          <h3>Droguería Nucleo Farma S.A.</h3>
           <p>C.U.I.T: 30-67582905-7</p>
           <Link to="/condiciones" onClick={isMenuOpen && closeMenu}><p>Términos y condiciones.</p></Link>
           <Link to="/privacidad" onClick={isMenuOpen && closeMenu}><p>Política de privacidad.</p></Link>
           <Link to="/documentacion" onClick={isMenuOpen && closeMenu}><p>Documentación</p></Link>
         </div>
         <div className="footer-contact">
-          <p><strong>Dirección:</strong> Habana 3336, Villa Devoto, Buenos Aires</p>
-          <p><strong>Horario de atención:</strong> Lunes a viernes de 8:00 a 16:00 hs.</p>
-          <p><strong>Teléfono:</strong> +54 11 3696-6253</p>
-          <p><strong>Email:</strong> info@nucleofarmaweb.com.ar</p>
+          <h3>Contacto</h3>
+          <p><IoMdPin /> Habana 3336, Villa Devoto, Buenos Aires</p>
+          <p><IoTime /> Lunes a viernes de 8:00 a 16:00 hs.</p>
+          <p><FaPhoneAlt /> +54 11 3696-6253</p>
+          <p><MdEmail /> info@nucleofarmaweb.com.ar</p>
         </div>
         <div className="social">
           <Link to="https://www.linkedin.com/company/nucleofarma-sa" target="_blank"><img id="linkedin" src="../src/assets/linkedin.png" alt="Logo Linkedin"/></Link>

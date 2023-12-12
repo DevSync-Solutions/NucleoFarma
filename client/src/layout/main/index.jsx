@@ -14,7 +14,7 @@ const Main = ({ onFormTitleChange, handleFormRef }) => {
       <main className='main-section'>
         <h1 className="title-main">Droguería <span id="title">Nucleo Farma</span></h1>
         <h3>Al servicio de la salud</h3>
-        <ScrollLink smooth={true} duration={500} offset={-110} to="contacto"><Button onClick={handleContactClick}>Contactanos</Button></ScrollLink>
+        <ScrollLink smooth={true} duration={500} offset={-110} to="contacto"><Button className="btn-contact" onClick={handleContactClick}>Contactanos</Button></ScrollLink>
       </main>
     </>
   )

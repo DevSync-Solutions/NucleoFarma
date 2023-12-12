@@ -22,7 +22,7 @@
 .form-contact input {
   border: 1px solid rgb(212, 212, 212);
   padding: 10px 15px 10px 15px;
-  border-radius: 8px;
+  border-radius: 20px;
   background-color: transparent;
   color: black;
 }

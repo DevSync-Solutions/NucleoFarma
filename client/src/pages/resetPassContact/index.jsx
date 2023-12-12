@@ -1,5 +1,4 @@
 import ResetPassContact from '../../components/resetPassContact'
-import './pagePassContact.css'
 
 const PageResetPassContact = () => {
   return (

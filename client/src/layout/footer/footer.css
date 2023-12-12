@@ -16,6 +16,12 @@ footer {
   padding: 2.3rem 8.5rem 1.7rem 8.5rem;
   box-shadow: -1px -2px 2px 0 rgba(221, 221, 221, 0.747);
 }
+.footer p {
+  white-space: nowrap; 
+}
+.footer h3 {
+  white-space: nowrap; 
+}
 
 .footer-div {
   display: flex;
@@ -54,11 +60,24 @@ footer {
 .footer-div .footer-contact {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: centerstart;
   justify-content: center;
   gap: 6px;
 }
-
+.footer-contact h3 {
+  margin-bottom: 5px;
+}
+.footer-contact p {
+  gap: 8px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  white-space: nowrap; 
+}
+.footer-contact svg {
+  width: 18px;
+  height: 18px;
+}
 #devsync {
   font-size: 13px;
   color: var(--color-link);
@@ -74,6 +93,9 @@ footer {
   .footer {
     padding: 1.99rem 4rem 1.99rem 4rem;
   }
+  .footer p {
+    white-space: wrap; 
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1261px) {
@@ -86,7 +108,7 @@ footer {
   .footer-div {
     flex-direction: column;
     align-items: start;
-    gap: 10px;
+    gap: 25px;
     margin-bottom: 0;
   }
 

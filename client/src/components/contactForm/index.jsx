@@ -50,16 +50,16 @@ function ContactForm({ formTitle, formRef }) {
         <input type="hidden" {...register('contactType')} value={formTitle}></input>
         {userId && <input type="hidden" {...register('userId')} value={userId}></input>}
         <div className={`form-group ${errors.name ? 'input-error' : ''}`}>
-          <label>Nombre *</label>
-          <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..."></input>
+          <label htmlFor="name">Nombre *</label>
+          <input id='name' type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..." autoComplete="name"></input>
         </div>
         <div className={`form-group ${errors.email ? 'input-error' : ''}`}>
-          <label>Correo *</label>
-          <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
+          <label htmlFor="email">Correo *</label>
+          <input id='email' type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..." autoComplete="email"></input>
         </div>
         <div className={`form-group ${errors.message ? 'input-error' : ''}`}>
-          <label>Mensaje *</label>
-          <input type="text" {...register('message', { required: true, maxLength: 250 })} placeholder="Ingresa tu mensaje..."></input>
+          <label htmlFor="message">Mensaje *</label>
+          <input id='message' type="text" {...register('message', { required: true, maxLength: 250 })} placeholder="Ingresa tu mensaje..."></input>
         </div>
         <Button type="submit" className="btn-form" children="Enviar"/>
       </form>

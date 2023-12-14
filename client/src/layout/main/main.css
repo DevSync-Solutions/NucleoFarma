@@ -11,11 +11,18 @@
   color: white;
   padding-top: 7rem;
   padding-bottom: 6rem;
-  background-color: var(--color-grey);
-  background-image: url("../../assets/nucleofarma_sa_cover.jpeg");
+  /* background-color: var(--color-grey); */
+  background-image: url("../../assets/nucleofarma_cover.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
+  opacity: 87%;
+}
+.main-section h1 {
+  color: var(--color-grey);
+}
+.main-section h1 span {
+  color: var(--color-white);
 }
 .main-section h3 {
   color: var(--color-grey);
@@ -23,7 +30,7 @@
 .btn-contact {
   background-color: transparent;
   border: 1px solid white;
-  transition: 0.35s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 .btn-contact:hover {
   background-color: var(--color-white);

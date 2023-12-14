@@ -86,8 +86,8 @@ function LoginForm() {
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
         <div className='div-form'>
           <div className={`form-group ${errors.cuit ? 'input-error' : ''}`}>
-            <label>CUIT</label>
-            <input type="text" {...register('cuit', {
+            <label htmlFor='cuit'>CUIT</label>
+            <input id='cuit' type="text" {...register('cuit', {
               required: true,
               pattern: /^\d{11}$/,
             })}
@@ -95,8 +95,8 @@ function LoginForm() {
             placeholder="Ingresa el CUIT..."></input>
           </div>
           <div className={`form-group ${errors.password ? 'input-error' : ''}`}>
-            <label>Contraseña</label>
-            <input type="password" {...register('password', { required: true, maxLength: 50 })} placeholder="Ingresa tu contraseña..."></input>
+            <label htmlFor='password'>Contraseña</label>
+            <input id='password' type="password" {...register('password', { required: true, maxLength: 50 })} placeholder="Ingresa tu contraseña..."></input>
           </div>
         </div>
       <div className='errors'>

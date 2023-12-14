@@ -101,24 +101,24 @@ function RegisterForm() {
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
         <div className='div-form'>
           <div className={`form-group ${errors.name ? 'input-error' : ''}`}>
-            <label>Nombre *</label>
-            <input type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..."></input>
+            <label htmlFor='name'>Nombre *</label>
+            <input id='name' type="text" {...register('name', { required: true, maxLength: 50 })} placeholder="Ingresa tu nombre..." autoComplete='name'></input>
           </div>
           <div className={`form-group ${errors.email ? 'input-error' : ''}`}>
-            <label>Correo *</label>
-            <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
+            <label htmlFor='email'>Correo *</label>
+            <input id='email' type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..." autoComplete='email'></input>
           </div>
           <div className={`form-group ${errors.email1 ? 'input-error' : ''}`}>
-            <label>Confirmar correo *</label>
-            <input type="email" {...register('email1', { required: true, maxLength: 50 })} placeholder="Repite tu correo..."></input>
+            <label htmlFor='email1'>Confirmar correo *</label>
+            <input id='email1' type="email" {...register('email1', { required: true, maxLength: 50 })} placeholder="Repite tu correo..."></input>
           </div>
           <div className={`form-group ${errors.company ? 'input-error' : ''}`}>
-            <label>Empresa *</label>
-            <input type="text" {...register('company', { required: true, maxLength: 50 })} placeholder="Ingresa tu empresa..."></input>
+            <label htmlFor='company'>Empresa *</label>
+            <input id='company' type="text" {...register('company', { required: true, maxLength: 50 })} placeholder="Ingresa tu empresa..." autoComplete='company'></input>
           </div>
           <div className={`form-group ${errors.cuit ? 'input-error' : ''}`}>
-            <label>CUIT de la empresa *</label>
-            <input type="text" {...register('cuit', {
+            <label htmlFor='cuit'>CUIT de la empresa *</label>
+            <input id='cuit' type="text" {...register('cuit', {
               required: true,
               pattern: /^\d{11}$/,
             })}
@@ -126,8 +126,8 @@ function RegisterForm() {
             placeholder="Ingresa el CUIT..."></input>
           </div>
           <div className={`form-group ${errors.password ? 'input-error' : ''}`}>
-            <label>Contraseña *</label>
-            <input type="password" 
+            <label htmlFor='password'>Contraseña *</label>
+            <input id='password' type="password" 
               {...register('password', {
                 required: true,
                 minLength: {
@@ -143,8 +143,8 @@ function RegisterForm() {
             />
           </div>
           <div className={`form-group ${errors.password1 ? 'input-error' : ''}`}>
-            <label>Confirmar contraseña *</label>
-            <input type="password" 
+            <label htmlFor='password1'>Confirmar contraseña *</label>
+            <input id='password1' type="password" 
               {...register('password1', {
                 required: true,
                 minLength: {

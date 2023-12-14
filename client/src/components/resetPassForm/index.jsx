@@ -66,8 +66,8 @@ function ResetPassForm() {
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleUpdate(values) })} ref={formRef}>
         <div className='div-form'>
           <div className={`form-group ${errors.newPassword ? 'input-error' : ''}`}>
-              <label>Nueva contraseña *</label>
-              <input type="password"
+              <label htmlFor='password'>Nueva contraseña *</label>
+              <input id='password' type="password"
                 {...register('newPassword', {
                   required: true,
                   minLength: {
@@ -83,8 +83,8 @@ function ResetPassForm() {
               />
             </div>
             <div className={`form-group ${errors.password1 ? 'input-error' : ''}`}>
-              <label>Confirmar contraseña *</label>
-              <input type="password"
+              <label htmlFor='password1'>Confirmar contraseña *</label>
+              <input id='password1' type="password"
                 {...register('password1', {
                   required: true,
                   minLength: {

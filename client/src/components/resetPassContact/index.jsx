@@ -89,8 +89,8 @@ function ResetPassContact() {
       <form className="form-reg-log" onSubmit={handleSubmit(values => { handleCreate(values) })} ref={formRef}>
         <div className='div-form'>
           <div className={`form-group ${errors.email ? 'input-error' : ''}`}>
-            <label>Correo</label>
-            <input type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..."></input>
+            <label htmlFor='email'>Correo</label>
+            <input id='email' type="email" {...register('email', { required: true, maxLength: 50 })} placeholder="Ingresa tu correo..." autoComplete='email'></input>
           </div>
         </div>
         <div className='errors'>

@@ -17,6 +17,12 @@ const Categories = ({ className, onFormTitleChange, isMenuOpen, closeMenu }) => 
     }
   }
 
+  const closeMenuExt = () => {
+    setTimeout(() => {
+      closeMenu()
+    }, 800)
+  }
+
   useEffect(() => {
     if (shouldScroll) {
       scroll.scrollTo(document.getElementById(shouldScroll).offsetTop - 85)
@@ -27,7 +33,7 @@ const Categories = ({ className, onFormTitleChange, isMenuOpen, closeMenu }) => 
   const handleLinkClick = (sectionId) => {
     setShouldScroll(sectionId)
     if (isMenuOpen) {
-      closeMenu()
+      closeMenuExt()
     }
   }
 
@@ -70,12 +76,12 @@ const Categories = ({ className, onFormTitleChange, isMenuOpen, closeMenu }) => 
   return (
     <>
       <ul className={className ? `${className}` : "categories"}>
-        <li>{isHomePage ? <ScrollLink onClick={scrollToTop} smooth={true} duration={500} to="/">Inicio</ScrollLink> : <Link to="/" onClick={() => handleLinkClick("nav")}>Inicio</Link>}</li>
-        <li>{isHomePage ? <ScrollLink onClick={closeMenu} smooth={true} duration={500} to="quienes-somos" offset={-30}>¿Quiénes somos?</ScrollLink> : <Link to="/" onClick={() => handleLinkClick("quienes-somos")}>¿Quiénes somos?</Link>}</li>
-        <li>{isHomePage ? <ScrollLink onClick={closeMenu} smooth={true} duration={500} to="servicios" offset={-105}>Servicios</ScrollLink> : <Link to="/" onClick={() => handleLinkClick("servicios")}>Servicios</Link>}</li>
-        <li>{isHomePage ? <ScrollLink onClick={closeMenu} smooth={true} duration={500} to="distribucion" offset={-105}>Distribución</ScrollLink> : <Link to="/" onClick={() => handleLinkClick("distribucion")}>Distribución</Link>}</li>
-        <li>{isHomePage ? <ScrollLink smooth={true} duration={500} to="contacto" offset={-110} onClick={handleTitleWork}>Trabajá en Nucleo</ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Querés trabajar") }}>Trabajá en Nucleo</Link>}</li>
-        <li>{isHomePage ? <ScrollLink smooth={true} duration={500} to="contacto" offset={-110} onClick={handleTitleContact}>Contacto</ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Necesitás comunicarte") }}>Contacto</Link>}</li>
+        {isHomePage ? <ScrollLink onClick={scrollToTop} smooth={true} duration={500} to="/"><li>Inicio</li></ScrollLink> : <Link to="/" onClick={() => handleLinkClick("nav")}><li>Inicio</li></Link>}
+        {isHomePage ? <ScrollLink onClick={closeMenu} smooth={true} duration={500} to="quienes-somos" offset={-30}><li>¿Quiénes somos?</li></ScrollLink> : <Link to="/" onClick={() => handleLinkClick("quienes-somos")}><li>¿Quiénes somos?</li></Link>}
+        {isHomePage ? <ScrollLink onClick={closeMenu} smooth={true} duration={500} to="servicios" offset={-105}><li>Servicios</li></ScrollLink> : <Link to="/" onClick={() => handleLinkClick("servicios")}><li>Servicios</li></Link>}
+        {isHomePage ? <ScrollLink onClick={closeMenu} smooth={true} duration={500} to="distribucion" offset={-105}><li>Distribución</li></ScrollLink> : <Link to="/" onClick={() => handleLinkClick("distribucion")}><li>Distribución</li></Link>}
+        {isHomePage ? <ScrollLink smooth={true} duration={500} to="contacto" offset={-110} onClick={handleTitleWork}><li>Trabajá en Nucleo</li></ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Querés trabajar") }}><li>Trabajá en Nucleo</li></Link>}
+        {isHomePage ? <ScrollLink smooth={true} duration={500} to="contacto" offset={-110} onClick={handleTitleContact}><li>Contacto</li></ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Necesitás comunicarte") }}><li>Contacto</li></Link>}
         {token ? <a href="/" onClick={closeSession}><Button className="no-animation">Cerrar sesión</Button></a> : <Link to="/registro" onClick={scrollToTop}><Button>Proveedores</Button></Link>}
       </ul>
     </>

@@ -4,7 +4,11 @@ ul {
   align-items: center;
   gap: 20px;
 }
+ul a {
+  cursor: pointer;
+}
 li {
+  padding-top: 5px;
   color: var(--color);
   transition: 0.15s ease-in-out;
   cursor: pointer;
@@ -14,15 +18,15 @@ li:hover {
   color: var(--color-link);
 }
 li::after {
+  margin-top: 5px;
   width: 0;
   content: '';
   display: block;
   left: 0;
-  height: 1px;
-  background-color: var(--color-nucleo);
+  height: 2px;
+  background-color: var(--color-nucleo-1);
   transition: width 0.40s ease-in-out;
 }
-
 li:hover::after {
   width: 100%;
 }
@@ -40,9 +44,12 @@ li:hover::after {
   ul {
     align-items: start;
   }
+  ul a li {
+    font-size: 16px;
+  }
 }
 
-@media (min-width: 1232px) and (max-width: 1250px) {
+@media (min-width: 1232px) and (max-width: 1258px) {
   ul {
     padding: 0;
   }

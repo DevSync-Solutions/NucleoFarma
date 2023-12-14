@@ -15,14 +15,14 @@ nav {
 }
 
 .nav-color {
-  transition: 0.25s ease-in-out;
+  transition: 0.5s ease-in-out;
   background-color: var(--color-white);
   box-shadow: 2px 1px 4px 0 rgba(0, 0, 0, 0.267);
 }
 
 @media (max-width: 1230px) {
   .menu-open {
-    padding-bottom: 22rem;
+    padding-bottom: 24rem;
     /* box-shadow: 2px 1px 4px 0 rgba(0, 0, 0, 0.267); */
     transition: 0.15s ease-in-out;
   }
@@ -35,13 +35,13 @@ nav {
     padding: 10px 4rem 10px 4rem;
   }
   .menu-open {
-    padding-bottom: 21rem;
+    padding-bottom: 23rem;
   }
 }
 
 @media (max-width: 768px) {
   .menu-open {
-    padding-bottom: 19rem;
+    padding-bottom: 22rem;
   }
   nav {
     padding: 10px 2rem 10px 2rem;

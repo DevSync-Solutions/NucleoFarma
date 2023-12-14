@@ -5,7 +5,7 @@ const Privacity = () => {
   return (
     <>
       <Section className='container privacity'>
-        <h1>POLITICA DE PRIVACIDAD</h1>
+        <h1>POLÍTICA DE PRIVACIDAD</h1>
       </Section>
     </>
   )

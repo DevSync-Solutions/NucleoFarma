@@ -14,18 +14,18 @@ const Navbar = ({ onFormTitleChange }) => {
   const { isMenuOpen, closeMenu } = useMenuContext()
 
   useEffect(() => {
-    let scrollTimeout;
+    let scrollTimeout
 
     const handleScroll = () => {
-      clearTimeout(scrollTimeout);
+      clearTimeout(scrollTimeout)
 
       scrollTimeout = setTimeout(() => {
         if (window.scrollY > 0) {
-          setIsScrolled(true);
+          setIsScrolled(true)
         } else {
-          setIsScrolled(false);
+          setIsScrolled(false)
         }
-      }, 100)
+      }, 150)
     }
 
     window.addEventListener('scroll', handleScroll)

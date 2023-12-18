@@ -11,8 +11,8 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 8.5rem 5px 8.5rem;
-  background-color: rgb(236, 236, 236);
+  padding: 8px 10rem 8px 10rem;
+  background-color: rgb(250, 250, 250);
   font-size: 15px;
   color: var(--color-grey-2);
   transition: .2s ease-in-out
@@ -55,7 +55,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 8.5rem 10px 8.5rem;
+  padding: 10px 10rem 10px 10rem;
   z-index: 120;
   transition: 0.5s ease-in-out;
   background-color: var(--color-white);
@@ -73,11 +73,17 @@ nav {
   }
 }
 
+@media (max-width: 1315px) {
+  nav {
+    font-size: 15px;  
+  }
+}
+
 @media (max-width: 1024px) {
   nav {
     align-items: center;
     gap: 100px;
-    padding: 10px 4rem 10px 4rem;
+    padding: 10px 6rem 10px 6rem;
   }
   .menu-open {
     padding-bottom: 23rem;
@@ -89,6 +95,6 @@ nav {
     padding-bottom: 22rem;
   }
   nav {
-    padding: 10px 2rem 10px 2rem;
+    padding: 10px 3rem 10px 3rem;
   }
 }

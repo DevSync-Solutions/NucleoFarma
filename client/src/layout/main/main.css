@@ -10,9 +10,8 @@
 .main-section {
   color: white;
   padding-top: 7rem;
-  padding-bottom: 6rem;
   /* background-color: var(--color-grey); */
-  background-image: url("../../assets/nucleofarma_cover.jpg");
+  background-image: url("../../assets/nucleofarma_cover-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
@@ -38,6 +37,18 @@
 }
 .btn-contact:focus, .btn-contact:focus-visible {
   transform: scale(0.97);
+}
+
+.scroll-down {
+  cursor: pointer;
+  padding-top: 3rem;
+  color: var(--color-black);
+  padding-bottom: 0rem;
+  font-size: 16px;
+  transition: 0.15s ease-in-out;
+}
+.scroll-down:hover {
+  color: var(--color-grey-1);
 }
 
 @media (max-width: 768px) {

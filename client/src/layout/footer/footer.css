@@ -5,19 +5,33 @@ footer {
   right: 0;
   display: flex;
   justify-content: center;
-  padding: 8rem 0 2.20rem 0;
   font-size: 14px;
   z-index: 15;
   background-color: var(--color-back);
 }
 
 .footer {
+  display: flex;
+  flex-direction: column;
   max-width: 100%;
-  padding: 2.3rem 8.5rem 1.7rem 8.5rem;
+  padding: 2.5rem 10rem 3.5rem 10rem;
   box-shadow: -1px -2px 2px 0 rgba(221, 221, 221, 0.747);
 }
 .footer p {
   white-space: nowrap; 
+}
+.footer .copyright {
+  position: absolute;
+  background-color: var(--color-nucleo-1);
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding: 14px 0;
+  gap: 5px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 .footer h3 {
   white-space: nowrap; 
@@ -60,7 +74,7 @@ footer {
 .footer-div .footer-contact {
   display: flex;
   flex-direction: column;
-  align-items: centerstart;
+  align-items: start;
   justify-content: center;
   gap: 6px;
 }
@@ -81,7 +95,13 @@ footer {
 }
 #devsync {
   font-size: 13px;
-  color: var(--color-link);
+  color: var(--color-back);
+}
+#devsync a {
+  color: var(--color-white);
+}
+#devsync a:hover {
+  color: var(--color-grey);
 }
 
 @media (max-width: 1024px) {
@@ -92,8 +112,11 @@ footer {
     font-size: 13px;
   }
   .footer {
-    padding: 1.99rem 4rem 1.99rem 4rem;
+    padding: 2rem 6rem 2rem 6rem;
   }
+}
+
+@media (min-width: 769px) and (max-width: 930px) {
   .footer p {
     white-space: wrap; 
   }
@@ -102,6 +125,9 @@ footer {
 @media (min-width: 769px) and (max-width: 1261px) {
   .social {
     flex-direction: column;
+  }
+  .footer {
+    padding-bottom: 3rem;
   }
 }
 
@@ -130,6 +156,11 @@ footer {
   }
 
   .footer {
-    padding: 2.65rem 2rem 2.65rem 2rem;
+    padding: 2.5rem 3rem 4rem 3rem;
+  }
+
+  .footer .copyright {
+    flex-direction: row;
+    font-size: 8px;
   }
 }

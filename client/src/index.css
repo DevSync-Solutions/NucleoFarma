@@ -50,8 +50,7 @@ main {
 
 .container {
   max-width: 100%;
-  padding: 0 8.5rem 0 8.5rem;
-  margin-bottom: 2rem;
+  padding: 0 10rem 0 10rem;
 }  
 
 h1, h2, h3, p, ul, a {
@@ -76,7 +75,7 @@ img {
 
 hr {
   border: 1px solid var(--color-grey);
-  margin: 0 8rem 0 8rem;
+  margin: 0 10rem 0 10rem;
 }
 
 #hr-title {
@@ -99,13 +98,13 @@ h2 {
   }
   .container {
     max-width: 960px;
-    padding: 0 4rem 0 4rem;
+    padding: 0 6rem 0 6rem;
   }
   img {
     width: 28px;
   }
   hr {
-    margin: 0 4rem 0 4rem;
+    margin: 0 6rem 0 6rem;
   }
 }
 
@@ -123,12 +122,12 @@ h2 {
   }
   .container {
     max-width: 100%;
-    padding: 0 2rem 0 2rem;
+    padding: 0 3rem 0 3rem;
   }
   img {
     min-width: 25px;
   }
   hr {
-    margin: 0 2rem 0 2rem;
+    margin: 0 3rem 0 3rem;
   }
 }

@@ -77,6 +77,7 @@ footer {
 .footer-contact svg {
   width: 18px;
   height: 18px;
+  color: var(--color-nucleo-1);
 }
 #devsync {
   font-size: 13px;

@@ -105,7 +105,7 @@ function LoginForm() {
         <Link to="/solicitar-recuperacion" >¿Olvidaste tu contraseña?</Link>
         <div className="div-btn">
           <Button type="submit" className="btn-form" children="Ingresar"/>
-          <Link to="/registro">¿No tenés cuenta? Registrate</Link>
+          <Link to="/registro">¿No tenés cuenta? <span>Registrate</span></Link>
         </div>
       </form>
     </>

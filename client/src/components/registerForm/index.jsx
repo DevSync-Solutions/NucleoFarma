@@ -170,7 +170,7 @@ function RegisterForm() {
         </div>
         <div className="div-btn">
           <Button type="submit" className="btn-form" children="Crear" />
-          <Link to="/ingreso">¿Ya tenés cuenta? Ingresá</Link>
+          <Link to="/ingreso">¿Ya tenés cuenta? <span>Ingresá</span></Link>
         </div>
       </form>
     </>

@@ -4,6 +4,7 @@ import Main from '../../layout/main'
 import Maps from '../../components/maps'
 import Whatsapp from '../../components/whatsapp'
 import { useForm } from '../../context/form'
+import Trazability from '../../assets/traceability.png'
 import './home.css'
 
 const Home = ({ formTitle, onFormTitleChange }) => {
@@ -46,9 +47,13 @@ const Home = ({ formTitle, onFormTitleChange }) => {
             <svg xmlns="http://www.w3.org/2000/svg" width="30px" viewBox="0 0 24 24"><path fill="currentColor" d="m5.8 18l.9.9q.275.275.275.7t-.275.7q-.275.275-.7.275t-.7-.275l-2.6-2.6q-.3-.3-.3-.7t.3-.7l2.6-2.6q.275-.275.7-.275t.7.275q.275.275.275.7t-.275.7l-.9.9h12.4l-.9-.9q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l2.6 2.6q.3.3.3.7t-.3.7l-2.6 2.6q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l.9-.9H5.8ZM2 11v-.575q0-.6.325-1.1t.9-.75q.65-.275 1.338-.425T6 8q.75 0 1.438.15t1.337.425q.575.25.9.75t.325 1.1V11H2Zm12 0v-.575q0-.6.325-1.1t.9-.75q.65-.275 1.338-.425T18 8q.75 0 1.438.15t1.337.425q.575.25.9.75t.325 1.1V11h-8ZM6 7q-.825 0-1.413-.588T4 5q0-.825.588-1.413T6 3q.825 0 1.413.588T8 5q0 .825-.588 1.413T6 7Zm12 0q-.825 0-1.413-.588T16 5q0-.825.588-1.413T18 3q.825 0 1.413.588T20 5q0 .825-.588 1.413T18 7Z"/></svg>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
           </div>
+          <div className='card-servicios'>
+            <h3>Trazabilidad</h3>
+            <img src={Trazability} alt='trazabilidad' />
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+          </div>
         </div>
       </Section>
-      {/* <hr /> */}
       <Section id='quienes-somos' className='container section-quienes-somos'>
         <div className='div-title-quienes-somos'>
           <div className='title'>
@@ -67,7 +72,6 @@ const Home = ({ formTitle, onFormTitleChange }) => {
         </div>
 
       </Section>
-      {/* <hr /> */}
       <Section id='distribucion' className='container section-distribucion'>
         <div className='title div-distribucion'>
           <h2>DISTRIBUCION</h2>

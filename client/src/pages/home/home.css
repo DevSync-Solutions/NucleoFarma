@@ -1,7 +1,6 @@
 /* SERVICIOS */
 .section-servicios {
-  margin-top: 6rem;
-  margin-bottom: 8rem;
+  margin: 6rem 0;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -32,7 +31,7 @@ section h2 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 80px;
-  margin: 5rem 0 4rem 0;
+  margin: 5rem 0 2rem 0;
 }
 
 .card-servicios {
@@ -53,6 +52,9 @@ section h2 {
 }
 .card-servicios:hover {
   transform: scale(1.03);
+}
+.card-servicios img {
+  width: 40px;
 }
 
 /* QUIENES SOMOS */

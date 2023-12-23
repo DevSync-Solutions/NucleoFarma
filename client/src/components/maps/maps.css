@@ -1,30 +1,31 @@
 iframe {
     width: 100%;
     height: 25rem;
-    margin-bottom: 10rem;
+    margin-bottom: 14rem;
     border: none;
+    box-shadow: -1px -2px 2px 0 rgba(221, 221, 221, 0.747);
 }
 
-@media (min-width: 942px) and (max-width: 1010px) {
+@media (min-width: 1025px) and (max-width: 1260px) {
     iframe {
-        margin-bottom: 11rem;
+        margin-bottom: 13.5rem;
     }
 }
 
-@media (min-width: 768px) and (max-width: 941px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     iframe {
-        margin-bottom: 12rem;
+        margin-bottom: 13rem;
     }
 }
 
-@media (min-width: 396px) and (max-width: 767px) {
+@media (min-width: 396px) and (max-width: 768px) {
     iframe {
-        margin-bottom: 17.5rem;
+        margin-bottom: 24.5rem;
     }
 }
 
 @media (max-width: 395px) {
     iframe {
-        margin-bottom: 18rem;
+        margin-bottom: 25rem;
     }
 }

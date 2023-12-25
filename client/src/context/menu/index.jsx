@@ -16,7 +16,7 @@ const MenuProvider = ({ children }) => {
   const closeMenu = () => {
     setTimeout(() => {
       setIsMenuOpen(false)
-    }, 500)
+    }, 700)
   }
 
   return (

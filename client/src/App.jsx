@@ -16,7 +16,7 @@ import PageResetPassForm from './pages/resetPassForm'
 import { NotifyProvider } from './context/notify'
 
 function App() {
-  const [formTitle, setFormTitle] = useState("¿Necesitás comunicarte")
+  const [formTitle, setFormTitle] = useState("¿Necesitás contactarte")
 
   const handleFormTitleChange = (newTitle) => {
     setFormTitle(newTitle)

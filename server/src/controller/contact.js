@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 
     const data = await resend.emails.send({
       from: "Web NucleoFarma <onboarding@resend.dev>",
-      to: [lowerCaseEmail],
+      to: ["info@nucleofarmaweb.com.ar"],
       subject: `${nameM}${company} contacta para ${contact} NucleoFarma vía Web.`,
       html: `Contacto realizado por <strong>${email}${company}</strong> con el fin de ${contact} Nucleo Farma.<br><p>Mensaje: ${message}`,
     })

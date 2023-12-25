@@ -56,6 +56,9 @@ section h2 {
 .card-servicios img {
   width: 40px;
 }
+.card-servicios svg {
+  color: var(--color-nucleo-1);
+}
 
 /* QUIENES SOMOS */
 .section-quienes-somos {
@@ -144,5 +147,22 @@ section h2 {
 @media (min-width: 1231px) {
   .img-quienes-somos {
     margin-top: 6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-servicios {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+  .div-servicios {
+    gap: 30px;
+    margin-top: 3rem;
+  }
+  .div-title-quienes-somos {
+    padding-top: 3.5rem;
+  }
+  .text-quienes-somos {
+    padding-bottom: 4rem;
   }
 }

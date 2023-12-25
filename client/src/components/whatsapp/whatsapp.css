@@ -1,7 +1,7 @@
 #whatsapp-float {
   position: fixed;
-  height:55px;
-  margin: 25px;
+  height: 55px;
+  margin: 20px;
   bottom: 0;
   right: 0;
   z-index: 10;
@@ -28,6 +28,7 @@
 @media (max-width: 768px) {
   #whatsapp-float {
     height: 42px;
+    margin: 12px;
   }
 
   #whatsapp-float img {

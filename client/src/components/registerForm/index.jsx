@@ -29,8 +29,9 @@ function RegisterForm() {
       return
     }
 
-    fetch('http://localhost:3000/sesion/registro', {
-    // fetch('dominio host backend', {
+    // fetch('http://localhost:3000/sesion/registro', {
+    fetch('https://api.nucleofarmadrogueria.com/sesion/registro', {
+
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +54,9 @@ function RegisterForm() {
 
   const checkEmailCuit = async (email, cuit) => {
     try {
-      const response = await fetch('http://localhost:3000/sesion/verificar-email-cuit', {
+      // const response = await fetch('http://localhost:3000/sesion/verificar-email-cuit', {
+      const response = await fetch('https://api.nucleofarmadrogueria.com/sesion/verificar-email-cuit', {
+
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

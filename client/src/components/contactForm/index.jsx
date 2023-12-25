@@ -11,8 +11,9 @@ function ContactForm({ formTitle, formRef }) {
 
   const handleCreate = async (data) => {
     try {
-      const response = await fetch('http://localhost:3000/contacto', {
-        // fetch('dominio host backend', {
+      // const response = await fetch('http://localhost:3000/contacto', {
+        const response = await fetch('https://api.nucleofarmadrogueria.com/contacto', {
+        
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -18,8 +18,9 @@ function ResetPassContact() {
       return
     }
 
-    fetch('http://localhost:3000/sesion/solicitar-recuperacion', {
-    // fetch('dominio host backend', {
+    // fetch('http://localhost:3000/sesion/solicitar-recuperacion', {
+    fetch('https://api.nucleofarmadrogueria.com/sesion/solicitar-recuperacion', {
+
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +52,9 @@ function ResetPassContact() {
 
   const checkEmail = async (email) => {
     try {
-      const response = await fetch('http://localhost:3000/sesion/verificar-email', {
+      // const response = await fetch('http://localhost:3000/sesion/verificar-email', {
+      const response = await fetch('https://api.nucleofarmadrogueria.com/sesion/verificar-email', {
+
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

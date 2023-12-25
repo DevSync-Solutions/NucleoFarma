@@ -20,8 +20,8 @@ function ResetPassForm() {
       return
     }
 
-    fetch(`http://localhost:3000/sesion/restablecer/${tokenPass}`, {
-    // fetch('dominio host backend', {
+    // fetch(`http://localhost:3000/sesion/restablecer/${tokenPass}`, {
+    fetch(`https://api.nucleofarmadrogueria.com/sesion/restablecer/${tokenPass}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

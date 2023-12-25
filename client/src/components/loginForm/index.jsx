@@ -16,8 +16,9 @@ function LoginForm() {
 
   const handleCreate = async (data) => {
     try {
-      const response = await fetch('http://localhost:3000/sesion/ingreso', {
-      // fetch('dominio host backend', {
+      // const response = await fetch('http://localhost:3000/sesion/ingreso', {
+      const response = await fetch('https://api.nucleofarmadrogueria.com/sesion/ingreso', {
+
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

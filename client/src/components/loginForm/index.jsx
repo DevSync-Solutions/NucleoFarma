@@ -9,7 +9,7 @@ import "./loginForm.css"
 function LoginForm() {
   const { notifySuccess, notifyError } = useNotifyContext()
   const { formRef, handleFormRef } = useForm()
-  const { register, handleSubmit, reset, formState: { errors }, setError } = useFormHook()
+  const { register, handleSubmit, reset, formState: { errors } } = useFormHook()
   const [token, setToken] = useState('')
 
   const cameFromDocs = sessionStorage.getItem('docs') || null
@@ -17,7 +17,7 @@ function LoginForm() {
   const handleCreate = async (data) => {
     try {
       // const response = await fetch('http://localhost:3000/sesion/ingreso', {
-      const response = await fetch('https://nucleofarma.vercel.app/sesion/ingreso', {
+      const response = await fetch('https://nucleofarma-api.onrender.com/sesion/ingreso', {
 
         method: 'POST',
         headers: {
@@ -54,12 +54,6 @@ function LoginForm() {
         } else {
           notifyError(errorData.error)
         }
-        Object.keys(errorData.errors).forEach((fieldName) => {
-          setError(fieldName, {
-            type: 'manual',
-            message: errorData.errors[fieldName].message,
-          })
-        })
       }
     } catch (error) { console.error('Error al iniciar sesión', error)}
   }

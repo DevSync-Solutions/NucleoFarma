@@ -21,7 +21,7 @@ function ResetPassForm() {
     }
 
     // fetch(`http://localhost:3000/sesion/restablecer/${tokenPass}`, {
-    fetch(`https://nucleofarma.vercel.app/sesion/restablecer/${tokenPass}`, {
+    fetch(`https://nucleofarma-api.onrender.com/sesion/restablecer/${tokenPass}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -2,7 +2,7 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
-  "proxy": "https://nucleofarma.vercel.app",
+  "proxy": "https://nucleofarma-api.onrender.com",
   "type": "module",
   "scripts": {
     "dev": "vite",

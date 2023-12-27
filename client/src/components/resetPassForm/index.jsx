@@ -21,7 +21,7 @@ function ResetPassForm() {
     }
 
     // fetch(`http://localhost:3000/sesion/restablecer/${tokenPass}`, {
-    fetch(`https://api.nucleofarmadrogueria.com/sesion/restablecer/${tokenPass}`, {
+    fetch(`https://nucleofarma.vercel.app/sesion/restablecer/${tokenPass}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

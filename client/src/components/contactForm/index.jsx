@@ -12,7 +12,7 @@ function ContactForm({ formTitle, formRef }) {
   const handleCreate = async (data) => {
     try {
       // const response = await fetch('http://localhost:3000/contacto', {
-        const response = await fetch('https://api.nucleofarmadrogueria.com/contacto', {
+        const response = await fetch('https://nucleofarma.vercel.app/contacto', {
         
           method: 'POST',
           headers: {

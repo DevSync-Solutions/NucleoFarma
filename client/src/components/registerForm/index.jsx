@@ -30,7 +30,7 @@ function RegisterForm() {
     }
 
     // fetch('http://localhost:3000/sesion/registro', {
-    fetch('https://api.nucleofarmadrogueria.com/sesion/registro', {
+    fetch('https://nucleofarma.vercel.app/sesion/registro', {
 
       method: 'POST',
       headers: {
@@ -55,7 +55,7 @@ function RegisterForm() {
   const checkEmailCuit = async (email, cuit) => {
     try {
       // const response = await fetch('http://localhost:3000/sesion/verificar-email-cuit', {
-      const response = await fetch('https://api.nucleofarmadrogueria.com/sesion/verificar-email-cuit', {
+      const response = await fetch('https://nucleofarma.vercel.app/sesion/verificar-email-cuit', {
 
         method: 'POST',
         headers: {

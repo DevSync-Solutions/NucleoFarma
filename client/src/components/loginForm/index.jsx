@@ -17,7 +17,7 @@ function LoginForm() {
   const handleCreate = async (data) => {
     try {
       // const response = await fetch('http://localhost:3000/sesion/ingreso', {
-      const response = await fetch('https://api.nucleofarmadrogueria.com/sesion/ingreso', {
+      const response = await fetch('https://nucleofarma.vercel.app/sesion/ingreso', {
 
         method: 'POST',
         headers: {

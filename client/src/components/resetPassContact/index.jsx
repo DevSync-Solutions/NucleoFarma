@@ -19,7 +19,7 @@ function ResetPassContact() {
     }
 
     // fetch('http://localhost:3000/sesion/solicitar-recuperacion', {
-    fetch('https://api.nucleofarmadrogueria.com/sesion/solicitar-recuperacion', {
+    fetch('https://nucleofarma.vercel.app/sesion/solicitar-recuperacion', {
 
       method: 'POST',
       headers: {
@@ -53,7 +53,7 @@ function ResetPassContact() {
   const checkEmail = async (email) => {
     try {
       // const response = await fetch('http://localhost:3000/sesion/verificar-email', {
-      const response = await fetch('https://api.nucleofarmadrogueria.com/sesion/verificar-email', {
+      const response = await fetch('https://nucleofarma.vercel.app/sesion/verificar-email', {
 
         method: 'POST',
         headers: {

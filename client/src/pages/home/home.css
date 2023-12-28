@@ -63,10 +63,9 @@ section h2 {
 /* QUIENES SOMOS */
 .section-quienes-somos {
   display: flex;
-  flex-wrap: wrap;
   align-items: start;
   justify-content: space-between;
-  gap: 30px;
+  gap: 80px;
   background-color: var(--color-grey);
 }
 
@@ -75,7 +74,7 @@ section h2 {
 }
 
 .div-quienes-somos {
-  width: 64%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -89,6 +88,19 @@ section h2 {
   flex-direction: column;  
   align-items: space-between;
   padding-top: 6rem;
+  width: 40%;
+}
+
+.div-text-title-quienes-somos {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  padding-bottom: 5rem;
+}
+
+#title-text {
+  margin-top: 2rem;
 }
 
 .img-quienes-somos {
@@ -99,12 +111,8 @@ section h2 {
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-}
-
-.text-quienes-somos {
-  white-space: wrap;
-  text-overflow: hidden;
-  padding-bottom: 6rem;
+  box-shadow: 6px 6px 1px 1px var(--color-nucleo-1);
+  margin-bottom: 6rem;
 }
 
 /* DISTRIBUCION */
@@ -119,6 +127,10 @@ section h2 {
   white-space: wrap;
   text-overflow: hidden;
   margin-bottom: 2rem;
+}
+
+.div-text-distribucion p:last-child {
+  margin-top: 20px;
 }
 
 .div-distribucion {
@@ -136,11 +148,25 @@ section h2 {
 }
 
 @media (max-width: 1230px) {
+  .section-quienes-somos {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .div-title-quienes-somos {
+    width: 100%;
+  }
   .div-quienes-somos {
     width: 100%;
   }
   .img-quienes-somos {
     height: 300px;
+  }
+  .div-text-title-quienes-somos {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    padding-bottom: 0rem;
   }
 }
 
@@ -161,8 +187,5 @@ section h2 {
   }
   .div-title-quienes-somos {
     padding-top: 3.5rem;
-  }
-  .text-quienes-somos {
-    padding-bottom: 4rem;
   }
 }

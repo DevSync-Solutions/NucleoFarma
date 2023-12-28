@@ -4,7 +4,6 @@ import Main from '../../layout/main'
 import Maps from '../../components/maps'
 import Whatsapp from '../../components/whatsapp'
 import { useForm } from '../../context/form'
-import Trazability from '../../assets/traceability.png'
 import './home.css'
 
 const Home = ({ formTitle, onFormTitleChange }) => {
@@ -55,14 +54,21 @@ const Home = ({ formTitle, onFormTitleChange }) => {
             <h2 id='title-quienes-somos'>Nucleo Farma</h2>
             <hr id='hr-title' />
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur. </p>
+          <h3>Al servicio de la salud. </h3>
+          <div className='div-text-title-quienes-somos'>
+            <p id='title-text'>
+              Somos <strong>Nucleo Farma</strong> una empresa dedicada a la salud desde 2004, durante todo este tiempo hemos llevado a cabo la distribución, logística y entrega de productos farmacéuticos, medicamentos de alto costo y siendo parte de tratamientos especiales.
+            </p>
+            <p>
+              Llevamos a cabo esta actividad con el mayor ímpetu de brindar la excelencia en nuestro servicio. Es por esto que tanto en los ámbitos de <strong>comercio</strong>, como <strong>logística</strong> de entrega y <strong>distribución</strong> estamos enfocados a las continuas mejoras de cada área en su nivel general y específico.
+            </p>
+            <p>
+              Toda actividad que se lleva a cabo cuanta con la rigurosidad respecto a las normas establecidas para el manejo comercial de medicamentos, junto a empresas que comparten esta visión y principios que refieren a un standard a la altura de lo que necesita una empresa referida a la salud.
+            </p>
+          </div>
         </div>
         <div className='div-quienes-somos'>
           <div className='img-quienes-somos'>img
-          </div>
-          <div className='text-quienes-somos'>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum molestias voluptas quam, tempore perferendis asperiores aspernatur harum, quae nam vel cupiditate velit optio omnis. Nisi iure doloremque molestias quos. Perspiciatis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae iste non iusto vero maxime soluta nam assumenda cum? Aperiam vitae quia qui dolorum? Fugit iste velit, ipsam modi sunt reiciendis.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum molestias voluptas quam, tempore perferendis asperiores aspernatur harum, quae nam vel cupiditate velit optio omnis. Nisi iure doloremque molestias quos. Perspiciatis.</p>
           </div>
         </div>
 
@@ -73,7 +79,9 @@ const Home = ({ formTitle, onFormTitleChange }) => {
           <hr id='hr-title' />
         </div>
         <div className='div-text-distribucion'>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum molestias voluptas quam, tempore perferendis asperiores aspernatur harum, quae nam vel cupiditate velit optio omnis. Nisi iure doloremque molestias quos. Perspiciatis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae iste non iusto vero maxime soluta nam assumenda cum? Aperiam vitae quia qui dolorum? Fugit iste velit, ipsam modi sunt reiciendis.</p>
+          <p>La correcta y eficaz distribución de medicamentos e insumos es vital para el servicio de la salud, es por eso que contamos con un sistema de movilización de medicamentos que abarca el ancho y largo de la república Argentina.</p>
+          <p>Junto con el correcto y desarrollado sistema abarcativo de distribución nos encargamos de la correcta entrega de la medicación e insumos.</p>
+          <p>Formando parte del sistema Nacional de <strong>Trazabilidad</strong>, nos aseguramos del correcto estado ademas de la certificación legal de todo producto que se moviliza desde la empresa.</p>
         </div>
       </Section>
       <hr />

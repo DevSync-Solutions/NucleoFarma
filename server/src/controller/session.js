@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+// import jwt from 'jsonwebtoken'
 import UserSchema from '../models/users.model.js'
 import { Resend } from "resend"
 import dotenv from 'dotenv'
@@ -57,6 +57,18 @@ router.post('/verificar-email-cuit', async (req, res) => {
   }
 })
 
+function generateRandomToken(length) {
+  const alphanumericCharacters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  let token = ''
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * alphanumericCharacters.length)
+    token += alphanumericCharacters.charAt(randomIndex)
+  }
+
+  return token
+}
+
 router.post('/ingreso', async (req, res) => {
   try {
     const { cuit, password } = req.body
@@ -73,7 +85,8 @@ router.post('/ingreso', async (req, res) => {
       return res.status(401).json({ error: 'Contraseña incorrecta' });
     }
 
-    const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '15m' })
+    const token = generateRandomToken(10)
+    // const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '15m' })
     // console.log('Token generado:', jwt.decode(token))
 
     res.setHeader('Authorization', `Bearer ${token}`)
@@ -88,17 +101,6 @@ const APIKEY = process.env.APIKEY
 const resend = new Resend(APIKEY)
 const BD_PASS_URL = process.env.BD_PASS_URL
 
-function generateRandomToken(length) {
-  const alphanumericCharacters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  let token = ''
-
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * alphanumericCharacters.length)
-    token += alphanumericCharacters.charAt(randomIndex)
-  }
-
-  return token
-}
 
 router.post('/solicitar-recuperacion', async (req, res) => {
   try {

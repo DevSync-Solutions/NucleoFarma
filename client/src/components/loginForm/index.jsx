@@ -54,6 +54,12 @@ function LoginForm() {
         } else {
           notifyError(errorData.error)
         }
+        Object.keys(errorData.errors).forEach((fieldName) => {
+          setError(fieldName, {
+            type: 'manual',
+            message: errorData.errors[fieldName].message,
+          })
+        })
       }
     } catch (error) { console.error('Error al iniciar sesión', error)}
   }
@@ -94,9 +100,9 @@ function LoginForm() {
             <input id='password' type="password" {...register('password', { required: true, maxLength: 50 })} placeholder="Ingresa tu contraseña..."></input>
           </div>
         </div>
-      <div className='errors'>
-        {hasErrors && <p className="input-error">Por favor, completa todos los campos.</p>}
-      </div>
+        <div className='errors'>
+          {hasErrors && <p className="input-error">Por favor, completa todos los campos.</p>}
+        </div>
         <Link to="/solicitar-recuperacion" >¿Olvidaste tu contraseña?</Link>
         <div className="div-btn">
           <Button type="submit" className="btn-form" children="Ingresar"/>

@@ -123,10 +123,22 @@ section h2 {
   flex-direction: column;
   gap: 20px;
 }
+.section-distribucion img {
+  width: 30%;
+  border-radius: 15px;
+  box-shadow: 6px 6px 1px 1px var(--color-nucleo-1);
+}
+
 .div-text-distribucion {
   white-space: wrap;
   text-overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
   margin-bottom: 2rem;
+}
+.div-text-distribucion div {
+  width: 60%;
 }
 
 .div-text-distribucion p:last-child {
@@ -159,7 +171,8 @@ section h2 {
     width: 100%;
   }
   .img-quienes-somos {
-    height: 300px;
+    width: 100%;
+    height: 350px;
   }
   .div-text-title-quienes-somos {
     display: flex;
@@ -167,6 +180,11 @@ section h2 {
     align-items: start;
     gap: 20px;
     padding-bottom: 0rem;
+  }
+  .section-distribucion img {
+    width: 80%;
+    max-width: 300px;
+    max-height: 200px;
   }
 }
 
@@ -187,5 +205,16 @@ section h2 {
   }
   .div-title-quienes-somos {
     padding-top: 3.5rem;
+  }
+  .div-text-distribucion {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .div-text-distribucion div {
+    width: 100%;
+  }
+  .section-distribucion img {
+    width: 100%;
+    max-width: 300px;
   }
 }

@@ -46,7 +46,7 @@ function App() {
             <Navbar onFormTitleChange={handleFormTitleChange} />
             <Routes>
               <Route path='/' element={<Home formTitle={formTitle} onFormTitleChange={handleFormTitleChange} />} />
-              <Route path='/condiciones' element={<Condiciones />} />
+              <Route path='/condiciones' element={<Condiciones onFormTitleChange={handleFormTitleChange} />} />
               <Route path='/privacidad' element={<Privacidad />} />
               <Route path='/documentacion' element={<Docs token={token} />} />
               <Route path='/registro' element={<Register />} />

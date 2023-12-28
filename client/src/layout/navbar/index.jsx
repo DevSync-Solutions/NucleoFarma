@@ -7,11 +7,12 @@ import { useMenuContext } from "../../context/menu"
 import { MdEmail } from "react-icons/md"
 import { IoMdPin } from "react-icons/io";
 import { FaPhoneAlt, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 const Navbar = ({ onFormTitleChange }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const { isMenuOpen, closeMenu } = useMenuContext()
+  const location = useLocation()
 
   useEffect(() => {
     let scrollTimeout
@@ -34,29 +35,33 @@ const Navbar = ({ onFormTitleChange }) => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
+
+  const isHomePage = location.pathname === '/';
   
   return (
     <>
-      <header>
-        <div className={isScrolled ? "header-scrolled" : "header"}>
-          <div className="header-contact">
-            <p><FaPhoneAlt /> +54 (011) 3696-6253</p>
-            |
-            <p><MdEmail /> info@nucleofarmaweb.com.ar</p>
-            |
-            <p><IoMdPin /> Habana 3336, Villa Devoto, Buenos Aires</p>
+      {isHomePage && (
+        <header>
+          <div className="header">
+            <div className="header-contact">
+              <p><FaPhoneAlt /> +54 (011) 3696-6253</p>
+              |
+              <p><MdEmail /> info@nucleofarmaweb.com.ar</p>
+              |
+              <p><IoMdPin /> Habana 3336, Villa Devoto, Buenos Aires</p>
+            </div>
+            <div className="header-social">
+              <Link to="https://www.linkedin.com/company/nucleofarma-sa" target="_blank"><FaLinkedinIn /></Link>
+              <Link to="https://api.whatsapp.com/send?phone=541136966253&text=¡Hola! Me contacto con Nucleo Farma porque..." target="_blank"><FaWhatsapp /></Link>
+            </div>
           </div>
-          <div className="header-social">
-            <Link to="https://www.linkedin.com/company/nucleofarma-sa" target="_blank"><FaLinkedinIn /></Link>
-            <Link to="https://api.whatsapp.com/send?phone=541136966253&text=¡Hola! Me contacto con Nucleo Farma porque..." target="_blank"><FaWhatsapp /></Link>
-          </div>
-        </div>
-        <nav id="nav" className={`${isMenuOpen ? 'menu-open' : ''}`}>
-          <Logo />
-          <ToggleMenu onFormTitleChange={onFormTitleChange} />
-          <Categories onFormTitleChange={onFormTitleChange} isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
-        </nav>
-      </header>
+        </header>
+      )}
+      <nav id="nav" className={`${isMenuOpen ? 'menu-open' : ''}`}>
+        <Logo />
+        <ToggleMenu onFormTitleChange={onFormTitleChange} />
+        <Categories onFormTitleChange={onFormTitleChange} isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
+      </nav>
     </>
   )
 }

@@ -3,6 +3,7 @@ import Section from '../../layout/section'
 import Main from '../../layout/main'
 import Maps from '../../components/maps'
 import Whatsapp from '../../components/whatsapp'
+import DistribucionImg from '../../assets/distribucion.jpg'
 import { useForm } from '../../context/form'
 import './home.css'
 
@@ -79,9 +80,12 @@ const Home = ({ formTitle, onFormTitleChange }) => {
           <hr id='hr-title' />
         </div>
         <div className='div-text-distribucion'>
-          <p>La correcta y eficaz distribución de medicamentos e insumos es vital para el servicio de la salud, es por eso que contamos con un sistema de movilización de medicamentos que abarca el ancho y largo de la república Argentina.</p>
-          <p>Junto con el correcto y desarrollado sistema abarcativo de distribución nos encargamos de la correcta entrega de la medicación e insumos.</p>
-          <p>Formando parte del sistema Nacional de <strong>Trazabilidad</strong>, nos aseguramos del correcto estado ademas de la certificación legal de todo producto que se moviliza desde la empresa.</p>
+          <div>
+            <p>La correcta y eficaz distribución de medicamentos e insumos es vital para el servicio de la salud, es por eso que contamos con un sistema de movilización de medicamentos que abarca el ancho y largo de la república Argentina.</p>
+            <p>Junto con el correcto y desarrollado sistema abarcativo de distribución nos encargamos de la correcta entrega de la medicación e insumos.</p>
+            <p>Formando parte del sistema Nacional de <strong>Trazabilidad</strong>, nos aseguramos del correcto estado ademas de la certificación legal de todo producto que se moviliza desde la empresa.</p>
+          </div>
+          <img src={DistribucionImg} alt='Nucleo farma medicamentos depósito'></img>
         </div>
       </Section>
       <hr />

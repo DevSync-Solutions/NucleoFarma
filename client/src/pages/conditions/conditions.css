@@ -1,6 +1,27 @@
-.terminos-condiciones {
+.conditions-privacity {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
     justify-content: center;
     margin-top: 3rem;
+}
+.conditions-privacity h1 {
+    color: var(--color-nucleo-1);
+}
+.conditions-privacity h3 {
+    padding-bottom: 3px;
+}
+.conditions-privacity a {
+    color: var(--color-nucleo-1);
+}
+
+.conditions-privacity > :last-child {
+    padding: 8rem 0;
+}
+
+@media (max-width: 768px) {
+    .conditions-privacity > :last-child {
+        padding: 13rem 0;
+    }
 }

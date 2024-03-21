@@ -11,6 +11,10 @@ const Conditions = ({ onFormTitleChange }) => {
     scroll.scrollToTop({ smooth: true, duration: 500 });
   }, [])
 
+  const handleLinkClick = (sectionId) => {
+    setShouldScroll(sectionId)
+  }
+  
   useEffect(() => {
     if (shouldScroll) {
       scroll.scrollTo(document.getElementById(shouldScroll).offsetTop - 85)
@@ -18,9 +22,6 @@ const Conditions = ({ onFormTitleChange }) => {
     }
   }, [shouldScroll, onFormTitleChange])
 
-  const handleLinkClick = (sectionId) => {
-    setShouldScroll(sectionId)
-  }
 
   return (
     <>
@@ -28,15 +29,15 @@ const Conditions = ({ onFormTitleChange }) => {
         <h1>TÉRMINOS Y CONDICIONES</h1>
         <div>
           <h3>1. Aceptación de Términos y Condiciones</h3>
-          <p>Al acceder y/o visitar este Sitio Web, aceptas plenamente los términos y condiciones establecidos en este aviso legal. Si no estás de acuerdo con alguno de estos términos, te pedimos que no avances en la visita.</p>
+          <p>Al acceder y/o visitar este Sitio Web, aceptas plenamente los términos y condiciones establecidos en este aviso legal.</p>
         </div>
         <div>
           <h3>2. Modificaciones</h3>
-          <p>Núcleo Farma se reserva el derecho de modificar los términos y condiciones de uso de este Sitio Web sin previo aviso. Dichos cambios entrarán en vigencia al ser publicados en el Sitio Web, por lo que te recomendamos revisar periódicamente este aviso legal.</p>
+          <p>Núcleo Farma se reserva el derecho de modificar los términos y condiciones de uso de este Sitio Web sin previo aviso. Dichos cambios entrarán en vigencia al ser publicados en el Sitio Web, por lo que recomendamos revisar periódicamente este aviso legal.</p>
         </div>
         <div>
           <h3>3. Uso Informativo</h3>
-          <p>La información contenida en nuestro Sitio Web se proporciona únicamente con fines informativos. No realizamos ventas directas a través del sitio; nuestro objetivo es brindarte información clara sobre nuestra empresa y servicios.</p>
+          <p>La información contenida en nuestro Sitio Web se proporciona únicamente con fines informativos. No realizamos ventas directas a través del sitio; nuestro objetivo es brindar información clara sobre nuestra empresa y servicios.</p>
         </div>
         <div>
           <h3>4. Responsabilidad y Garantías</h3>

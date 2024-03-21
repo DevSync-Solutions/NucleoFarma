@@ -48,7 +48,7 @@ const Navbar = ({ onFormTitleChange }) => {
               |
               <p><MdEmail /> info@nucleofarmaweb.com.ar</p>
               |
-              <p><IoMdPin /> Habana 3336, Villa Devoto, Buenos Aires</p>
+              <p><IoMdPin /> <a href="https://maps.app.goo.gl/XLtHNu6rTnCMUfKBA" target="_blank">Habana 3336, Villa Devoto, Buenos Aires</a></p>
             </div>
             <div className="header-social">
               <Link to="https://www.linkedin.com/company/nucleofarma-sa" target="_blank"><FaLinkedinIn /></Link>

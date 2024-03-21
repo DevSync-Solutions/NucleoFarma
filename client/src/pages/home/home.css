@@ -105,14 +105,19 @@ section h2 {
 
 .img-quienes-somos {
   width: 100%;
-  height: 450px;
+  height: 400px;
   background-color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 25px;
   border-radius: 15px;
   box-shadow: 6px 6px 1px 1px var(--color-nucleo-1);
   margin-bottom: 6rem;
+}
+.img-quienes-somos img {
+  max-width: 850px;
+  border-radius: 10px;
 }
 
 /* DISTRIBUCION */
@@ -174,6 +179,9 @@ section h2 {
     width: 100%;
     height: 350px;
   }
+  .img-quienes-somos img {
+    width: 800px;
+  }
   .div-text-title-quienes-somos {
     display: flex;
     flex-direction: column;
@@ -216,5 +224,15 @@ section h2 {
   .section-distribucion img {
     width: 100%;
     max-width: 300px;
+  }
+  .img-quienes-somos {
+    width: 80%;
+    height: 200px;
+  }
+}
+@media (max-width: 450px) {
+  .img-quienes-somos {
+    width: 70%;
+    height: 70px;
   }
 }

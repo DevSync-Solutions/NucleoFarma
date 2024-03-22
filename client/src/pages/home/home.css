@@ -105,7 +105,6 @@ section h2 {
 
 .img-quienes-somos {
   width: 100%;
-  height: 400px;
   background-color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
@@ -114,10 +113,13 @@ section h2 {
   border-radius: 15px;
   box-shadow: 6px 6px 1px 1px var(--color-nucleo-1);
   margin-bottom: 6rem;
+  overflow: hidden;
+  position: relative;
 }
 .img-quienes-somos img {
   max-width: 850px;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 /* DISTRIBUCION */
@@ -164,7 +166,7 @@ section h2 {
   color: var(--color);
 }
 
-@media (max-width: 1230px) {
+@media (max-width: 1500px) {
   .section-quienes-somos {
     flex-direction: column;
     gap: 50px;
@@ -177,10 +179,9 @@ section h2 {
   }
   .img-quienes-somos {
     width: 100%;
-    height: 350px;
   }
   .img-quienes-somos img {
-    width: 800px;
+    width: 100%;
   }
   .div-text-title-quienes-somos {
     display: flex;
@@ -192,13 +193,19 @@ section h2 {
   .section-distribucion img {
     width: 80%;
     max-width: 300px;
-    max-height: 200px;
+    max-height: 210px;
   }
 }
 
-@media (min-width: 1231px) {
+@media (min-width: 1500px) {
   .img-quienes-somos {
     margin-top: 6rem;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1499px) {
+  .img-quienes-somos img {
+    max-width: 1200px;
   }
 }
 
@@ -226,13 +233,18 @@ section h2 {
     max-width: 300px;
   }
   .img-quienes-somos {
-    width: 80%;
-    height: 200px;
+    width: 95%;
+    padding: 15px;
+    height: auto;
   }
 }
 @media (max-width: 450px) {
   .img-quienes-somos {
-    width: 70%;
-    height: 70px;
+    width: 90%;
+    height: 150px;
+    padding: 15px;
+  }
+  .img-quienes-somos img {
+    height: 90%;
   }
 }

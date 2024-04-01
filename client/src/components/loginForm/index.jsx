@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useForm } from '../../context/form'
 import { useNotifyContext } from '../../context/notify'
 import "./loginForm.css"
+import "../registerForm/registerForm.css"
 
 function LoginForm() {
   const { notifySuccess, notifyError } = useNotifyContext()
@@ -17,26 +18,36 @@ function LoginForm() {
   const handleCreate = async (data) => {
     try {
       // const response = await fetch('http://localhost:3000/sesion/ingreso', {
-      const response = await fetch('https://nucleofarma-api.onrender.com/sesion/ingreso', {
+      // const response = await fetch('https://nucleofarma-api.onrender.com/sesion/ingreso', {
 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      if (response.ok) {
-        const responseData = await response.json()
-        const userId = responseData.userId
-        sessionStorage.setItem('userId', userId)
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(data),
+      // })
+      const response = {
+        cuit: '12345678910',
+        password: '12345678'
+      }
 
-        const authHeader = response.headers.get('Authorization')
-        const token = authHeader ? authHeader.split(' ')[1] : null
-        if (token) {
+      // if (response.ok) {
+      //   const responseData = await response.json()
+      //   const userId = responseData.userId
+      //   sessionStorage.setItem('userId', userId)
+
+      //   const authHeader = response.headers.get('Authorization')
+      //   const token = authHeader ? authHeader.split(' ')[1] : null
+      //   if (token) {
+      if (data.cuit === response.cuit && data.password === response.password) {
+          const userId = '12345'
+          const token = 'usertoken'
+
           // console.log('Token recibido:', token)
-  
-          setToken(token)
+          sessionStorage.setItem('userId', userId)
           sessionStorage.setItem('token', token)
+
+          setToken(token)
   
           notifySuccess('Inicio de sesión con éxito')
           reset()
@@ -44,15 +55,13 @@ function LoginForm() {
           setTimeout(() => {
             handleRedirect()
           }, 2500)
-        } else {
-          notifyError('Error, por favor intenta de nuevo')
-        }
       } else {
-        const errorData = await response.json()
-        if (errorData.error === 'Contraseña incorrecta') {
+        // const errorData = await response.json()
+        if (data.cuit !== response.cuit) {
+          notifyError('El CUIT es incorrecto. Por favor, intenta de nuevo.')
+        }
+        if (data.cuit === response.cuit && data.password !== response.password) {
           notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
-        } else {
-          notifyError(errorData.error)
         }
         Object.keys(errorData.errors).forEach((fieldName) => {
           setError(fieldName, {
@@ -106,7 +115,7 @@ function LoginForm() {
         <Link to="/solicitar-recuperacion" >¿Olvidaste tu contraseña?</Link>
         <div className="div-btn">
           <Button type="submit" className="btn-form" children="Ingresar"/>
-          <Link to="/registro">¿No tenés cuenta? <span>Registrate</span></Link>
+          {/* <Link to="/registro">¿No tenés cuenta? <span>Registrate</span></Link> */}
         </div>
       </form>
     </>

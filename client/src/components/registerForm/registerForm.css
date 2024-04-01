@@ -47,7 +47,7 @@
   .div-btn {
     flex-direction: column;
     gap: 20px;
-    align-items: start;
+    align-items: center;
   }
 }
 

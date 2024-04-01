@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify'
 import Condiciones from './pages/conditions'
 import Privacidad from './pages/privacity'
 import Docs from './pages/docs'
-import Register from './pages/register'
+// import Register from './pages/register'
 import Login from './pages/login'
 import { MenuProvider } from './context/menu'
 import { FormProvider } from './context/form'
@@ -49,7 +49,7 @@ function App() {
               <Route path='/condiciones' element={<Condiciones onFormTitleChange={handleFormTitleChange} />} />
               <Route path='/privacidad' element={<Privacidad />} />
               <Route path='/documentacion' element={<Docs token={token} />} />
-              <Route path='/registro' element={<Register />} />
+              {/* <Route path='/registro' element={<Register />} /> */}
               <Route path='/ingreso' element={<Login />} />
               <Route path='/solicitar-recuperacion' element={<PageResetPassContact />} />
               <Route path='/restablecer/:tokenPass' element={<PageResetPassForm />} />

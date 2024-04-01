@@ -80,7 +80,7 @@ const Categories = ({ className, onFormTitleChange, isMenuOpen, closeMenu }) => 
         {isHomePage ? <ScrollLink smooth={true} duration={500} onClick={closeMenu} to="distribucion" offset={-105}><li>Distribución</li></ScrollLink> : <Link to="/" onClick={() => handleLinkClick("distribucion")}><li>Distribución</li></Link>}
         {isHomePage ? <ScrollLink smooth={true} duration={500} onClick={handleTitleWork} to="contacto" offset={-110} ><li>Trabajá en Nucleo</li></ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Querés trabajar") }}><li>Trabajá en Nucleo</li></Link>}
         {isHomePage ? <ScrollLink smooth={true} duration={500} onClick={handleTitleContact} to="contacto" offset={-110} ><li>Contacto</li></ScrollLink> : <Link to="/" onClick={() => { handleLinkClick("contacto"), onFormTitleChange("¿Necesitás contactarte") }}><li>Contacto</li></Link>}
-        {token ? <a href="/" onClick={closeSession}><Button className="no-animation">Cerrar sesión</Button></a> : <Link to="/registro" onClick={scrollToTop}><Button>Proveedores</Button></Link>}
+        {token ? <a href="/" onClick={closeSession}><Button className="no-animation">Cerrar sesión</Button></a> : <Link to="/ingreso" onClick={scrollToTop}><Button>Proveedores</Button></Link>}
       </ul>
     </>
   )

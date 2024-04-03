@@ -117,7 +117,7 @@ section h2 {
   position: relative;
 }
 .img-quienes-somos img {
-  max-width: 850px;
+  max-width: 700px;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -178,7 +178,7 @@ section h2 {
     width: 100%;
   }
   .img-quienes-somos {
-    width: 100%;
+    width: 80%;
   }
   .img-quienes-somos img {
     width: 100%;
@@ -209,6 +209,12 @@ section h2 {
   }
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  .img-quienes-somos {
+    width: 80%;
+  }
+}
+
 @media (max-width: 768px) {
   .section-servicios {
     margin-top: 5rem;
@@ -233,7 +239,7 @@ section h2 {
     max-width: 300px;
   }
   .img-quienes-somos {
-    width: 95%;
+    width: 80%;
     padding: 15px;
     height: auto;
   }

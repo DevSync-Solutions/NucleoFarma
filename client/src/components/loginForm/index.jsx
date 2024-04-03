@@ -15,62 +15,159 @@ function LoginForm() {
 
   const cameFromDocs = sessionStorage.getItem('docs') || null
 
+  // const handleCreate = async (data) => {
+  //   try {
+  //     const response = {
+  //       cuit: '12345678910',
+  //       password: '12345678'
+  //     }
+
+  //     if (data.cuit === response.cuit && data.password === response.password) {
+  //         const userId = '12345'
+  //         const token = 'usertoken'
+
+  //         // console.log('Token recibido:', token)
+  //         sessionStorage.setItem('userId', userId)
+  //         sessionStorage.setItem('token', token)
+
+  //         setToken(token)
+  
+  //         notifySuccess('Inicio de sesión con éxito')
+  //         reset()
+  
+  //         setTimeout(() => {
+  //           handleRedirect()
+  //         }, 2500)
+  //     } else {
+  //       const responseDB = await fetch('http://localhost:3000/sesion/ingreso', {
+  //       // const responseDB = await fetch('https://nucleofarma-api.onrender.com/sesion/ingreso', {
+
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify(data),
+  //       })
+  //       if (responseDB.ok) {
+  //         const responseData = await responseDB.json()
+  //         const userId = responseData.userId
+  //         sessionStorage.setItem('userId', userId)
+  
+  //         const authHeader = responseDB.headers.get('Authorization')
+  //         const token = authHeader ? authHeader.split(' ')[1] : null
+
+  //         if (token) {
+  //           setToken(token)
+  //           sessionStorage.setItem('token', token)
+  //           notifySuccess('Inicio de sesión con éxito')
+  //           reset()
+
+  //           setTimeout(() => {
+  //             handleRedirect()
+  //           }, 2500)
+  //         } else {
+  //           notifyError('Error, por favor intenta de nuevo')
+  //         }
+  //       } else {
+  //         const errorData = await responseDB.json()
+  //         if (errorData.error === 'Contraseña incorrecta') {
+  //           notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
+  //         } else {
+  //           notifyError(errorData.error)
+  //         }
+  //       }
+
+  //       if (data.cuit !== response.cuit) {
+  //         notifyError('El CUIT es incorrecto. Por favor, intenta de nuevo.')
+  //       }
+  //       if (data.cuit === response.cuit && data.password !== response.password) {
+  //         notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
+  //       }
+
+  //       Object.keys(errorData.errors).forEach((fieldName) => {
+  //         setError(fieldName, {
+  //           type: 'manual',
+  //           message: errorData.errors[fieldName].message,
+  //         })
+  //       })
+  //     }
+  //   } catch (error) { console.error('Error al iniciar sesión', error)}
+  // }
+
   const handleCreate = async (data) => {
     try {
-      // const response = await fetch('http://localhost:3000/sesion/ingreso', {
-      // const response = await fetch('https://nucleofarma-api.onrender.com/sesion/ingreso', {
-
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(data),
-      // })
       const response = {
         cuit: '12345678910',
-        password: '12345678'
+        password: '12345678',
       }
-
-      // if (response.ok) {
-      //   const responseData = await response.json()
-      //   const userId = responseData.userId
-      //   sessionStorage.setItem('userId', userId)
-
-      //   const authHeader = response.headers.get('Authorization')
-      //   const token = authHeader ? authHeader.split(' ')[1] : null
-      //   if (token) {
-      if (data.cuit === response.cuit && data.password === response.password) {
-          const userId = '12345'
-          const token = 'usertoken'
-
-          // console.log('Token recibido:', token)
-          sessionStorage.setItem('userId', userId)
-          sessionStorage.setItem('token', token)
-
-          setToken(token)
   
+      if (data.cuit === response.cuit && data.password === response.password) {
+        const userId = '12345'
+        const token = 'usertoken'
+  
+        sessionStorage.setItem('userId', userId)
+        sessionStorage.setItem('token', token)
+  
+        setToken(token)
+  
+        notifySuccess('Inicio de sesión con éxito')
+        reset()
+  
+        setTimeout(() => {
+          handleRedirect()
+        }, 2500)
+  
+        return
+      }
+      
+      const responseDB = await fetch('https://nucleofarma-api.onrender.com/sesion/ingreso', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+  
+      if (responseDB.ok) {
+        const responseData = await responseDB.json()
+        const userId = responseData.userId
+  
+        sessionStorage.setItem('userId', userId)
+  
+        const authHeader = responseDB.headers.get('Authorization')
+        const token = authHeader ? authHeader.split(' ')[1] : null
+  
+        if (token) {
+          setToken(token)
+          sessionStorage.setItem('token', token)
           notifySuccess('Inicio de sesión con éxito')
           reset()
   
           setTimeout(() => {
             handleRedirect()
           }, 2500)
-      } else {
-        // const errorData = await response.json()
-        if (data.cuit !== response.cuit) {
-          notifyError('El CUIT es incorrecto. Por favor, intenta de nuevo.')
         }
-        if (data.cuit === response.cuit && data.password !== response.password) {
-          notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
-        }
-        Object.keys(errorData.errors).forEach((fieldName) => {
-          setError(fieldName, {
-            type: 'manual',
-            message: errorData.errors[fieldName].message,
-          })
-        })
+  
+        return
       }
-    } catch (error) { console.error('Error al iniciar sesión', error)}
+  
+      const errorData = await responseDB.json()
+  
+      if (errorData.error === 'Contraseña incorrecta') {
+        notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
+      } else if (errorData.error === 'Usuario no encontrado') {
+        notifyError(errorData.error)
+      }
+  
+      Object.keys(errorData.errors).forEach((fieldName) => {
+        setError(fieldName, {
+          type: 'manual',
+          message: errorData.errors[fieldName].message,
+        })
+      })
+    } catch (error) {
+      console.error('Error al iniciar sesión', error)
+    }
   }
   
   const handleRedirect = () => {

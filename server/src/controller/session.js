@@ -79,9 +79,13 @@ router.post('/ingreso', async (req, res) => {
       return res.status(401).json({ error: 'Usuario no encontrado' });
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password)
+    // const passwordMatch = await bcrypt.compare(password, user.password)
 
-    if (!passwordMatch) {
+    // if (!passwordMatch) {
+    //   return res.status(401).json({ error: 'Contraseña incorrecta' });
+    // }
+
+    if (password !== user.password) {
       return res.status(401).json({ error: 'Contraseña incorrecta' });
     }
 
@@ -129,7 +133,7 @@ router.post('/solicitar-recuperacion', async (req, res) => {
       from: "Web NucleoFarma <onboarding@resend.dev>",
       to: [lowerCaseEmail],
       subject: `Restablecer contraseña NucleoFarma.`,
-      html: `Restablecer contraseña NucleoFarma.<br><p>Si solicitaste un cambio de contraseña, por favor haga click en el siguiente enlace:<br><a href="${BD_PASS_URL}/restablecer/${resetPasswordToken}">${BD_PASS_URL}/restablecer/${resetPasswordToken}</a>`,
+      html: `Restablecer contraseña NucleoFarma.<br><p>Si solicitaste un cambio de contraseña, por favor haga click en el siguiente enlace:<br>https://nucleofarma.com.ar/restablecer/${resetPasswordToken}`,
     })
 
     res.status(200).json({ data, emailResponse })         

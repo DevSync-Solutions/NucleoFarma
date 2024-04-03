@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { Button } from '../button'
 import { useNotifyContext } from '../../context/notify'
+// import nodemailer from 'nodemailer';
 import "./contactForm.css"
 
 function ContactForm({ formTitle, formRef }) {
@@ -11,6 +12,7 @@ function ContactForm({ formTitle, formRef }) {
 
   const handleCreate = async (data) => {
     try {
+      notifySuccess('Enviado con éxito')
       // const response = await fetch('http://localhost:3000/contacto', {
         const response = await fetch('https://nucleofarma-api.onrender.com/contacto', {
         
@@ -21,7 +23,7 @@ function ContactForm({ formTitle, formRef }) {
           body: JSON.stringify(data),
         })
         if (response.ok) {
-          notifySuccess('Enviado con éxito')
+          // notifySuccess('Enviado con éxito')
           reset()
           setTimeout(() => {
             window.location.href = '/'

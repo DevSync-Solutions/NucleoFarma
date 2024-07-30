@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { Resend } from "resend"
-import UserSchema from '../models/users.model.js'
+// import UserSchema from '../models/users.model.js'
+import users from '../models/users.model.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -17,7 +18,8 @@ router.post('/', async (req, res) => {
     const lowerCaseEmail = email.toLowerCase()
 
     if (userId) {
-      const user = await UserSchema.findOne({ where: { id: userId } })
+      //const user = await UserSchema.findOne({ where: { id: userId } })
+      const user = users.find(user => user.id === userId);
       if (user) {
         company = ", Proveedor (" + user.company.charAt(0).toUpperCase() + user.company.slice(1) + ")"
       }
@@ -35,9 +37,9 @@ router.post('/', async (req, res) => {
 
     const data = await resend.emails.send({
       from: "Web NucleoFarma <onboarding@resend.dev>",
-      to: ["info@nucleofarmaweb.com.ar"],
+      to: ["ndiaz@nucleofarmaweb.com.ar"],
       subject: `${nameM}${company} contacta para ${contact} NucleoFarma vía Web.`,
-      html: `Contacto realizado por <strong>${email}${company}</strong> con el fin de ${contact} Nucleo Farma.<br><p>Mensaje: ${message}`,
+      html: `Contacto realizado por <strong>${lowerCaseEmail}${company}</strong> con el fin de ${contact} Nucleo Farma.<br><p>Mensaje: ${message}`,
     })
     res.status(200).json({ data })         
 

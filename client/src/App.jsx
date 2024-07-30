@@ -12,7 +12,7 @@ import Login from './pages/login'
 import { MenuProvider } from './context/menu'
 import { FormProvider } from './context/form'
 import PageResetPassContact from './pages/ResetPassContact'
-import PageResetPassForm from './pages/resetPassForm'
+//import PageResetPassForm from './pages/resetPassForm'
 import { NotifyProvider } from './context/notify'
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
               {/* <Route path='/registro' element={<Register />} /> */}
               <Route path='/ingreso' element={<Login />} />
               <Route path='/solicitar-recuperacion' element={<PageResetPassContact />} />
-              <Route path='/restablecer/:tokenPass' element={<PageResetPassForm />} />
+              {/* <Route path='/restablecer/:tokenPass' element={<PageResetPassForm />} /> */}
             </Routes>
             <Footer />
           </BrowserRouter>

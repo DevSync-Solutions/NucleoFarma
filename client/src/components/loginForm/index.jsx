@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../context/form'
 import { useNotifyContext } from '../../context/notify'
+import users from '../users/index.js'
 import "./loginForm.css"
 import "../registerForm/registerForm.css"
 
@@ -96,12 +97,14 @@ function LoginForm() {
 
   const handleCreate = async (data) => {
     try {
-      const response = {
-        cuit: '12345678910',
-        password: '12345678',
-      }
+      const user = users.find(user => user.cuit == data.cuit)
   
-      if (data.cuit === response.cuit && data.password === response.password) {
+      if (!user) {
+        notifyError('Usuario no encontrado. Por favor, verifica tus datos.')
+        return
+      }
+
+      if (data.password === user.password) {
         const userId = '12345'
         const token = 'usertoken'
   
@@ -118,53 +121,55 @@ function LoginForm() {
         }, 2500)
   
         return
+      } else {
+        notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
       }
       
-      const responseDB = await fetch('https://nucleofarma-api.onrender.com/sesion/ingreso', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
+      // const responseDB = await fetch('https://nucleofarma-api.onrender.com/sesion/ingreso', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(data),
+      // })
   
-      if (responseDB.ok) {
-        const responseData = await responseDB.json()
-        const userId = responseData.userId
+      // if (responseDB.ok) {
+      //   const responseData = await responseDB.json()
+      //   const userId = responseData.userId
   
-        sessionStorage.setItem('userId', userId)
+      //   sessionStorage.setItem('userId', userId)
   
-        const authHeader = responseDB.headers.get('Authorization')
-        const token = authHeader ? authHeader.split(' ')[1] : null
+      //   const authHeader = responseDB.headers.get('Authorization')
+      //   const token = authHeader ? authHeader.split(' ')[1] : null
   
-        if (token) {
-          setToken(token)
-          sessionStorage.setItem('token', token)
-          notifySuccess('Inicio de sesión con éxito')
-          reset()
+      //   if (token) {
+      //     setToken(token)
+      //     sessionStorage.setItem('token', token)
+      //     notifySuccess('Inicio de sesión con éxito')
+      //     reset()
   
-          setTimeout(() => {
-            handleRedirect()
-          }, 2500)
-        }
+      //     setTimeout(() => {
+      //       handleRedirect()
+      //     }, 2500)
+      //   }
   
-        return
-      }
+      //   return
+      // }
   
-      const errorData = await responseDB.json()
+      // const errorData = await responseDB.json()
   
-      if (errorData.error === 'Contraseña incorrecta') {
-        notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
-      } else if (errorData.error === 'Usuario no encontrado') {
-        notifyError(errorData.error)
-      }
+      // if (errorData.error === 'Contraseña incorrecta') {
+      //   notifyError('La contraseña es incorrecta. Por favor, intenta de nuevo.')
+      // } else if (errorData.error === 'Usuario no encontrado') {
+      //   notifyError(errorData.error)
+      // }
   
-      Object.keys(errorData.errors).forEach((fieldName) => {
-        setError(fieldName, {
-          type: 'manual',
-          message: errorData.errors[fieldName].message,
-        })
-      })
+      // Object.keys(errorData.errors).forEach((fieldName) => {
+      //   setError(fieldName, {
+      //     type: 'manual',
+      //     message: errorData.errors[fieldName].message,
+      //   })
+      // })
     } catch (error) {
       console.error('Error al iniciar sesión', error)
     }

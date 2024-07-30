@@ -1,13 +1,13 @@
-import ResetPassForm from '../../components/resetPassForm'
+// import ResetPassForm from '../../components/resetPassForm'
 
-const PageResetPassForm = () => {
-  return (
-    <>
-      <main className='main'>
-        <ResetPassForm />
-      </main>
-    </>
-  )
-}
+// const PageResetPassForm = () => {
+//   return (
+//     <>
+//       <main className='main'>
+//         <ResetPassForm />
+//       </main>
+//     </>
+//   )
+// }
 
-export default PageResetPassForm 
+// export default PageResetPassForm 

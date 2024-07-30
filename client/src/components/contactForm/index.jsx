@@ -13,7 +13,7 @@ function ContactForm({ formTitle, formRef }) {
   const handleCreate = async (data) => {
     try {
       notifySuccess('Enviado con éxito')
-      // const response = await fetch('http://localhost:3000/contacto', {
+      //const response = await fetch('http://localhost:3000/contacto', {
         const response = await fetch('https://nucleofarma-api.onrender.com/contacto', {
         
           method: 'POST',
